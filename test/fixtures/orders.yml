@@ -1,0 +1,25 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  status: MyString
+  registration_date: 2010-02-11 14:43:01
+  ammount: 1
+
+two:
+  status: MyString
+  registration_date: 2010-02-11 14:43:01
+  ammount: 1
+
+# == Schema Information
+#
+# Table name: orders
+#
+#  id                :integer(4)      not null, primary key
+#  status            :string(255)
+#  registration_date :datetime
+#  ammount           :integer(4)
+#  client_id         :integer(4)
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+

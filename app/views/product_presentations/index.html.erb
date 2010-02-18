@@ -1,0 +1,30 @@
+<h1>Listing product_presentations</h1>
+
+<table>
+  <tr>
+    <th>Product</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price per Unit</th>
+  </tr>
+
+<% @product_presentations.each do |product_presentation| %>
+  <tr>
+    <td><%=h product_presentation.product_id %></td>
+    <td><%=h product_presentation.name %></td>
+    <td><%=h product_presentation.description %></td>
+    <td><%=h product_presentation.unit_price %></td>
+    <td><%= link_to 'Show', product_presentation %></td>
+    <!--
+    <td><%= link_to 'Edit', edit_product_presentation_path(product_presentation) %></td>
+    -->
+    <td><%= link_to 'Destroy', product_presentation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<!--
+<%= link_to 'New product_presentation', new_product_presentation_path %>
+-->

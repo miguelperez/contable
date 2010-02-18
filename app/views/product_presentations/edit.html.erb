@@ -1,0 +1,31 @@
+<h1>Editing product_presentation</h1>
+
+<% form_for(@product_presentation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <label>Product Type</label>
+    <select>
+      <option value="">Select Product</option>
+      <%= options_for_select(Product.all.map {|p| [truncate(p.name, 20), p.id]}) %>
+    </select>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :unit_price %><br />
+    <%= f.text_field :unit_price %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @product_presentation %> |
+<%= link_to 'Back', product_presentations_path %>

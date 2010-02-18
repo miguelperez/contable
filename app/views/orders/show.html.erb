@@ -1,0 +1,19 @@
+
+<p>
+  <b>Status:</b>
+  <%=h @order.status %>
+</p>
+
+<p>
+  <b>Registration date:</b>
+  <%=h @order.registration_date %>
+</p>
+
+<p>
+  <b>Ammount:</b>
+  <%=h @order.ammount %>
+</p>
+
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

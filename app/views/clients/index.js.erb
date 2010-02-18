@@ -1,0 +1,5 @@
+<ul>
+  <% @clients.each do |client| %>
+    <li id="autocomplete_<%=client.id %>"><%= client.name %></li>
+  <% end %>
+</ul>

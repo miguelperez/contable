@@ -33,6 +33,14 @@ Rails::Initializer.run do |config|
              :version => '>= 1.0.1'
   config.gem 'hoptoad_notifier'
 
+  config.gem 'annotate',
+             :version => '>= 2.4.0',
+             :source  => 'http://gemcutter.org'
+  config.gem 'vestal_versions'
+
+  #Creates easy menus for navigation
+  config.gem "simple-navigation"
+
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -57,5 +65,9 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
+
+  HOST = "localhost"
+  DO_NOT_REPLY = "donotreply@example.com"
 end
 
+require 'simple_navigation'

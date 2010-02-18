@@ -1,0 +1,43 @@
+<h1>Editing order</h1>
+
+<div id="client">
+  <p>
+    <b>name:</b>
+    <%=h @order.client.name %>
+  </p>
+  <p>
+    <b>last name:</b>
+    <%=h @order.client.last_name %>
+  </p>
+  <p>
+    <b>address:</b>
+    <%=h @order.client.address %>
+  </p>
+  <p>
+    <b>email:</b>
+    <%=h @order.client.email %>
+  </p>
+</div>
+
+<% form_for(@order) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :status %><br />
+    <%= f.text_field :status %>
+  </p>
+  <p>
+    <%= f.label :registration_date %><br />
+    <%= f.datetime_select :registration_date %>
+  </p>
+  <p>
+    <%= f.label :ammount %><br />
+    <%= f.text_field :ammount %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @order %> |
+<%= link_to 'Back', orders_path %>

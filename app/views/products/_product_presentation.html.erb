@@ -1,0 +1,21 @@
+<div class="product-presentation">
+  <% new_or_existing = product_presentation.new_record? ? 'new' : 'existing' %>
+  <% prefix = "product[#{new_or_existing}_product_presentation_attributes][]" %>
+  <% fields_for prefix, product_presentation do |f| -%>
+    <p>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :description %><br />
+      <%= f.text_field :description %>
+    </p>
+    <p>
+      <%= f.label :unit_price %><br />
+      <%= f.text_field :unit_price %>
+    </p>
+    <p>
+      <%= link_to_function "remove" , "$(this).up('.product-presentation').remove()" %>
+    </p>
+  <% end -%>
+</div>

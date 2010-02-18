@@ -4,18 +4,18 @@ development:
   adapter: mysql
   database: contable_development
   username: root
-  password: 
+  password:
   host: localhost
   encoding: utf8
-  
+
 test: &TEST
   adapter: mysql
   database: contable_test
   username: root
-  password: 
+  password:
   host: localhost
   encoding: utf8
-  
+
 staging:
   adapter: mysql
   database: contable_staging
@@ -24,7 +24,7 @@ staging:
   host: localhost
   encoding: utf8
   socket: /var/lib/mysql/mysql.sock
-  
+
 production:
   adapter: mysql
   database: contable_production

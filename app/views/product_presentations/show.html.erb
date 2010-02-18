@@ -1,0 +1,24 @@
+<p>
+  <b>Product type:</b>
+  <%=h @product_presentation.product_id %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @product_presentation.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @product_presentation.description %>
+</p>
+
+<p>
+  <b>Price per Unit:</b>
+  <%=h @product_presentation.unit_price %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_product_presentation_path(@product_presentation) %> |
+<%= link_to 'Back', product_presentations_path %>
