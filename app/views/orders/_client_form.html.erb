@@ -1,3 +1,4 @@
+
 <div class="client">
   <% new_or_existing = client.new_record? ? 'new' : 'existing' %>
   <% prefix = "order[new_client_attributes][]" %>
@@ -14,7 +15,10 @@
           {:size => 30},
           {:url => formatted_clients_path(:js),
           :method => :get,
-          :with => "'search=' + element.value"}
+          :with => "'search=' + element.value",
+          :min_chars => 3,
+          :after_update_element => "function(element, li){updateClientForm(element, li)}"
+          }
       %>
       </p>
 
