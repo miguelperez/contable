@@ -1,0 +1,36 @@
+
+<div class="product-presentation">
+  <% @order.product_presentations.each do |product_presentation| %>
+    <% new_or_existing = product_presentation.new_record? ? 'new' : 'existing' %>
+    <% prefix = "order[#{new_or_existing}_product_attributes][]" %>
+
+    <% fields_for prefix, product_presentation do |product_form| -%>
+      <%= product_form.error_messages %>
+
+      <p>
+        Quantity: <br />
+        <%= text_field :order_product_presentation, :quantity %>
+      </p>
+
+      <p>
+        <%= product_form.label :name %><br />        
+        <%= product_form.text_field :name %>
+      </p>
+
+      <p>
+        <%= product_form.label :description %><br />
+        <%= product_form.text_field :description %>
+      </p>
+
+      <p>
+        <%= product_form.label :unit_price %><br />
+        <%= product_form.text_field :unit_price %>
+        <%= text_field :order_product_presentation, :unit_sold_price %>
+      </p>
+
+      <p>
+       <%= link_to_function "remove" , "$(this).up('.product-presentation').remove()" %>
+      </p>
+    <% end -%>
+  <% end -%>
+</div>

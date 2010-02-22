@@ -7,7 +7,12 @@
 
     <% fields_for prefix, client do |client_form| -%>
       <%= client_form.error_messages %>
-  
+
+      <p>
+        <%= client_form.label :id_number %><br />
+        <%= client_form.text_field :id_number %>
+      </p>
+
       <p>
         <%= client_form.label :name %><br />
         <%= text_field_with_auto_complete :order,
@@ -16,11 +21,14 @@
           {:url => formatted_clients_path(:js),
           :method => :get,
           :with => "'search=' + element.value",
-          :min_chars => 3,
           :after_update_element => "function(element, li){updateClientForm(element, li)}"
-          }
+        }
       %>
       </p>
+
+      <div style="display: none">
+        <%= client_form.text_field :name %>
+      </div>
 
       <p>
         <%= client_form.label :last_name %><br />

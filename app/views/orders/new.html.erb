@@ -4,7 +4,7 @@
   <%= f.error_messages %>
 
   <div id="client">
-    <%= render :partial => 'client_form', :locals =>  { :client => @order.client }%>
+    <%= render :partial => 'orders/client_form', :locals =>  { :client => @order.client }%>
   </div>
 
   <p>
@@ -15,6 +15,14 @@
     <%= f.label :registration_date %><br />
     <%= f.datetime_select :registration_date %>
   </p>
+
+  <div id="products">
+    <%= render :partial => 'orders/product_presentation_form' %>
+  </div>
+  <p>
+    <%= add_product_link "Add another product" %>
+  </p>
+
   <p>
     <%= f.label :ammount %><br />
     <%= f.text_field :ammount %>

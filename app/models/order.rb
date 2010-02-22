@@ -4,13 +4,16 @@ class Order < ActiveRecord::Base
   belongs_to :user
   belongs_to :client
 
+  has_many :product_presentations, :through => :order_product_presentations
+  has_many :order_product_presentations, :dependent => :destroy
+
   #creates the client association for and order.
   validates_associated :client
 
   #Builds the new client information.
   def new_client_attributes=(client_attributes)
     client_attributes.each do |attr|
-      build_client(attr)
+      client = Client.find_or_initialize_by_name_and_last_name(client_attributes)
     end
   end
 
@@ -22,6 +25,35 @@ class Order < ActiveRecord::Base
   def client_name=(name)
     self.client = Client.find_or_create_by_name(name) unless name.blank?
   end
+
+  #Creates the products associated with this order
+  def new_product_attributes=(task_attributes)
+    task_attributes.each do |attributes|
+      product_presentations.build(attributes)
+    end
+  end
+
+  after_update :save_product
+  def existing_product_attributes=(task_attributes)
+    product_presentations.reject(&:new_record?).each do |product|
+      attributes = task_attributes[product.id.to_s]
+      if attributes
+        product.attributes = attributes
+      else
+        product_presentations.delete(product)
+      end
+    end
+  end
+
+  validates_associated :product_presentations
+
+  def save_products
+    product_presentations.each do |product|
+      product.save(false)
+    end
+  end
+
+
 
 end
 

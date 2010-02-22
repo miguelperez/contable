@@ -52,14 +52,14 @@ tbody th a:hover {
   color:#363636;
 }
 tbody td+td+td+td a {
-  background-image:url('bullet_blue.png');
+  background-image:url('/images/bullet_blue.png');
   background-position:left center;
   background-repeat:no-repeat;
   color:#03476F;
   padding-left:15px;
 }
 tbody td+td+td+td a:visited {
-  background-image:url('bullet_white.png');
+  background-image:url('/images/bullet_white.png');
   background-position:left center;
   background-repeat:no-repeat;
 }

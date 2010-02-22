@@ -7,11 +7,13 @@ class ClientTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: clients
 #
 #  id         :integer(4)      not null, primary key
+#  id_number  :string(255)
 #  name       :string(255)
 #  last_name  :string(255)
 #  address    :string(255)

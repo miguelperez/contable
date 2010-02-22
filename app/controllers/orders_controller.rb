@@ -26,6 +26,7 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @order.build_client
+    @order.product_presentations.build
 
     respond_to do |format|
       format.html # new.html.erb
@@ -42,7 +43,7 @@ class OrdersController < ApplicationController
   # POST /orders.xml
   def create
     @order = Order.new(params[:order])
-
+    
     respond_to do |format|
       if @order.save
         flash[:notice] = 'Order was successfully created.'
