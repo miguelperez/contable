@@ -13,10 +13,17 @@
   </p>
   <p>
     <%= f.label :registration_date %><br />
-    <%= f.datetime_select :registration_date %>
+    <%= f.calendar_date_select :registration_date, :popup => :force%>
   </p>
 
   <div id="products">
+    <ul class="product-information">
+      <li><div>Quantity</div></li>
+      <li><div>Name</div></li>
+      <li><div>Description</div></li>
+      <li><div>Unit Price</div></li>
+    </ul>
+    <div class="clear"></div>
     <%= render :partial => 'orders/product_presentation_form' %>
   </div>
   <p>

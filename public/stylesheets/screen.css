@@ -1,7 +1,9 @@
-/*
-	Blue Dream
-	Written by Teylor Feliz  http://www.admixweb.com
-*/
+.clear{
+  height: 0px;
+  clear: both;
+}
+
+/* Styles for table*/
 table {
   background:#D3E4E5;
   border:1px solid gray;
@@ -79,4 +81,24 @@ tbody tr:hover {
   background:#99BCBF;
   border:1px solid #03476F;
   color:#000000;
+}
+/*end styles for table*/
+
+/*Styles for products presentations*/
+.product-information{
+  list-style-type: none;
+}
+
+.product-information li{
+  display: inline;
+  margin-left: 3px;
+}
+
+.product-information li div{
+  width: 165px;
+  float: left;
+}
+
+.product-information li input{
+  width: 150px;
 }
