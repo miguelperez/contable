@@ -1,5 +1,6 @@
 SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
+    primary.dom_class = 'sf-menu'
     primary.item :client, 'Clients', clients_path
     primary.item :order, 'Orders', orders_path
     primary.item :ingredient, 'Ingredients', ingredients_path

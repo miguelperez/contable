@@ -6,8 +6,6 @@
   <% field_set_tag "Client Details", :class => 'form-group' do %>
 
     <% fields_for prefix, client do |client_form| -%>
-      <%= client_form.error_messages %>
-
       <p>
         <%= client_form.label :id_number %><br />
         <%= client_form.text_field :id_number %>
@@ -45,7 +43,7 @@
         <%= client_form.text_field :email %>
       </p>
       <p>
-        <%= link_to_function "clear" , "alert('Limpiar forma')" %>
+        <%= clear_form_link('client', ['input']) %>
       </p>
     <% end -%>
   <% end -%>

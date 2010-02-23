@@ -6,13 +6,31 @@
     <title>contable</title>
     <%= stylesheet_link_tag 'screen', :media => 'all', :cache => true %>
     <%= stylesheet_link_tag 'scaffold' %>
-    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag 'superfish' %>
+
+    <%  #This line is for jquery and prototype work together %>
+    <%= javascript_include_tag 'jquery-1.4.2.min' %>
+    <%= javascript_include_tag 'superfish', 'supersubs' %>
+    <script>
+      var _ = jQuery.noConflict();
+    </script>
+    <%= javascript_include_tag :defaults%>
+    <%  #Including jquery and superfish for styling the menu %>
+
+
     <%= calendar_date_select_includes "plain" %>
   </head>
   <body class="<%= body_class %>">
     <%= render :partial => 'shared/flashes' -%>
-    <%= render_navigation %>
+    <div id="navigation"><%= render_navigation(:expand_all => true) %></div>
+    <div class="clear"></div>
     <%= yield %>
     <%= render :partial => 'shared/javascript' %>
+
+    <script type="text/javascript">
+      _(document).ready(function(){
+        _("#navigation ul").superfish();
+      });
+    </script>
   </body>
 </html>

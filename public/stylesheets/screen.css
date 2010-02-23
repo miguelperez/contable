@@ -99,6 +99,6 @@ tbody tr:hover {
   float: left;
 }
 
-.product-information li input{
+.product-information li input, .product-information li select{
   width: 150px;
 }

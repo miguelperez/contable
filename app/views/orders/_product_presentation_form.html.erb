@@ -1,19 +1,16 @@
 <div class="product-presentation">
-  <% @order.product_presentations.each do |product_presentation| %>
-    <% new_or_existing = product_presentation.new_record? ? 'new' : 'existing' %>
-    <% prefix = "order[#{new_or_existing}_product_attributes][]" %>
+  <% @order.order_product_presentations.each do |order_product_presentation| %>
+    <% new_or_existing = order_product_presentation.new_record? ? 'new' : 'existing' %>
+    <% prefix = "order[#{new_or_existing}_order_product_presentations_attributes][]" %>
 
-    <% fields_for prefix, product_presentation do |product_form| -%>
-      <%= product_form.error_messages %>
-
+    <% fields_for prefix, order_product_presentation do |product_form| -%>
       <ul class="product-information">
-        <li><%= text_field :order_product_presentation, :quantity %></li>
-        <li><%= product_form.text_field :name %></li>
-        <li><%= product_form.text_field :description %></li>
-        <li><%= product_form.text_field :unit_price %></li>
+        <li><%= product_form.text_field :quantity %></li>
+        <li><%= product_form.select :product_presentation_id, @product_presentations.map {|at| [at.name,at.id] }, :onchange => "alert('sdfsd')" %></li>
+        <li><%= text_field :product_presentation, :description%></li>
+        <li><%= product_form.text_field :unit_sold_price %></li>
         <li><%= link_to_function "remove" , "$(this).up('.product-presentation').remove()" %></li>
       </ul>
-
     <% end -%>
   <% end -%>
 </div>

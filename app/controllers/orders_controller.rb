@@ -26,7 +26,8 @@ class OrdersController < ApplicationController
   def new
     @order = Order.new
     @order.build_client
-    @order.product_presentations.build
+    @order.order_product_presentations.build
+    @product_presentations = ProductPresentation.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +44,7 @@ class OrdersController < ApplicationController
   # POST /orders.xml
   def create
     @order = Order.new(params[:order])
-    
+
     respond_to do |format|
       if @order.save
         flash[:notice] = 'Order was successfully created.'
@@ -59,7 +60,7 @@ class OrdersController < ApplicationController
   # PUT /orders/1
   # PUT /orders/1.xml
   def update
-    params[:order][:existing_client_attributes] ||= {}
+    params[:order][:existing_order_product_presentations_attributes] ||= {}
     @order = Order.find(params[:id])
 
     respond_to do |format|

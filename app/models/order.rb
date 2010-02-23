@@ -1,20 +1,21 @@
 class Order < ActiveRecord::Base
   #An Order holds the information of a sell being made.
 
-  belongs_to :user
   belongs_to :client
 
   has_many :product_presentations, :through => :order_product_presentations
   has_many :order_product_presentations, :dependent => :destroy
 
   #creates the client association for and order.
-  validates_associated :client
+  validates_associated :client, :order_product_presentations
 
   #Builds the new client information.
   def new_client_attributes=(client_attributes)
-    client_attributes.each do |attr|
-      client = Client.find_or_initialize_by_name_and_last_name(client_attributes)
-    end
+#    p client_attributes
+#    client_attributes.each do |attr|
+#      p attr
+#      client = Client.find_or_create_by_name_and_last_name(attr)
+#    end
   end
 
   #Virtual attributes for client. For the autocompletion field
@@ -23,37 +24,35 @@ class Order < ActiveRecord::Base
   end
 
   def client_name=(name)
-    self.client = Client.find_or_create_by_name(name) unless name.blank?
+    self.client = Client.find_or_initialize_by_name(name) unless name.blank?
   end
 
   #Creates the products associated with this order
-  def new_product_attributes=(task_attributes)
+  def new_order_product_presentations_attributes=(task_attributes)
     task_attributes.each do |attributes|
-      product_presentations.build(attributes)
+      order_product_presentations.build(attributes)
     end
   end
 
-  after_update :save_product
-  def existing_product_attributes=(task_attributes)
-    product_presentations.reject(&:new_record?).each do |product|
+  after_update :save_products
+  def existing_order_product_presentations_attributes=(task_attributes)
+    order_product_presentations.reject(&:new_record?).each do |product|
       attributes = task_attributes[product.id.to_s]
       if attributes
         product.attributes = attributes
       else
-        product_presentations.delete(product)
+        order_product_presentations.delete(product)
       end
     end
   end
 
-  validates_associated :product_presentations
+  validates_associated :order_product_presentations
 
   def save_products
-    product_presentations.each do |product|
+    order_product_presentations.each do |product|
       product.save(false)
     end
   end
-
-
 
 end
 

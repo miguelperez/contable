@@ -41,3 +41,18 @@
 
 <%= link_to 'Back', orders_path %>
 <% content_for :javascript, javascript_include_tag("clients") -%>
+
+<script type="text/javascript">
+  js = <%= @product_presentations.to_json(:only => [:id, :description, :unit_price]) %>;
+
+  function search(product_id){
+    product = js.find(
+    function(x){
+      return x.id == product_id
+    });
+    
+    $('product_presentation_description').setValue(product.description);
+    $('order_new_order_product_presentations_attributes__unit_sold_price').setValue(product.unit_price);
+  }
+</script>
+
