@@ -84,21 +84,28 @@ tbody tr:hover {
 }
 /*end styles for table*/
 
-/*Styles for products presentations*/
-.product-information{
+/*Styles for inline forms. Objects should be between a ul*/
+.inline-form{
   list-style-type: none;
 }
 
-.product-information li{
+.inline-form li.item{
   display: inline;
   margin-left: 3px;
-}
-
-.product-information li div{
-  width: 165px;
   float: left;
 }
 
-.product-information li input, .product-information li select{
+.inline-form li.item div{
+  width: 154px;
+  
+}
+
+.inline-form li.item input, .inline-form li.item select{
   width: 150px;
 }
+
+.fieldWithErrors {
+  border: 1px solid red;
+  width: 150px;
+}
+/* end of styles for inline forms. Objects should be between a ul*/

@@ -43,6 +43,7 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.xml
   def create
+    @product_presentations = ProductPresentation.all
     @order = Order.new(params[:order])
 
     respond_to do |format|
