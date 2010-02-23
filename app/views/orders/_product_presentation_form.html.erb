@@ -5,10 +5,11 @@
 
     <% fields_for prefix, order_product_presentation do |product_form| -%>
       <ul class="inline-form">
-        <li class="item"><%= product_form.text_field :quantity %></li>
-        <li class="item"><%= product_form.select :product_presentation_id, @product_presentations.map {|at| [at.name,at.id] }, :onchange => "alert('sdfsd')" %></li>
+        <li class="item"><%= product_form.text_field :quantity, :onkeypress => "modifyTotal(this.value, 6)" %></li>
+        <li class="item"><%= product_form.select :product_presentation_id, @product_presentations.map {|at| [at.name,at.id] }, {}, {:onchange => "return search(this.getValue())"} %></li>
         <li class="item"><%= text_field :product_presentation, :description%></li>
         <li class="item"><%= product_form.text_field :unit_sold_price %></li>
+        <li class="item"><%= text_field "product",:product_presentation_id %></li>
         <li class="item"><%= link_to_function "remove" , "$(this).up('.product-presentation').remove()" %></li>
       </ul>
       <div class="clear"></div>

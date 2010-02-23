@@ -52,13 +52,17 @@
   js = <%= @product_presentations.to_json(:only => [:id, :description, :unit_price]) %>;
 
   function search(product_id){
-    product = js.find(
+    p = js.find(
     function(x){
-      return x.id == product_id
+      return x.product_presentation.id == product_id
     });
     
-    $('product_presentation_description').setValue(product.description);
-    $('order_new_order_product_presentations_attributes__unit_sold_price').setValue(product.unit_price);
+    $('product_presentation_description').setValue(p.product_presentation.description);
+    $('order_new_order_product_presentations_attributes__unit_sold_price').setValue(p.product_presentation.unit_price);
+  }
+
+  function modifyTotal(a, b){
+    $('order_new_order_product_presentations_attributes__unit_sold_price').up('.inline-form').down('li',4).down(0).value = a * b;
   }
 </script>
 
