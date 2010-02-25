@@ -85,6 +85,15 @@ tbody tr:hover {
 /*end styles for table*/
 
 /*Styles for inline forms. Objects should be between a ul*/
+.grant-total {
+  font-weight:bold;
+  color:red;
+  border:0px;
+}
+.total {
+  border:0px solid;
+  color:#ff0000;
+}
 .inline-form{
   list-style-type: none;
 }
@@ -97,7 +106,7 @@ tbody tr:hover {
 
 .inline-form li.item div{
   width: 154px;
-  
+
 }
 
 .inline-form li.item input, .inline-form li.item select{

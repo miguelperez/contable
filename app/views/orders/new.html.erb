@@ -13,6 +13,7 @@
   <ul class="inline-form">
     <li class="item"><div><%= f.text_field :status %></div></li>
     <li class="item"><div><%= f.calendar_date_select :registration_date, :popup => :force%></div></li>
+    <li class="item"><div><%= @order.order_number %></div></li>
   </ul>
   <div class="clear"></div>
   </p>
@@ -38,7 +39,7 @@
 
   <p>
     <%= f.label :ammount %><br />
-    <%= f.text_field :ammount %>
+    <%= f.text_field :ammount, :class => 'grant-total'%>
   </p>
   <p>
     <%= f.submit 'Create' %>
@@ -49,20 +50,21 @@
 <% content_for :javascript, javascript_include_tag("clients") -%>
 
 <script type="text/javascript">
-  js = <%= @product_presentations.to_json(:only => [:id, :description, :unit_price]) %>;
+  js = <%= @product_presentations.inject({}) { |sum, pp| sum[pp.id] = {:description => pp.description, :unit_price => pp.unit_price} ; sum}.to_json  %>;
 
-  function search(product_id){
-    p = js.find(
-    function(x){
-      return x.product_presentation.id == product_id
-    });
-    
-    $('product_presentation_description').setValue(p.product_presentation.description);
-    $('order_new_order_product_presentations_attributes__unit_sold_price').setValue(p.product_presentation.unit_price);
+  function search(elem, product_id){
+    p = js[product_id];    
+    $(elem).up().next().down().setValue(p.description);
+    $(elem).up().next().next().down().setValue(p.unit_price);
   }
 
-  function modifyTotal(a, b){
-    $('order_new_order_product_presentations_attributes__unit_sold_price').up('.inline-form').down('li',4).down(0).value = a * b;
+  function modifyTotal(value1, value2, receptor){
+    $(receptor).value = value1 * value2;
+    addToGrantTotal($$('.total').inject(0, function(acc, elem){ return acc + parseInt(elem.value)}));
+  }
+
+  function addToGrantTotal(value){
+    $$('.grant-total')[0].setValue(value);
   }
 </script>
 

@@ -9,13 +9,20 @@ class Order < ActiveRecord::Base
   #creates the client association for and order.
   validates_associated :client, :order_product_presentations
 
+  #When invoking Order.new we like to get its order_number set.
+  def after_initialize()
+    if(self.new_record?)
+      maximum_order_number = Order.maximum(:order_number)
+      self.order_number = maximum_order_number ? maximum_order_number + 1 : 1
+    end
+  end
+
   #Builds the new client information.
+  #TODO NOTE: CORRECT THIS
   def new_client_attributes=(client_attributes)
-#    p client_attributes
-#    client_attributes.each do |attr|
-#      p attr
-#      client = Client.find_or_create_by_name_and_last_name(attr)
-#    end
+    #    client_attributes.each do |attr|
+    #      new_client = Client.find_by_name_and_last_name_and_id_number(attr)
+    #    end
   end
 
   #Virtual attributes for client. For the autocompletion field
