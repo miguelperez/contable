@@ -1,64 +1,45 @@
-
-<div class="client">
+<div id="field-set">
   <% new_or_existing = client.new_record? ? 'new' : 'existing' %>
   <% prefix = "order[new_client_attributes][]" %>
+  <h3><span>Client details</span></h3>
 
-  <% field_set_tag "Client Details", :class => 'form-group' do %>
+  <% fields_for prefix, client do |client_form| -%>
+    <p>
+      <%= client_form.label :id_number %>
+      <%= client_form.text_field :id_number %>
+    </p>
 
-    <% fields_for prefix, client do |client_form| -%>
+    <p>
+      <%= client_form.label :name %>
+      <%= text_field_with_auto_complete :order,
+        :client_name,
+        {:size => 30, :onload => "this.value = $('order_new_client_attributes__name').value"},
+        {:url => formatted_clients_path(:js),
+        :method => :get,
+        :with => "'search=' + element.value",
+        :after_update_element => "function(element, li){updateClientForm(element, li)}"
+      }
+    %>
+    </p>
 
-      <ul class="inline-form">
-        <li class="item"><div><%= client_form.label :id_number %></div></li>
-      </ul>
-      <ul class="inline-form">
-        <li class="item"><%= client_form.text_field :id_number %></li>
-      </ul>
-      <div class="clear"></div>
-      <ul class="inline-form">
-        <li class="item"><div><%= client_form.label :name %></div></li>
-        <li class="item"><div><%= client_form.label :last_name %></div></li>
-      </ul>
-      <div class="clear"></div>
-      <ul class="inline-form">
-        <li class="item">
-          <%= text_field_with_auto_complete :order,
-            :client_name,
-            {:size => 30, :onload => "this.value = $('order_new_client_attributes__name').value"},
-            {:url => formatted_clients_path(:js),
-            :method => :get,
-            :with => "'search=' + element.value",
-            :after_update_element => "function(element, li){updateClientForm(element, li)}"
-          }
-        %>
-        </li>
-        <li class="item"><%= client_form.text_field :last_name %></li>
-      </ul>
-      <div class="clear"></div>
+    <p>
+      <%= client_form.label :last_name %>
+      <%= client_form.text_field :last_name %>
+    </p>
 
-      <ul class="inline-form">
-        <li class="item"><div><%= client_form.label :address %></div></li>
-      </ul>
-      <ul class="inline-form">
-        <li class="item"><%= client_form.text_field :address %></li>
-      </ul>
-      <div class="clear"></div>
+    <p>
+      <%= client_form.label :address %>
+      <%= client_form.text_field :address %>
+    </p>
 
-      <ul class="inline-form">
-        <li class="item"><div><%= client_form.label :email %></div></li>
-      </ul>
-      <ul class="inline-form">
-        <li class="item"><%= client_form.text_field :email %></li>
-      </ul>
-      <div class="clear"></div>
+    <p>
+      <%= client_form.label :email %>
+      <%= client_form.text_field :email %>
+    </p>
 
-
-      <div style="display: none">
-        <%= client_form.text_field :name %>
-      </div>
-
-      <p>
-        <%= clear_form_link('client', ['input']) %>
-      </p>
-    <% end -%>
+    <div style="display: none">
+      <%= client_form.text_field :name %>
+    </div>
+    <%= clear_form_link('client', ['input']) %>
   <% end -%>
 </div>

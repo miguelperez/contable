@@ -1,9 +1,7 @@
-body { background-color: #fff;}
-
-body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
+body {
+  background-color: #fff;
+  font-family: Trebuchet MS,Arial,Helvetica,Sans-Serif;
   font-size:   13px;
-  line-height: 18px;
 }
 
 pre {

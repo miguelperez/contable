@@ -1,70 +1,58 @@
 <h1>New order</h1>
 
-<% form_for(@order) do |f| %>
+<% form_for(@order, :html => {:id => 'styled-form'}) do |f| %>
   <%= f.error_messages %>
 
-
-  <p>
-  <ul class="inline-form">
-    <li class="item"><div><%= f.label :status %></div></li>
-    <li class="item"><div><%= f.label :registration_date %></div></li>
-  </ul>
-  <div class="clear"></div>
-  <ul class="inline-form">
-    <li class="item"><div><%= f.text_field :status %></div></li>
-    <li class="item"><div><%= f.calendar_date_select :registration_date, :popup => :force%></div></li>
-    <li class="item"><div><%= @order.order_number %></div></li>
-  </ul>
-  <div class="clear"></div>
-  </p>
-
-  <div id="client">
-    <%= render :partial => 'orders/client_form', :locals =>  { :client => @order.client }%>
+  <div id="header">
+    <%= f.label :status %>
+    <%= f.text_field :status %>
+    <%= f.label :registration_date %>
+    <%= f.calendar_date_select :registration_date, :popup => :force%>
+    Order Number: <span><%= "#{@order.order_number}" %>
   </div>
 
-  <div id="products">
-    <ul class="inline-form">
-      <li class="item"><div>Quantity</div></li>
-      <li class="item"><div>Name</div></li>
-      <li class="item"><div>Description</div></li>
-      <li class="item"><div>Unit Price</div></li>
-      <li class="item"><div class="clear"></div></li>
-    </ul>
+
+  <%= render :partial => 'orders/client_form', :locals =>  { :client => @order.client }%>
+
+  <div id="content-wrapper">
+    <div id="products">
+      <ul class="inline-form">
+        <li class="item"><div>Quantity</div></li>
+        <li class="item"><div>Name</div></li>
+        <li class="item"><div>Description</div></li>
+        <li class="item"><div>Unit Price</div></li>
+        <li class="item"><div class="clear"></div></li>
+      </ul>
+      <div class="clear"></div>
+      <%= render :partial => 'orders/product_presentation_form' %>
+    </div>
+
+    <span class="flow-rigth">
+      <%= add_product_link "Add another product" %>
+    </span>
+
     <div class="clear"></div>
-    <%= render :partial => 'orders/product_presentation_form' %>
-  </div>
-  <p>
-    <%= add_product_link "Add another product" %>
-  </p>
 
-  <p>
-    <%= f.label :ammount %><br />
-    <%= f.text_field :ammount, :class => 'grant-total'%>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
+    <span>
+      <ul class="inline-form">
+        <li class="item"><div><%= f.label :ammount, "Order Total" %></div></li>
+        <li class="item three-item"><%= text_field "ammount", "in_words", :id => 'grant-total-words', :class => 'big-input'%></li>
+        <li class="item"><%= f.text_field :ammount, :class => 'grant-total li-input'%></li>
+      </ul>
+    </span>
+
+    <div id="footer">
+      <%= f.submit 'Create', :class => 'big-button' %>
+      <%= link_to 'Cancel', orders_path %>
+    </div>
+  </div>
 <% end %>
 
-<%= link_to 'Back', orders_path %>
+
 <% content_for :javascript, javascript_include_tag("clients") -%>
 
 <script type="text/javascript">
   js = <%= @product_presentations.inject({}) { |sum, pp| sum[pp.id] = {:description => pp.description, :unit_price => pp.unit_price} ; sum}.to_json  %>;
-
-  function search(elem, product_id){
-    p = js[product_id];    
-    $(elem).up().next().down().setValue(p.description);
-    $(elem).up().next().next().down().setValue(p.unit_price);
-  }
-
-  function modifyTotal(value1, value2, receptor){
-    $(receptor).value = value1 * value2;
-    addToGrantTotal($$('.total').inject(0, function(acc, elem){ return acc + parseInt(elem.value)}));
-  }
-
-  function addToGrantTotal(value){
-    $$('.grant-total')[0].setValue(value);
-  }
 </script>
 
+<% content_for :javascript, javascript_include_tag("orders") -%>
