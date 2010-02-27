@@ -49,10 +49,9 @@
 <% end %>
 
 
-<% content_for :javascript, javascript_include_tag("clients") -%>
-
 <script type="text/javascript">
   js = <%= @product_presentations.inject({}) { |sum, pp| sum[pp.id] = {:description => pp.description, :unit_price => pp.unit_price} ; sum}.to_json  %>;
 </script>
 
+<% content_for :javascript, javascript_include_tag("clients") -%>
 <% content_for :javascript, javascript_include_tag("orders") -%>

@@ -19,7 +19,7 @@ class Order < ActiveRecord::Base
 
   #Builds the new client information.
   def new_client_attributes=(client_attributes)
-    client_attributes.each do |attr|
+    client_attributes.each do |key, attr|
       client.attributes = attr
     end
   end

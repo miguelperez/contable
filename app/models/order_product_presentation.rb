@@ -5,6 +5,24 @@ class OrderProductPresentation < ActiveRecord::Base
   validates_presence_of :quantity
   validates_presence_of :unit_sold_price
   validates_uniqueness_of :product_presentation_id, :scope => :order_id
+
+  #Returns the name of the product that was sold.
+  def product_name
+    return product_presentation.name if product_presentation
+    return ""
+  end
+
+  #Returns the description of the product that was sold.
+  def product_description
+    return product_presentation.description if product_presentation
+    return ""
+  end
+
+  #Returns the total ammount of this sold.
+  def total_sold
+    return (self.quantity * self.unit_sold_price) if(self.quantity && self.unit_sold_price)
+    return ""
+  end
 end
 
 

@@ -1,7 +1,7 @@
 //Object that updates the client form
 var Updater = (function(){
   var initialize = function() {
-    //constructor
+  //constructor
   }
   //Updates the client form given the received response from ajax request.
   var updateClientForm = function(element, li){
@@ -19,7 +19,7 @@ var Updater = (function(){
     element_p.next('input[type=hidden]').setValue(element.getValue());
   };
 
-  //Updates the ajax updater with the vale from the hidden name field.
+  //Updates the ajax updater with the value from the hidden name field.
   var getNameValue = function(element){
     element_p = element.up();
     element.setValue(element_p.next('input[type=hidden]').getValue());
@@ -32,5 +32,4 @@ var Updater = (function(){
     'getNameValue': getNameValue
   }
 })();
-
 Updater.initialize();

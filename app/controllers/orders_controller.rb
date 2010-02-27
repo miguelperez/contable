@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_filter :fetch_product_presentations, :only => [:edit, :new]
   # GET /orders
   # GET /orders.xml
   def index
@@ -27,7 +28,6 @@ class OrdersController < ApplicationController
     @order = Order.new
     @order.build_client
     @order.order_product_presentations.build
-    @product_presentations = ProductPresentation.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,7 +43,6 @@ class OrdersController < ApplicationController
   # POST /orders
   # POST /orders.xml
   def create
-    @product_presentations = ProductPresentation.all
     @order = Order.new(params[:order])
 
     respond_to do |format|
@@ -86,5 +85,11 @@ class OrdersController < ApplicationController
       format.html { redirect_to(orders_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def fetch_product_presentations
+    @product_presentations = ProductPresentation.all
   end
 end

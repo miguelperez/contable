@@ -7,9 +7,9 @@
       <ul class="inline-form">
         <li class="item"><%= product_form.text_field :quantity, :onkeyup => "modifyTotal(this.value, this.up().next(2).down().value, this.up().next(3).down())" %></li>
         <li class="item"><%= product_form.select :product_presentation_id, @product_presentations.map {|at| [at.name,at.id] }, {:prompt => 'Select a product'}, {:onchange => "search(this, this.getValue()); modifyTotal(this.up().down().value, this.up().next(1).down().value, this.up().next(2).down())"}%></li>
-        <li class="item"><%= text_field :product_presentation, :description%></li>
+        <li class="item"><%= text_field :product_presentation, :description, :value => order_product_presentation.product_description %></li>
         <li class="item"><%= product_form.text_field :unit_sold_price, :onkeyup => "modifyTotal(this.value, this.up().previous(2).down().value, this.up().next().down())" %></li>
-        <li class="item"><%= text_field "product","total_value", :class => "total" %></li>
+        <li class="item"><%= text_field "product","total_value", :class => "total", :value => order_product_presentation.total_sold %></li>
         <li class="item"><%= link_to_function "remove" , "$(this).up('.product-presentation').remove()" %></li>
       </ul>
       <div class="clear"></div>
