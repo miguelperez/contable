@@ -7,7 +7,7 @@ class Order < ActiveRecord::Base
   has_many :order_product_presentations, :dependent => :destroy
 
   #creates the client association for and order.
-  validates_associated :client, :order_product_presentations
+  validates_associated :order_product_presentations, :client
 
   #When invoking Order.new we like to get its order_number set.
   def after_initialize()
@@ -18,11 +18,10 @@ class Order < ActiveRecord::Base
   end
 
   #Builds the new client information.
-  #TODO NOTE: CORRECT THIS
   def new_client_attributes=(client_attributes)
-    #    client_attributes.each do |attr|
-    #      new_client = Client.find_by_name_and_last_name_and_id_number(attr)
-    #    end
+    client_attributes.each do |attr|
+      client.attributes = attr
+    end
   end
 
   #Virtual attributes for client. For the autocompletion field

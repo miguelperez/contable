@@ -109,8 +109,7 @@ tbody tr:hover {
 }
 
 .fieldWithErrors {
-  border: 1px solid red;
-  width: 150px;
+  background: transparent url(/images/icons/error.png) no-repeat scroll 98% 50%;
 }
 /* end of styles for inline forms. Objects should be between a ul*/
 

@@ -13,13 +13,15 @@
       <%= client_form.label :name %>
       <%= text_field_with_auto_complete :order,
         :client_name,
-        {:size => 30, :onload => "this.value = $('order_new_client_attributes__name').value"},
+        {:size => 30, :onload => "Updater.getNameValue()", :onkeyup => "Updater.updateNameAttribute(this)", :onchange => "Updater.updateNameAttribute(this)", :onblur => "Updater.updateNameAttribute(this)"},
         {:url => formatted_clients_path(:js),
         :method => :get,
         :with => "'search=' + element.value",
-        :after_update_element => "function(element, li){updateClientForm(element, li)}"
+        :after_update_element => "function(element, li){Updater.updateClientForm(element, li)}"
       }
     %>
+      <% #Hack for sending the client name. NOTE: is there a better way to do this?  %>
+      <%= client_form.hidden_field :name %>
     </p>
 
     <p>
@@ -37,9 +39,6 @@
       <%= client_form.text_field :email %>
     </p>
 
-    <div style="display: none">
-      <%= client_form.text_field :name %>
-    </div>
     <%= clear_form_link('client', ['input']) %>
   <% end -%>
 </div>
