@@ -1,4 +1,5 @@
-
+<h1>Order #<%=h @order.order_number %></h1>
+<hr>
 <p>
   <b>Status:</b>
   <%=h @order.status %>
@@ -9,8 +10,60 @@
   <%=h @order.registration_date %>
 </p>
 
+<hr>
+
+<h2>Client Information</h2>
+
 <p>
-  <b>Ammount:</b>
+  <b>Identification Number</b>
+  <%=h @order.client.id_number %>
+</p>
+
+<p>
+  <b>Name</b>
+  <%=h @order.client.name %>
+</p>
+
+<p>
+  <b>Last Name</b>
+  <%=h @order.client.last_name %>
+</p>
+
+<p>
+  <b>Address</b>
+  <%=h @order.client.address %>
+</p>
+
+<p>
+  <b>Email</b>
+  <%=h @order.client.email %>
+</p>
+
+<hr>
+
+<h2>Order products</h2>
+<table>
+  <tr>
+    <th>Quantity</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Unit Price</th>
+    <th>Total</th>
+  </tr>
+  <% @order.order_product_presentations.each do |product| %>
+    <tr>
+      <td><%=h product.quantity %></td>
+      <td><%=h product.product_name %></td>
+      <td><%=h product.product_description %></td>
+      <td><%=h product.unit_sold_price %></td>
+      <td><%=h product.total_sold %></td>
+    </tr>
+  <% end %>
+</table>
+<hr>
+
+<p>
+  <b>Order Total</b>
   <%=h @order.ammount %>
 </p>
 
