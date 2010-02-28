@@ -1,6 +1,6 @@
 #A product holds the information of the assets of the application
 class Product < ActiveRecord::Base
-  has_many :ingredients
+  has_many :formulas, :as => :formulable
   has_many :product_presentations
 
   after_update :save_product_presentations
@@ -38,8 +38,6 @@ class Product < ActiveRecord::Base
   #presentations gets validated, because on the save_product_presentations
   #method we bypassed the validations.
   validates_associated :product_presentations
-
-
 end
 
 
