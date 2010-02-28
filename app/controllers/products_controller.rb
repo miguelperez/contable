@@ -26,6 +26,7 @@ class ProductsController < ApplicationController
   def new
     @product = Product.new
     @product.product_presentations.build
+    @product.formulas.build
 
     respond_to do |format|
       format.html # new.html.erb

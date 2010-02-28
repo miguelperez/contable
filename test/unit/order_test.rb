@@ -7,11 +7,13 @@ class OrderTest < ActiveSupport::TestCase
   end
 end
 
+
 # == Schema Information
 #
 # Table name: orders
 #
 #  id                :integer(4)      not null, primary key
+#  order_number      :integer(4)      default(0)
 #  status            :string(255)
 #  registration_date :datetime
 #  ammount           :integer(4)
