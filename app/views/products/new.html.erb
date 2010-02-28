@@ -16,33 +16,28 @@
     </p>
   </div>
 
-  <% content = "asdasdadasdas" %>
-  <%= render :partial => 'shared/slide_in_panel', :locals => {:button_text => 'TEXTO BOTON', :panel_content => content} %>
+  <div id="content-wrapper">
 
-  <div style="float: left; width: 300px;">
-    <div id="panel" style="display: none">
-      <div id="field-set" style="z-index: -1">
-        <h3><span>Presentations details</span></h3>
-
-        <div id="product-presentations">
-          <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>
-        </div>
-        <p>
-          <%= add_product_presentation_link "Add a product presentation" %>
-        </p>
+    <div id="products">
+      <div id="product-presentations">
+        <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>
       </div>
+
+      <%= add_product_presentation_link "Add a product presentation" %>
     </div>
-    <a href="#" onclick="animate(this.previous('div')); return false;">test</a>
+
+    <div id="footer">
+      <%= f.submit 'Create', :class => 'big-button' %>
+      <%= link_to 'Cancel', products_path %>
+    </div>
+    
   </div>
 
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
 <% end %>
+
 <script type="text/javascript">
   function animate(div){
     _(div).slideToggle("slow");
   }
 </script>
 
-<%= link_to 'Back', products_path %>
