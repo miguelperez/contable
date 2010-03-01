@@ -1,3 +1,6 @@
+# Author::    Miguel Pérez Leal  (mailto:miguel.perez.leal@gmail.com)
+# Copyright:: Copyright (c) 2010 Miguel Pérez Leal
+
 #A formula defines the relation between an object that is constructed by
 #small parts of some ingredients. So an object that has formulas, can define
 #how many parts of the ingredient uses.

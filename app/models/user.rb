@@ -1,6 +1,11 @@
-class User < ActiveRecord::Base
-  #A System user. Users, performs operations on the system.
+# Author::    Miguel Pérez Leal  (mailto:miguel.perez.leal@gmail.com)
+# Copyright:: Copyright (c) 2010 Miguel Pérez Leal
 
+#This class represents a System user.
+#Users, performs operations on the system. They have the ability to add
+#+clients+, +orders+, +products+ and +ingredients+.
+
+class User < ActiveRecord::Base
   include Clearance::User
   has_many :orders, :dependent => :destroy
 end

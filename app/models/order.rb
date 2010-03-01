@@ -1,6 +1,8 @@
-class Order < ActiveRecord::Base
-  #An Order holds the information of a sell being made.
+# Author::    Miguel Pérez Leal  (mailto:miguel.perez.leal@gmail.com)
+# Copyright:: Copyright (c) 2010 Miguel Pérez Leal
 
+#An +Order+ holds the information of a sell being made.
+class Order < ActiveRecord::Base
   belongs_to :client
 
   has_many :product_presentations, :through => :order_product_presentations

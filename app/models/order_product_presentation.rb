@@ -1,3 +1,8 @@
+# Author::    Miguel Pérez Leal  (mailto:miguel.perez.leal@gmail.com)
+# Copyright:: Copyright (c) 2010 Miguel Pérez Leal
+
+#This class represents the relationship that exists between an order and the
+#products being sold. Every object of this class must have at one order
 class OrderProductPresentation < ActiveRecord::Base
   belongs_to :order
   belongs_to :product_presentation

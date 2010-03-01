@@ -1,5 +1,8 @@
+# Author::    Miguel Pérez Leal  (mailto:miguel.perez.leal@gmail.com)
+# Copyright:: Copyright (c) 2010 Miguel Pérez Leal
+
+#This class represents a +client+ that migth have orders associated to him.
 class Client < ActiveRecord::Base
-  #Represents a client on the system.
   has_many :orders
 
   validates_presence_of :id_number

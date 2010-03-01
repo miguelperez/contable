@@ -1,3 +1,13 @@
+# Author::    Miguel Pérez Leal  (mailto:miguel.perez.leal@gmail.com)
+# Copyright:: Copyright (c) 2010 Miguel Pérez Leal
+
+#The product presentation class represents the different forms a product can
+#take. As an example we could cite:
+#
+#We have a product called Toilet paper which we can find in different presentations as:
+# * Extra soft toilet paper
+# * With perfume
+# so in this example Toilet paper is the product and the above mentioned are the product presentations.
 class ProductPresentation < ActiveRecord::Base
   belongs_to :product
 

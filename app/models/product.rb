@@ -1,4 +1,9 @@
-#A product holds the information of the assets of the application
+# Author::    Miguel Pérez Leal  (mailto:miguel.perez.leal@gmail.com)
+# Copyright:: Copyright (c) 2010 Miguel Pérez Leal
+
+#This class represents a product which holds the information of a product
+#entered to the application
+
 class Product < ActiveRecord::Base
   has_many :formulas, :as => :formulable
   has_many :product_presentations

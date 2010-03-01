@@ -1,3 +1,8 @@
+# Author::    Miguel Pérez Leal  (mailto:miguel.perez.leal@gmail.com)
+# Copyright:: Copyright (c) 2010 Miguel Pérez Leal
+
+#This class represents the main components that form a +product+ or a
+#+product_presentation+. 
 class Ingredient < ActiveRecord::Base
 end
 
