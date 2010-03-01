@@ -3,10 +3,11 @@
 #how many parts of the ingredient uses.
 class Formula < ActiveRecord::Base
   belongs_to :formulable, :polymorphic => true
-  has_many :ingredients
+  belongs_to :ingredient
 
   validates_presence_of :ingredient_id
   validates_presence_of :ingredient_ammount
+
 end
 
 # == Schema Information

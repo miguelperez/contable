@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :fetch_ingredients, :only => [:new, :edit]
   # GET /products
   # GET /products.xml
   def index
@@ -27,6 +28,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.product_presentations.build
     @product.formulas.build
+    @ingredients = Ingredient.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -83,5 +85,11 @@ class ProductsController < ApplicationController
       format.html { redirect_to(products_url) }
       format.xml  { head :ok }
     end
+  end
+
+  private
+
+  def fetch_ingredients
+    @ingredients = Ingredient.all
   end
 end

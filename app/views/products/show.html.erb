@@ -1,12 +1,64 @@
+<h1>Product</h1>
 <p>
   <b>Name:</b>
   <%=h @product.name %>
 </p>
 
-<p>
+<p
+<h2>Ingredients</h2>
+<table>
+  <tr>
+    <th>Ingredient Name</th>
+    <th>Ingredient ammount</th>
+  </tr>
+  <% @product.formulas.each do |product| %>
+    <tr>
+      <td><%=h product.ingredient.name %></td>
+      <td><%=h product.ingredient_ammount %></td>
+    </tr>
+  <% end %>
+</table>
+<hr>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>>
   <b>Description:</b>
   <%=h @product.description %>
 </p>
+
+<hr>
+
+<h2>Presentations</h2>
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Unit Price</th>
+  </tr>
+  <% @product.product_presentations.each do |product| %>
+    <tr>
+      <td><%=h product.name %></td>
+      <td><%=h product.description %></td>
+      <td><%=h product.unit_price %></td>
+    </tr>
+  <% end %>
+</table>
+<hr>
+
+<h2>Ingredients</h2>
+<table>
+  <tr>
+    <th>Ingredient Name</th>
+    <th>Ingredient ammount</th>
+  </tr>
+  <% @product.formulas.each do |product| %>
+    <tr>
+      <td><%=h product.ingredient.name %></td>
+      <td><%=h product.ingredient_ammount %></td>
+    </tr>
+  <% end %>
+</table>
+<hr>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

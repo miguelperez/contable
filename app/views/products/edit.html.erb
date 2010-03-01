@@ -1,31 +1,51 @@
-<h1>Editing product</h1>
+<h1>Edit product</h1>
 
-<% form_for(@product) do |f| %>
+<% form_for(@product, :html => {:id => 'styled-form'}) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
-  </p>
+  <div id="field-set">
+    <h3><span>Product details</span></h3>
 
-  <fieldset>
-    <legend>Product presentation</legend>
-    <div id="product-presentations">
-      <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>
-    </div>
     <p>
-      <%= add_product_presentation_link "Add a product presentation" %>
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
     </p>
-  </fieldset>
+    <p>
+      <%= f.label :description %><br />
+      <%= f.text_field :description %>
+    </p>
+  </div>
 
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+  <div id="content-wrapper">
+
+    <div id="products">
+      <div id="product-presentations">
+        <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>
+      </div>
+
+      <%= add_product_presentation_link "Add a product presentation" %>
+    </div>
+
+    <div id="ingredients">
+      <div id="formulas">
+        <%= render :partial => 'products/formula', :collection => @product.formulas %>
+      </div>
+
+      <%= add_formula_link "Add another ingredient" %>
+    </div>
+
+    <div id="footer">
+      <%= f.submit 'Update', :class => 'big-button' %>
+      <%= link_to 'Cancel', products_path %>
+    </div>
+
+  </div>
+
 <% end %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<script type="text/javascript">
+  function animate(div){
+    _(div).slideToggle("slow");
+  }
+</script>
+
