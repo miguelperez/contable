@@ -7,5 +7,6 @@ public/system
 coverage/*
 *.swp
 rerun.txt
+doc/*
 
 !.keep
