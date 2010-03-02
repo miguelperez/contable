@@ -4,6 +4,7 @@
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <title>contable</title>
+    <%= stylesheet_link_tag 'layout' %>
     <%= stylesheet_link_tag 'screen', :media => 'all', :cache => true %>
     <%= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'superfish' %>
@@ -22,6 +23,23 @@
     <%= calendar_date_select_includes "plain" %>
   </head>
   <body class="<%= body_class %>">
+    <!--
+    <div class="header">
+      <div id="btns">
+        <ul class="main-menu">
+          <li class="first"><span><a href="#">texto</a></span></li>
+          <li class="separator">&emsp;</li>
+          <li><span><a href="#">texto</a></span></li>
+          <li class="separator">&emsp;</li>
+          <li><span><a href="#">texto</a></span></li>
+          <li class="separator">&emsp;</li>
+          <li><span><a href="#">texto</a></span></li>
+          <li class="separator">&emsp;</li>
+          <li class="last"><span><a href="#">texto</a></span></li>
+        </ul>
+      </div>
+    </div>
+    -->
     <%= render :partial => 'shared/flashes' -%>
     <div id="navigation"><%= render_navigation(:expand_all => true) %></div>
     <div class="clear"></div>

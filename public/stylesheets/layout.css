@@ -1,0 +1,71 @@
+body{
+  margin: 0;
+  padding: 0;
+  height:100%;
+  font-family: verdana,arial,helvetica,sans-serif;
+  font-size: 90%;
+}
+
+/*Main Application header.*/
+.header{
+  background: repeat-x url('/images/layout/header_bg.jpg');
+  height: 57px;
+  width: 100%;
+}
+
+#btns{
+  margin-left:10px;
+  position:absolute;
+  top:17px;
+}
+
+.main-menu{
+  list-style-type: none;
+  margin: 0;
+  padding: 0px;
+}
+
+.main-menu li{
+  float:left;
+  background: repeat-x url('/images/layout/btn_bg.jpg');
+}
+
+.main-menu li:hover{
+  float:left;
+  background: repeat-x url('/images/layout/btn_selected.jpg');
+}
+
+.main-menu li span a{
+  color: #fff;
+  text-align:center;
+  display: block;
+  text-decoration: none;
+  height: 27px;
+  width: 100px;
+}
+
+.main-menu li.separator{
+  background: no-repeat url('/images/layout/btn_separator.jpg') top right;
+  height:27px;
+  width:3px;
+}
+
+.main-menu li span a:hover{
+  text-decoration: underline;
+}
+
+.main-menu li.first span a{
+  background: no-repeat url('/images/layout/btn_left.jpg') top left;
+}
+
+.main-menu li.last span a{
+  background: no-repeat url('/images/layout/btn_rigth.jpg') top right;
+}
+
+.main-menu li.first span a:hover{
+  background: no-repeat url('/images/layout/btn_selected.jpg') top left;
+}
+
+.main-menu li.last span a:hover{
+  background: no-repeat url('/images/layout/btn_selected.jpg') top right;
+}
