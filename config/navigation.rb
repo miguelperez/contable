@@ -1,11 +1,29 @@
 SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
-    primary.dom_class = 'sf-menu'
-    primary.item :client, 'Clients', clients_path
+    primary.dom_class = 'main-menu'
+    
+    primary.item :client, 'Clients', clients_path, :class => 'first' do |secondary|
+      secondary.dom_class = 'secondary-menu'
+      secondary.item :new_client, 'Add', new_client_path
+      secondary.item :new_t, 'Addddddd', ""
+      secondary.item :nelient, 'Adsssssd', "www.google.com"
+    end
+
+    primary.item :'separator', '', "", :class => 'separator'
+
     primary.item :order, 'Orders', orders_path
+
+    primary.item :'separator', '', "", :class => 'separator'
+
     primary.item :ingredient, 'Ingredients', ingredients_path
+
+    primary.item :'separator', '', "", :class => 'separator'
+
     primary.item :product, 'Products', products_path
-    primary.item :product_presentatio, 'Products Presentations', product_presentations_path
+
+    primary.item :'separator', '', "", :class => 'separator'
+
+    primary.item :product_presentatio, 'Products Presentations', product_presentations_path, :class => 'last'
   end
 end
 ## Configures your navigation

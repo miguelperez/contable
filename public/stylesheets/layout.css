@@ -1,9 +1,18 @@
+html{
+  height: 100%;
+}
 body{
   margin: 0;
   padding: 0;
-  height:100%;
+  height: 100%;
   font-family: verdana,arial,helvetica,sans-serif;
   font-size: 90%;
+}
+.whole-wrapper{
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  background-color: #e0e0e0;
 }
 
 /*Main Application header.*/
@@ -12,60 +21,118 @@ body{
   height: 57px;
   width: 100%;
 }
-
+/*Main Menu.*/
 #btns{
   margin-left:10px;
   position:absolute;
   top:17px;
 }
-
-.main-menu{
+.main-menu, .secondary-menu{
   list-style-type: none;
   margin: 0;
   padding: 0px;
 }
-
 .main-menu li{
   float:left;
   background: repeat-x url('/images/layout/btn_bg.jpg');
 }
-
 .main-menu li:hover{
   float:left;
   background: repeat-x url('/images/layout/btn_selected.jpg');
 }
-
-.main-menu li span a{
+.main-menu li a{
   color: #fff;
   text-align:center;
   display: block;
   text-decoration: none;
   height: 27px;
-  width: 100px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 2px;
 }
-
+.main-menu li.selected{
+  background: repeat-x url('/images/layout/btn_selected.jpg') top right;
+}
 .main-menu li.separator{
   background: no-repeat url('/images/layout/btn_separator.jpg') top right;
-  height:27px;
-  width:3px;
+  height: 27px;
+  width: 2px;
 }
-
-.main-menu li span a:hover{
-  text-decoration: underline;
+/*Hack for allowing simple navigation gem to work*/
+.main-menu li.separator a{
+  display: none;
 }
-
-.main-menu li.first span a{
+.main-menu li.first a{
   background: no-repeat url('/images/layout/btn_left.jpg') top left;
 }
-
-.main-menu li.last span a{
+.main-menu li.last a{
   background: no-repeat url('/images/layout/btn_rigth.jpg') top right;
 }
+.main-menu li.first a:hover{
+  background: no-repeat url('/images/layout/btn_left_selected.jpg') top left;
+}
+.main-menu li.last a:hover{
+  background: no-repeat url('/images/layout/btn_rigth_selected.jpg') top right;
+}
+.main-menu li.first.selected a{
+  background: no-repeat url('/images/layout/btn_left_selected.jpg') top left;
+}
+.main-menu li.last.selected a{
+  background: no-repeat url('/images/layout/btn_rigth_selected.jpg') top right;
+}
+/*End Main Menu.*/
+/*Secondary Menu.*/
+.secondary-menu-container{
+  padding-bottom: 0px;
+  height: 50px;
+  position: relative;
+  padding-left: 100px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-bottom: 1px solid #D5D5D5;
+}
+.secondary-menu{
+  position: absolute;
+  bottom: -1px;
+}
+.secondary-menu li{
+  float:left;
+}
+.secondary-menu li.selected{
+  background-color: #cacaca;
+}
+.secondary-menu li a{
+  display: block;
+  color: #2a2a2a;
+  text-decoration: none;
+  height: 22px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 2px;
+  border: 1px solid;
+  border-color: #ffe #aaab9c #ccc #fff;
+}
+.secondary-menu li a:hover{
+  border-color: #aaab9c #fff #fff #ccc;
+  background-color: #cacaca;
+}
+/*End Secondary Menu.*/
+/* end styles for main application header*/
 
-.main-menu li.first span a:hover{
-  background: no-repeat url('/images/layout/btn_selected.jpg') top left;
+/*Main Content*/
+.content-wrapper{
+  background-color: #f2f2f2;
+  width: 99%;
+  height: 85%;
+  border: #d5d5d5 1px solid;
+  margin-top: 4px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.main-menu li.last span a:hover{
-  background: no-repeat url('/images/layout/btn_selected.jpg') top right;
+.content{
+  margin: 5px;
+  overflow: scroll;
+  height: inherit;
 }
+/*End Main Content*/

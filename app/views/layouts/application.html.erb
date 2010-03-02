@@ -23,29 +23,29 @@
     <%= calendar_date_select_includes "plain" %>
   </head>
   <body class="<%= body_class %>">
-    <!--
-    <div class="header">
-      <div id="btns">
-        <ul class="main-menu">
-          <li class="first"><span><a href="#">texto</a></span></li>
-          <li class="separator">&emsp;</li>
-          <li><span><a href="#">texto</a></span></li>
-          <li class="separator">&emsp;</li>
-          <li><span><a href="#">texto</a></span></li>
-          <li class="separator">&emsp;</li>
-          <li><span><a href="#">texto</a></span></li>
-          <li class="separator">&emsp;</li>
-          <li class="last"><span><a href="#">texto</a></span></li>
-        </ul>
-      </div>
-    </div>
-    -->
-    <%= render :partial => 'shared/flashes' -%>
-    <div id="navigation"><%= render_navigation(:expand_all => true) %></div>
-    <div class="clear"></div>
-    <%= yield %>
-    <%= render :partial => 'shared/javascript' %>
 
+    <div class="whole-wrapper">
+
+      <div class="header">
+        <div id="btns">
+          <%= render_navigation(:level => 1) %>
+          <div class="color-select"></div>
+          <div class="clear"></div>
+        </div>
+      </div>
+
+      <div class="content-wrapper">
+        <%= render :partial => 'shared/flashes' -%>
+        <div class="secondary-menu-container">
+          <%= render_navigation(:level => 2) %>
+        </div>
+        <div class="content">
+          <%= yield %>
+        </div>
+      </div>
+
+    </div>
+    <%= render :partial => 'shared/javascript' %>
     <script type="text/javascript">
       _(document).ready(function(){
         _("#navigation ul").superfish();
