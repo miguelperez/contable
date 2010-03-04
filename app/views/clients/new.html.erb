@@ -1,32 +1,45 @@
-<h1>New client</h1>
+<%content_for :title, "Add Client" %>
 
-<% form_for(@client) do |f| %>
-  <%= f.error_messages %>
+<% form_for(@client, :html => {:id => 'styled-form'}) do |f| %>
+  <div id="field-set" class="client">
+    <h3><span>Client details</span></h3>
+    
+    <%= f.error_messages %>
 
-  <p>
-    <%= f.label :id_number %><br />
-    <%= f.text_field :id_number %>
+    <p>
+      <%= f.label :id_number %>
+      <%= f.text_field :id_number %>
+    </p>
+
+    <p>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </p>
+
+    <p>
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+    </p>
+
+    <p>
+      <%= f.label :address %>
+      <%= f.text_field :address %>
+    </p>
+    
+    <p>
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+    </p>
+
+  </div>
+
+  <div class="clear"></div>
+
+  <p id="submit">
+    <%= f.submit 'Create', :class => 'big-button' %>
+    <%= link_to 'Cancel', clients_path %>
   </p>
 
-  <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
-  <p>
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
-  </p>
 <% end %>
 
 <%= link_to 'Back', clients_path %>
