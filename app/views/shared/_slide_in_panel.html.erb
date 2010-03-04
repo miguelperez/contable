@@ -1,8 +1,7 @@
-<div style=" background-color: #ccc">
-  <div id="panel" style="display: none">
-    <%= panel_content %>
-  </div>
-  <p>
-  <a href="#" onclick="animate($('panel')); return false;"><%= button_text %></a>
-  </p>
+
+<div id="panel" style="display: none">
+  <%= panel_content %>
 </div>
+<p class="slide-in-panel-p">
+  <a href="#" onclick="animate($('panel')); return false;"><span><%= button_text %></span></a>
+</p>

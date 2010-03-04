@@ -161,3 +161,18 @@ body{
   top: 30px;
 }
 /*End Styles for the ingredients*/
+
+/*slide in panel styles*/
+#panel{
+  border: 1px solid #E8E8E8;
+}
+.slide-in-panel-p{
+  border-top: 3px solid #E8E8E8;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  text-align: center;  
+}
+.slide-in-panel-p a{
+  text-decoration: none;
+}
+/*end slide in panel styles*/

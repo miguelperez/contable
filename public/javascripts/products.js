@@ -9,6 +9,9 @@ var IngredientsHelper = (function(){
 
   //creates the add ingredients fields.
   var createIngredientForm = function(ingredientObject, parentDiv, childElem){
+    //lets assing an id to the containing li, if it does not have id set.
+    childElem.identify();
+    
     var h4 = new Element('h4').insert(ingredientObject.ingredient.name);
     var label = new Element('label', {
       'class':'styled-label'
@@ -19,15 +22,17 @@ var IngredientsHelper = (function(){
     });
     var roundButton = new Element('div', {
       'class':'round-button delete',
-      'onclick': '$(this).up(".formula").remove()'
+      'onclick': '$(this).up(".ingredient").fade(); $("'+childElem.identify()+'").appear();'
     });
     //create the container div and insert the precious objects
     var containerDiv = new Element('div', {
       'class':'ingredient'
     }).insert(h4).insert(label).insert(input).insert(roundButton);
     //adding to parent
+    containerDiv.hide();
     parentDiv.insert(containerDiv);
-    childElem.remove();
+    containerDiv.appear();
+    childElem.fade();
   }
   
   return{
