@@ -1,4 +1,4 @@
-<h1>Add product</h1>
+<% content_for :title, "Add Product" %>
 
 <% form_for(@product, :html => {:id => 'styled-form'}) do |f| %>
   <%= f.error_messages %>
@@ -18,6 +18,10 @@
 
   <div id="content-wrapper">
 
+    <% content = render :partial => 'products/ingredients' %>
+
+    <%= render :partial => 'shared/slide_in_panel', :locals => {:button_text => "Product Ingredients", :panel_content => content} %>
+
     <div id="products">
       <div id="product-presentations">
         <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>
@@ -26,13 +30,15 @@
       <%= add_product_presentation_link "Add a product presentation" %>
     </div>
 
+    <!--
     <div id="ingredients">
       <div id="formulas">
-        <%= render :partial => 'products/formula', :collection => @product.formulas %>
+        <%#= render :partial => 'products/formula', :collection => @product.formulas %>
       </div>
 
-      <%= add_formula_link "Add another ingredient" %>
+      <%#= add_formula_link "Add another ingredient" %>
     </div>
+    -->
 
     <div id="footer">
       <%= f.submit 'Create', :class => 'big-button' %>
@@ -43,9 +49,4 @@
 
 <% end %>
 
-<script type="text/javascript">
-  function animate(div){
-    _(div).slideToggle("slow");
-  }
-</script>
-
+<% content_for :javascript, javascript_include_tag("products") -%>

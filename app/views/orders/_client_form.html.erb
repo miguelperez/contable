@@ -1,16 +1,16 @@
-<div id="field-set">
+<div id="field-set" class="client">
   <% new_or_existing = client.new_record? ? 'new' : 'existing' %>
   <% prefix = "order[new_client_attributes][]" %>
   <h3><span>Client details</span></h3>
 
   <% fields_for prefix, client do |client_form| -%>
-    <p>
+    <p id="id_number">
       <%= client_form.label :id_number %>
       <%= client_form.text_field :id_number %>
     </p>
 
-    <p>
-      <%= client_form.label :name %>
+    <p id="name">
+      <%= client_form.label :name -%>
       <%= text_field_with_auto_complete :order,
         :client_name,
         {:size => 30, :onload => "Updater.getNameValue()", :onkeyup => "Updater.updateNameAttribute(this)", :onchange => "Updater.updateNameAttribute(this)", :onblur => "Updater.updateNameAttribute(this)"},
@@ -19,26 +19,29 @@
         :with => "'search=' + element.value",
         :after_update_element => "function(element, li){Updater.updateClientForm(element, li)}"
       }
-    %>
-      <% #Hack for sending the client name. NOTE: is there a better way to do this?  %>
-      <%= client_form.hidden_field :name %>
+      -%>
+      <%= client_form.hidden_field :name -%>
     </p>
 
-    <p>
+    <p id="last_name">
       <%= client_form.label :last_name %>
       <%= client_form.text_field :last_name %>
     </p>
 
-    <p>
+    <p id="address">
       <%= client_form.label :address %>
       <%= client_form.text_field :address %>
     </p>
 
-    <p>
+    <p id="email">
       <%= client_form.label :email %>
       <%= client_form.text_field :email %>
     </p>
 
-    <%= clear_form_link('client', ['input']) %>
+    <p id="clear_client_link">
+      <%= clear_form_link('client', ['input']) %>
+    </p>
+    <div class="clear"></div>
+    ...
   <% end -%>
 </div>

@@ -1,8 +1,16 @@
+
 <div class="formula">
   <% new_or_existing = formula.new_record? ? 'new' : 'existing' %>
   <% prefix = "product[#{new_or_existing}_formula_attributes][]" %>
   <% fields_for prefix, formula do |f| -%>
 
+  <div class="ingredient">
+    <h4><%= h formula.ingredient.name if formula.ingredient%></h4>
+    <label class="styled-label">Ammount</label>
+    <%= f.text_field :ingredient_ammount, :class => 'styled-input' %>
+    <%= round_button('delete', {:onclick => '$(this).up(".formula").remove()'}) %>
+  </div>
+  <!--
     <ul class="inline-form">
       <li class="item"><div>Name</div></li>
       <li class="item"><div>Ammount</div></li>
@@ -18,6 +26,7 @@
     </ul>
 
     <div class="clear"></div>
+  -->
 
   <% end -%>
 </div>

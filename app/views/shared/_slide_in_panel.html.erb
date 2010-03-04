@@ -1,6 +1,8 @@
-<div style="float: left; background-color: #ccc">
+<div style=" background-color: #ccc">
   <div id="panel" style="display: none">
     <%= panel_content %>
   </div>
-  <a href="#" onclick="animate(this.previous('div')); return false;"><%= button_text %></a>
+  <p>
+  <a href="#" onclick="animate($('panel')); return false;"><%= button_text %></a>
+  </p>
 </div>

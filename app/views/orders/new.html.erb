@@ -1,20 +1,19 @@
-<h1>New order</h1>
+<%content_for :title, "New Order ##{@order.order_number}" %>
 
 <% form_for(@order, :html => {:id => 'styled-form'}) do |f| %>
   <%= f.error_messages %>
 
-  <div id="header">
-    <%= f.label :status %>
-    <%= f.text_field :status %>
-    <%= f.label :registration_date %>
-    <%= f.calendar_date_select :registration_date, :popup => :force%>
-    Order Number: <span><%= "#{@order.order_number}" %></span>
-  </div>
-
-
   <%= render :partial => 'orders/client_form', :locals =>  { :client => @order.client }%>
 
   <div id="content-wrapper">
+
+    <div id="header">
+      <%= f.label :status %>
+      <%= f.text_field :status %>
+      <%= f.label :registration_date %>
+      <%= f.calendar_date_select :registration_date, :popup => :force%>
+    </div>
+
     <div id="products">
       <ul class="inline-form">
         <li class="item"><div>Quantity</div></li>

@@ -4,22 +4,29 @@ SimpleNavigation::Configuration.run do |navigation|
     
     primary.item :client, 'Clients', clients_path, :class => 'first' do |secondary|
       secondary.dom_class = 'secondary-menu'
-      secondary.item :new_client, 'Add', new_client_path
-      secondary.item :new_t, 'Addddddd', ""
-      secondary.item :nelient, 'Adsssssd', "www.google.com"
+      secondary.item :new_client, 'Add client', new_client_path
     end
 
     primary.item :'separator', '', "", :class => 'separator'
 
-    primary.item :order, 'Orders', orders_path
+    primary.item :order, 'Orders', orders_path  do |secondary|
+      secondary.dom_class = 'secondary-menu'
+      secondary.item :new_order, 'Add order', new_order_path
+    end
 
     primary.item :'separator', '', "", :class => 'separator'
 
-    primary.item :ingredient, 'Ingredients', ingredients_path
+    primary.item :ingredient, 'Ingredients', ingredients_path  do |secondary|
+      secondary.dom_class = 'secondary-menu'
+      secondary.item :new_ingredient, 'Add ingredient', new_ingredient_path
+    end
 
     primary.item :'separator', '', "", :class => 'separator'
 
-    primary.item :product, 'Products', products_path
+    primary.item :product, 'Products', products_path  do |secondary|
+      secondary.dom_class = 'secondary-menu'
+      secondary.item :new_product, 'Add product', new_product_path
+    end
 
     primary.item :'separator', '', "", :class => 'separator'
 
