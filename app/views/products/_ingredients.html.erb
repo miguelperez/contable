@@ -1,22 +1,30 @@
 <div id="ingredients">
-  <div id="formulas">
-    <% #we are only showing the forms for existing ingredients %>
-    <% if !@product.formulas.first.new_record? %>
-      <%= render :partial => 'products/formula', :collection => @product.formulas %>
-    <% end %>
-  </div>
-  <div id="active-ingredients">
-    <% if Ingredient.all %>
-      <ul>
-        <% Ingredient.all.each do |ingredient| %>
-        <% json = ingredient.to_json(:only => [:id, :name]) %>
-        <li><%= a_as_tag(ingredient.name, {:onclick => "\'IngredientsHelper.createIngredientForm(#{json}, $(\"formulas\"), this.up())\'"})  %> </li>
-        <% end %>
-      </ul>    
-    <% else %>
-      <p>Fill in some ingredients first</p>
-    <% end %>
+
+  <div id="ingredients_wrapper">
+
+    <div id="ingredients_form">
+      <% if !@product.formulas.first.new_record? %>
+        <%= render :partial => 'products/formula', :collection => @product.formulas %>
+      <% else %>
+        <p>Click in some of the products on the rigth to add --></p>
+      <% end %>
+    </div>
+
+    <div id="ingredients_list">
+      <% if Ingredient.all %>
+        <ul class="clean-ul">
+          <% Ingredient.all.each do |ingredient| %>
+            <% json = ingredient.to_json(:only => [:id, :name]) %>
+            <li><%= a_as_tag(ingredient.name, {:onclick => "\'IngredientsHelper.createIngredientForm(#{json}, $(\"ingredients_form\"), this.up())\'"})  %> </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>Fill in some ingredients <%= link_to 'here', new_ingredient_path %> first</p>
+      <% end %>
+    </div>
+
+    <div class="clear"></div>
+
   </div>
 
-<%#= add_formula_link "Add another ingredient" %>
 </div>
