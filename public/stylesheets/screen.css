@@ -4,6 +4,29 @@
 }
 
 /* Styles for table*/
+table.default-table{
+  border: 1px solid #e8e8e8;
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 5px;
+}
+table.default-table th{
+  background-color: #f1f1f1;
+  color: #333333;
+  text-align: left;
+}
+table.default-table td{
+  border: 1px solid #e8e8e8;
+  padding: 5px;
+}
+table.default-table td input, table.default-table td select{
+  border: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+}
+/*
 table {
   background:#D3E4E5;
   border:1px solid gray;
@@ -82,6 +105,7 @@ tbody tr:hover {
   border:1px solid #03476F;
   color:#000000;
 }
+*/
 /*end styles for table*/
 
 /*Styles for inline forms. Objects should be between a ul*/
