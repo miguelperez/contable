@@ -18,12 +18,16 @@ module ApplicationHelper
   #returns a round button div.
   #Receives a +name+ which will be the name of the class that will have this button
   #and receives an array of html attributes that will be given to the button.
-  def round_button(name, options = {})
+  def round_button(name, text = "",  options = {})
     attr = ""
     options.each do |key, value|
       attr += "#{key.to_s}='#{value}' "
     end
-    "<div class='round-button #{name}' #{attr}></div>"
+    if (text.eql?(""))
+      "<div class='round-button #{name}' #{attr}></div>"
+    else
+      "<div class='round-button-wrapper' #{attr}><div class='round-button #{name}'></div>#{text}</div>"
+    end
   end
 
   #returns a tag. This is for listing ingredients.

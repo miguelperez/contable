@@ -16,24 +16,26 @@
 
     <div>
       <span class="flow-rigth">
-        <%= add_product_link "Add another product" %>
+        <%= round_button('add', "add another product",{:onclick => "addRowToProductsTable(\"products\", \"total_row\")"}) %>
       </span>
       <div class="clear"></div>
       <table id="products" class="default-table">
-        <tr>
-          <th>Quantity</th>
-          <th>Product Name</th>
-          <th>Description</th>
-          <th>Unit Price</th>
-          <th>Total</th>
-          <th></th>
-        </tr>
-        <%= render :partial => 'orders/product_presentation_form' %>
-        <tr>
-          <td class="item"><div><%= f.label :ammount, "Order Total" %></div></td>
-          <td colspan="3" class="item three-item"><%= text_field "ammount", "in_words", :id => 'grant-total-words', :class => 'big-input'%></td>
-          <td colspan="2" class="item"><%= f.text_field :ammount, :class => 'grant-total li-input'%></td>
-        </tr>
+        <tbody>
+          <tr>
+            <th>Quantity</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+          <%= render :partial => 'orders/product_presentation_form' %>
+          <tr id="total_row">
+            <td class="item"><div><%= f.label :ammount, "Order Total" %></div></td>
+            <td colspan="3" class="item three-item"><%= text_field "ammount", "in_words", :id => 'grant-total-words', :class => 'big-input'%></td>
+            <td colspan="2" class="item"><%= f.text_field :ammount, :class => 'grant-total li-input'%></td>
+          </tr>
+        </tbody>
       </table>
     </div>
 

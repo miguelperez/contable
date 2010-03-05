@@ -1,6 +1,6 @@
 
 function search(elem, product_id){
-  p = js[product_id];
+  var p = js[product_id];
   if(p){
     $(elem).up().next().down().setValue(p.description);
     $(elem).up().next().next().down().setValue(p.unit_price);
@@ -18,6 +18,89 @@ function modifyTotal(value1, value2, receptor){
     {
       return acc + parseInt(elem.value);
     }));
+  }
+}
+//creates the options for a select
+function optionsForSelect(select, options, textForBlankOption){
+  if(textForBlankOption){
+    var opt = new Element('option', {
+      "value":""
+    }).insert(textForBlankOption);
+    select.insert(opt)
+  }
+//TODO
+//  options.each(function(key, elem){
+//    var opt = new Element('option', {
+//      "value":key
+//    }).insert(elem);
+//    select.insert(opt);
+//  });
+}
+//creates an input form element.
+function createInput(type, id, name){
+  var input = new Element('input', {
+    'type':type,
+    'name':name,
+    'id': id
+  });
+  return input;
+}
+//creates a td for a tr of a table.
+function createTd(tdContent){
+  var td = new Element('td');
+  td.insert(tdContent);
+  return td;
+}
+
+//creates a row an inserts it at the bottom of the products table.
+function addRowToProductsTable(table, beforeRow){
+  var tr = new Element('tr', {
+    'class': 'product-presentation'
+  });
+  //quantity
+  var quantity= createInput('text',
+    'order_new_order_product_presentations_attributes__quantity',
+    'order[new_order_product_presentations_attributes][][quantity]');
+  quantity.setAttribute('onkeyup', 'modifyTotal(this.value, this.up().next(2).down().value, this.up().next(3).down())');
+
+  var select = new Element('select', {
+    'id': 'order_new_order_product_presentations_attributes__product_presentation_id',
+    'name': 'order[new_order_product_presentations_attributes][][product_presentation_id]',
+    'onchange': "search(this, this.getValue()); modifyTotal(this.up().down().value, this.up().next(1).down().value, this.up().next(2).down())"
+  });
+  optionsForSelect(select, js, "Select a product");
+
+  var description = createInput('text',
+    'product_presentation_description',
+    'product_presentation[description]');
+
+  var unitPrice = createInput('text',
+    'order_new_order_product_presentations_attributes__unit_sold_price',
+    'order[new_order_product_presentations_attributes][][unit_sold_price]');
+  unitPrice.setAttribute('onkeyup', 'modifyTotal(this.value, this.up().previous(2).down().value, this.up().next().down())');
+
+  var total = createInput('text', 'product_total_value', 'product[total_value]');
+
+  var roundButton = new Element('div', {
+    'class':'round-button delete',
+    'onclick': '$(this).up(".product-presentation").remove()'
+  });
+
+  tr.insert(createTd(quantity));
+  tr.insert(createTd(select));
+  tr.insert(createTd(description));
+  tr.insert(createTd(unitPrice));
+  tr.insert(createTd(total));
+  tr.insert(createTd(roundButton));
+
+  var row = $(beforeRow);
+  var tableBody = $(table).down();
+
+  if(beforeRow){
+    row.remove();
+    tableBody.insert(tr).insert(row);
+  }else{
+    tableBody.insert(tr);
   }
 }
 

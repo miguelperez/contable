@@ -1,17 +1,17 @@
-<tr class="product-presentation">
-  <% @order.order_product_presentations.each do |order_product_presentation| %>
+<% @order.order_product_presentations.each do |order_product_presentation| %>
+  <tr class="product-presentation">
     <% new_or_existing = order_product_presentation.new_record? ? 'new' : 'existing' %>
     <% prefix = "order[#{new_or_existing}_order_product_presentations_attributes][]" %>
 
     <% fields_for prefix, order_product_presentation do |product_form| -%>
 
-      <td class="item"><%= product_form.text_field :quantity, :onkeyup => "modifyTotal(this.value, this.up().next(2).down().value, this.up().next(3).down())", :size => "10" %></td>
-      <td class="item"><%= product_form.select :product_presentation_id, @product_presentations.map {|at| [at.name,at.id] }, {:prompt => 'Select a product'}, {:onchange => "search(this, this.getValue()); modifyTotal(this.up().down().value, this.up().next(1).down().value, this.up().next(2).down())"}%></td>
-      <td class="item"><%= text_field :product_presentation, :description, :value => order_product_presentation.product_description, :size => "10" %></td>
-      <td class="item"><%= product_form.text_field :unit_sold_price, :onkeyup => "modifyTotal(this.value, this.up().previous(2).down().value, this.up().next().down())", :size => "10" %></td>
-      <td class="item"><%= text_field "product","total_value", :class => "total", :value => order_product_presentation.total_sold, :size => "10" %></td>
-      <td class="item"><%= link_to_function "remove" , "$(this).up('.product-presentation').remove()" %></td>
+      <td><%= product_form.text_field :quantity, :onkeyup => "modifyTotal(this.value, this.up().next(2).down().value, this.up().next(3).down())", :size => "10" %></td>
+      <td><%= product_form.select :product_presentation_id, @product_presentations.map {|at| [at.name,at.id] }, {:prompt => 'Select a product'}, {:onchange => "search(this, this.getValue()); modifyTotal(this.up().down().value, this.up().next(1).down().value, this.up().next(2).down())"}%></td>
+      <td><%= text_field :product_presentation, :description, :value => order_product_presentation.product_description, :size => "10" %></td>
+      <td><%= product_form.text_field :unit_sold_price, :onkeyup => "modifyTotal(this.value, this.up().previous(2).down().value, this.up().next().down())", :size => "10" %></td>
+      <td><%= text_field "product","total_value", :class => "total", :value => order_product_presentation.total_sold, :size => "10" %></td>
+      <td><%= round_button "delete" ,"", {:onclick => "$(this).up(\".product-presentation\").remove()"} %></td>
 
     <% end -%>
-  <% end -%>
-</tr>
+  </tr>
+<% end -%>

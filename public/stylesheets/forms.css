@@ -94,6 +94,12 @@
 }
 
 /*styles for rounded buttons*/
+div.round-button-wrapper{
+  cursor: pointer;
+}
+div.round-button-wrapper div.round-button{
+  float: left;
+}
 div.round-button{
   width: 22px;
   height: 22px;
