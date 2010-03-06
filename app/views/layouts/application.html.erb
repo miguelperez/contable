@@ -12,7 +12,6 @@
 
     <%  #This line is for jquery and prototype work together %>
     <%= javascript_include_tag 'jquery-1.4.2.min' %>
-    <%= javascript_include_tag 'superfish', 'supersubs' %>
     <script>
       var _ = jQuery.noConflict();
     </script>
@@ -44,10 +43,5 @@
 
     </div>
     <%= render :partial => 'shared/javascript' %>
-    <script type="text/javascript">
-      _(document).ready(function(){
-        _("#navigation ul").superfish();
-      });
-    </script>
   </body>
 </html>
