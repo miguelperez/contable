@@ -28,20 +28,21 @@ function optionsForSelect(select, options, textForBlankOption){
     }).insert(textForBlankOption);
     select.insert(opt)
   }
-//TODO
-//  options.each(function(key, elem){
-//    var opt = new Element('option', {
-//      "value":key
-//    }).insert(elem);
-//    select.insert(opt);
-//  });
+
+  options.each(function(pair){
+    var opt = new Element('option', {
+      "value":pair.key
+    }).insert(pair.value);
+    select.insert(opt);
+  });
 }
 //creates an input form element.
 function createInput(type, id, name){
   var input = new Element('input', {
     'type':type,
     'name':name,
-    'id': id
+    'id': id,
+    'size':10
   });
   return input;
 }
@@ -68,7 +69,13 @@ function addRowToProductsTable(table, beforeRow){
     'name': 'order[new_order_product_presentations_attributes][][product_presentation_id]',
     'onchange': "search(this, this.getValue()); modifyTotal(this.up().down().value, this.up().next(1).down().value, this.up().next(2).down())"
   });
-  optionsForSelect(select, js, "Select a product");
+  var options = new Hash();
+  var id;
+  for (id in js) {
+    options.set(js[id].id, js[id].name);
+    console.log(options);
+  }
+  optionsForSelect(select, options, "Select a product");
 
   var description = createInput('text',
     'product_presentation_description',
@@ -80,6 +87,7 @@ function addRowToProductsTable(table, beforeRow){
   unitPrice.setAttribute('onkeyup', 'modifyTotal(this.value, this.up().previous(2).down().value, this.up().next().down())');
 
   var total = createInput('text', 'product_total_value', 'product[total_value]');
+  total.addClassName('total');
 
   var roundButton = new Element('div', {
     'class':'round-button delete',

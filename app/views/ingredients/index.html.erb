@@ -1,24 +1,22 @@
-<h1>Listing ingredients</h1>
+<% content_for :title, "Ingredients" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Unit</th>
-  </tr>
+<table class="listing">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Unit</th>
+    </tr>
 
-<% @ingredients.each do |ingredient| %>
-  <tr>
-    <td><%=h ingredient.name %></td>
-    <td><%=h ingredient.description %></td>
-    <td><%=h ingredient.unit %></td>
-    <td><%= link_to 'Show', ingredient %></td>
-    <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-    <td><%= link_to 'Destroy', ingredient, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+    <% @ingredients.each do |ingredient| %>
+      <tr class="<%= cycle('odd','even') %>">
+        <td><%=h ingredient.name %></td>
+        <td><%=h ingredient.description %></td>
+        <td><%=h ingredient.unit %></td>
+        <td><%= link_to 'Show', ingredient %></td>
+        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
+        <td><%= link_to 'Destroy', ingredient, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New ingredient', new_ingredient_path %>

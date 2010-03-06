@@ -3,7 +3,7 @@
   clear: both;
 }
 
-/* Styles for table*/
+/* Styles for forms table*/
 table.default-table{
   border: 1px solid #e8e8e8;
   border-collapse: collapse;
@@ -31,6 +31,34 @@ table.default-table td input, table.default-table td select{
   margin: 0px;
 }
 /*end styles for table*/
+
+/*Styles for listing table*/
+table.listing{
+  border: 1px solid #e8e8e8;
+  border-collapse: collapse;
+  width: 50%;
+  margin-top: 5px;
+}
+table.listing tr.odd{
+  background-color: #fff;
+}
+table.listing tr.even{
+  background-color: #e8e8e8;
+}
+table.listing tr:hover{
+  background-color: #fffbd2;
+}
+table.listing th{
+  background-color: #f1f1f1;
+  color: #333333;
+  text-align: left;
+  padding: 7px;
+}
+table.listing td{
+  border: 1px solid #e8e8e8;
+  padding: 5px;
+}
+/*End styles for listing table*/
 
 /*Styles for inline forms. Objects should be between a ul*/
 .inline-form{

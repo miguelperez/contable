@@ -1,26 +1,24 @@
-<% content_for :title, "Listing Clients" %>
+<% content_for :title, "Clients" %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Last name</th>
-    <th>Address</th>
-    <th>Email</th>
-  </tr>
+<table class="listing">
+  <tbody>
+    <tr>
+      <th>Name</th>
+      <th>Last name</th>
+      <th>Address</th>
+      <th>Email</th>
+    </tr>
 
-<% @clients.each do |client| %>
-  <tr>
-    <td><%=h client.name %></td>
-    <td><%=h client.last_name %></td>
-    <td><%=h client.address %></td>
-    <td><%=h client.email %></td>
-    <td><%= link_to 'Show', client %></td>
-    <td><%= link_to 'Edit', edit_client_path(client) %></td>
-    <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
+    <% @clients.each do |client| %>
+      <tr class="<%= cycle('odd','even') %>">
+        <td><%=h client.name %></td>
+        <td><%=h client.last_name %></td>
+        <td><%=h client.address %></td>
+        <td><%=h client.email %></td>
+        <td><%= link_to 'Show', client %></td>
+        <td><%= link_to 'Edit', edit_client_path(client) %></td>
+        <td><%= link_to 'Destroy', client, :confirm => 'Are you sure?', :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New client', new_client_path %>
