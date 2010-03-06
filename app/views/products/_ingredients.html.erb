@@ -11,9 +11,9 @@
     </div>
 
     <div id="ingredients_list">
-      <% if Ingredient.all %>
+      <% if @ingredients %>
         <ul class="clean-ul">
-          <% Ingredient.all.each do |ingredient| %>
+          <% @ingredients.each do |ingredient| %>
             <% json = ingredient.to_json(:only => [:id, :name]) %>
             <li><%= a_as_tag(ingredient.name, {:onclick => "\'IngredientsHelper.createIngredientForm(#{json}, $(\"ingredients_form\"), this.up())\'"})  %> </li>
           <% end %>

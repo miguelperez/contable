@@ -30,7 +30,7 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :'separator', '', "", :class => 'separator'
 
-    primary.item :product_presentatio, 'Products Presentations', product_presentations_path, :class => 'last'
+    primary.item :product_presentation, 'Products Presentations', product_presentations_path, :class => 'last'
   end
 end
 ## Configures your navigation

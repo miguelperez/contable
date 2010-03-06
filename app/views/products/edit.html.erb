@@ -18,21 +18,30 @@
 
   <div id="content-wrapper">
 
+    <% content = render :partial => 'products/ingredients' %>
+    <%= render :partial => 'shared/slide_in_panel', :locals => {:button_text => "Product Ingredients", :panel_content => content} %>
+
     <div id="products">
-      <div id="product-presentations">
-        <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>
-      </div>
+      <span class="flow-rigth">
+        <%= round_button('add', "add another product",{:onclick => "TableHelper.addRowToProductsTable(\"product-presentations\", \"header_row\")"}) %>
+      </span>
 
-      <%= add_product_presentation_link "Add a product presentation" %>
+      <div class="clear"></div>
+
+      <table id="product-presentations" class="default-table">
+        <tbody>
+          <tr id="header_row">
+            <th>Name</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th></th>
+          </tr>
+          <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>
+        </tbody>
+      </table>
+
     </div>
 
-    <div id="ingredients">
-      <div id="formulas">
-        <%= render :partial => 'products/formula', :collection => @product.formulas %>
-      </div>
-
-      <%= add_formula_link "Add another ingredient" %>
-    </div>
 
     <div id="footer">
       <%= f.submit 'Update', :class => 'big-button' %>
@@ -43,9 +52,4 @@
 
 <% end %>
 
-<script type="text/javascript">
-  function animate(div){
-    _(div).slideToggle("slow");
-  }
-</script>
-
+<% content_for :javascript, javascript_include_tag("products") -%>

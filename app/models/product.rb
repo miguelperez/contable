@@ -7,6 +7,7 @@
 class Product < ActiveRecord::Base
   has_many :formulas, :as => :formulable
   has_many :product_presentations
+  has_many :ingredients, :through => :formulas
 
   after_update :save_product_presentations
 

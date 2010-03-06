@@ -28,7 +28,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.product_presentations.build
     @product.formulas.build
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.all - @product.ingredients
 
     respond_to do |format|
       format.html # new.html.erb
@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @ingredients = Ingredient.all - @product.ingredients
   end
 
   # POST /products
