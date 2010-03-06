@@ -7,6 +7,9 @@ class Order < ActiveRecord::Base
 
   has_many :product_presentations, :through => :order_product_presentations
   has_many :order_product_presentations, :dependent => :destroy
+  after_initialize :create_registration_date
+
+  cattr_accessor :STATUSES
 
   #creates the client association for and order.
   validates_associated :order_product_presentations, :client
@@ -62,7 +65,20 @@ class Order < ActiveRecord::Base
     end
   end
 
+  #Initializes the registration date to be the actual date and time.
+  def create_registration_date
+    if new_record?
+      self.registration_date = Time.now
+    end
+  end
+
+  @@STATUSES = %w(
+    Active
+    Paid
+    Debt
+  )
 end
+
 
 
 # == Schema Information
@@ -73,6 +89,7 @@ end
 #  order_number      :integer(4)      default(0)
 #  status            :string(255)
 #  registration_date :datetime
+#  expiration_date   :datetime
 #  ammount           :integer(4)
 #  client_id         :integer(4)
 #  created_at        :datetime

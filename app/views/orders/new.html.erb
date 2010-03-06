@@ -8,10 +8,15 @@
   <div id="content-wrapper">
 
     <div id="header">
-      <%= f.label :status %>
-      <%= f.text_field :status %>
-      <%= f.label :registration_date %>
-      <%= f.calendar_date_select :registration_date, :popup => :force%>
+      <span class="flow-left">
+        <%= f.label :status %>
+        <%= f.select :status, Order.STATUSES.map {|status| [status, status] } %>
+      </span>
+      <span class="flow-rigth">
+        <%= f.label :registration_date %>
+        <%= f.text_field :registration_date, :value => @order.registration_date.strftime("%m/%d/%Y") %>
+      </span>
+      <div class="clear"></div>
     </div>
 
     <div>
@@ -49,7 +54,16 @@
 
 <script type="text/javascript">
   js = <%= @product_presentations.inject({}) { |sum, pp| sum[pp.id] = {:description => pp.description, :unit_price => pp.unit_price, :name => pp.name, :id => pp.id} ; sum}.to_json  %>;
+  _(function() {
+    _("#order_registration_date").datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+    _("#ui-datepicker-div").hide();
+  });
 </script>
 
 <% content_for :javascript, javascript_include_tag("clients") -%>
 <% content_for :javascript, javascript_include_tag("orders") -%>
+<% content_for :javascript, javascript_include_tag("jquery-ui-1.8rc3.custom.min") -%>
+<% content_for :head, stylesheet_link_tag('jquery-ui-1.8rc3.custom') %>

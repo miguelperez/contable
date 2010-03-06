@@ -41,9 +41,6 @@ Rails::Initializer.run do |config|
   #Creates easy menus for navigation
   config.gem "simple-navigation"
 
-  #Gem for adding date pickers
-  config.gem "calendar_date_select"
-
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
   # :all can be used as a placeholder for all plugins not explicitly named

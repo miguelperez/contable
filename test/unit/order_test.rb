@@ -8,6 +8,7 @@ class OrderTest < ActiveSupport::TestCase
 end
 
 
+
 # == Schema Information
 #
 # Table name: orders
@@ -16,6 +17,7 @@ end
 #  order_number      :integer(4)      default(0)
 #  status            :string(255)
 #  registration_date :datetime
+#  expiration_date   :datetime
 #  ammount           :integer(4)
 #  client_id         :integer(4)
 #  created_at        :datetime
