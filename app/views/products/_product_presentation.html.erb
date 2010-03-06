@@ -1,24 +1,12 @@
-<div class="product-presentation">
+<tr class="product-presentation">
   <% new_or_existing = product_presentation.new_record? ? 'new' : 'existing' %>
   <% prefix = "product[#{new_or_existing}_product_presentation_attributes][]" %>
   <% fields_for prefix, product_presentation do |f| -%>
 
-    <ul class="inline-form">
-      <li class="item"><div>Name</div></li>
-      <li class="item"><div>Description</div></li>
-      <li class="item"><div>Unit Price</div></li>
-    </ul>
-
-    <div class="clear"></div>
-    
-    <ul class="inline-form">
-      <li class="item"><%= f.text_field :name %></li>
-      <li class="item"><%= f.text_field :description %></li>
-      <li class="item"><%= f.text_field :unit_price %></li>
-      <li class="item"><%= link_to_function "remove" , "$(this).up('.product-presentation').remove()" %></li>
-    </ul>
-
-    <div class="clear"></div>
+      <td class="item"><%= f.text_field :name %></td>
+      <td class="item"><%= f.text_field :description %></td>
+      <td class="item"><%= f.text_field :unit_price %></td>
+      <td><%= round_button "delete" ,"", {:onclick => "$(this).up(\".product-presentation\").remove()"} %></td>
 
   <% end -%>
-</div>
+</tr>
