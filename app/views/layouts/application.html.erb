@@ -7,12 +7,10 @@
     <%= stylesheet_link_tag 'layout' %>
     <%= stylesheet_link_tag 'screen', :media => 'all', :cache => true %>
     <%= stylesheet_link_tag 'scaffold' %>
-    <%= stylesheet_link_tag 'superfish' %>
     <%= stylesheet_link_tag 'forms' %>
 
-    <%  #This line is for jquery and prototype work together %>
     <%= javascript_include_tag 'jquery-1.4.2.min' %>
-    <script>
+    <script type="text/javascript">
       var _ = jQuery.noConflict();
     </script>
     <%= javascript_include_tag :defaults%>

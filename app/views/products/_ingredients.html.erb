@@ -3,7 +3,7 @@
   <div id="ingredients_wrapper">
 
     <div id="ingredients_form">
-      <% if !@product.formulas.first.new_record? %>
+      <% if @product.formulas.first && !@product.formulas.first.new_record? %>
         <%= render :partial => 'products/formula', :collection => @product.formulas %>
       <% else %>
         <p>Click in some of the products on the rigth to add --></p>

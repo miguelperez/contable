@@ -16,28 +16,51 @@ var IngredientsHelper = (function(){
     var label = new Element('label', {
       'class':'styled-label'
     }).insert('Ammount');
+    var hidden = new Element('input', {
+      'type':'hidden',
+      'id':'product_new_formula_attributes__ingredient_id',
+      'name':'product[new_formula_attributes][][ingredient_id]',
+      'value':ingredientObject.ingredient.id
+    });
     var input = new Element('input', {
       'type':'text',
-      'class':'styled-input'
+      'class':'styled-input',
+      'id':'product_new_formula_attributes__ingredient_ammount',
+      'name':'product[new_formula_attributes][][ingredient_ammount]'
     });
     var roundButton = new Element('div', {
       'class':'round-button delete',
-      'onclick': '$(this).up(".ingredient").fade(); $("'+childElem.identify()+'").appear();'
+      'onclick': '$(this).up(".ingredient").remove(); $("'+childElem.identify()+'").appear();'
     });
-    //create the container div and insert the precious objects
+    //create the container div and insert the products objects
     var containerDiv = new Element('div', {
       'class':'ingredient'
-    }).insert(h4).insert(label).insert(input).insert(roundButton);
+    }).insert(h4).insert(label).insert(hidden).insert(input).insert(roundButton);
     //adding to parent
     containerDiv.hide();
     parentDiv.insert(containerDiv);
     containerDiv.appear();
     childElem.fade();
   }
+
+  //creates the tag
+  var createIngredientTag = function(ingredientObject, parentContainer){
+    var span = new Element('span').insert(ingredientObject.ingredient.name);
+    var json = '{"ingredient":{"name":"'+ingredientObject.ingredient.name+'","id":'+ingredientObject.ingredient.id+'}}';
+    var a = new Element('a', {
+      'href':'#',
+      'class':'tag',
+      'onclick':'IngredientsHelper.createIngredientForm('+ json +', $("ingredients_form"), this.up())'
+    }).insert(span);
+    var li = new Element('li').insert(a);
+
+    parentContainer[0].insert(li);
+  };
   
   return{
     'initialize':initialize,
-    'createIngredientForm': createIngredientForm
+    'createIngredientForm': createIngredientForm,
+    'createIngredientTag':createIngredientTag
   }
 })();
 IngredientsHelper.initialize();

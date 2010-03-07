@@ -73,7 +73,6 @@ function addRowToProductsTable(table, beforeRow){
   var id;
   for (id in js) {
     options.set(js[id].id, js[id].name);
-    console.log(options);
   }
   optionsForSelect(select, options, "Select a product");
 

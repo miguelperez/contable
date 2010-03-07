@@ -39,6 +39,7 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
     @product = Product.find(params[:id])
+    @product.formulas.build unless @product.formulas
     @ingredients = Ingredient.all - @product.ingredients
   end
 

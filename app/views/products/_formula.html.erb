@@ -6,8 +6,10 @@
     <div class="ingredient">
       <h4><%= h formula.ingredient.name if formula.ingredient%></h4>
       <label class="styled-label">Ammount</label>
+      <%= f.hidden_field :ingredient_id%>
       <%= f.text_field :ingredient_ammount, :class => 'styled-input' %>
-      <%= round_button('delete', "", {:onclick => "$(this).up(\".formula\").remove()"}) %>
+      <% json = formula.ingredient.to_json(:only => [:id, :name]) %>
+      <%= round_button('delete', "", {:onclick => "IngredientsHelper.createIngredientTag(#{json}, $$(\".clean-ul\"));$(this).up(\".formula\").remove()"}) %>
     </div>
 
   <% end -%>
