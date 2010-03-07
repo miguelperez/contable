@@ -1,33 +1,33 @@
-<h1>Product</h1>
+<%content_for :title, "View Product" %>
 <p>
   <b>Name:</b>
   <%=h @product.name %>
 </p>
 
-<p
+<p>
+  <b>Description:</b>
+  <%=h @product.description %>
+</p>
+
+<p>
 <h2>Ingredients</h2>
 <table>
   <tr>
     <th>Ingredient Name</th>
     <th>Ingredient ammount</th>
   </tr>
-  <% @product.formulas.each do |product| %>
+  <% @product.formulas.each do |formula| %>
     <tr>
-      <td><%=h product.ingredient.name %></td>
-      <td><%=h product.ingredient_ammount %></td>
+      <td><%=h formula.ingredient.name %></td>
+      <td><%=h formula.ingredient_ammount %></td>
     </tr>
   <% end %>
 </table>
 <hr>
-
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>>
-  <b>Description:</b>
-  <%=h @product.description %>
 </p>
 
 <hr>
-
+<p>
 <h2>Presentations</h2>
 <table>
   <tr>
@@ -44,21 +44,7 @@
   <% end %>
 </table>
 <hr>
-
-<h2>Ingredients</h2>
-<table>
-  <tr>
-    <th>Ingredient Name</th>
-    <th>Ingredient ammount</th>
-  </tr>
-  <% @product.formulas.each do |product| %>
-    <tr>
-      <td><%=h product.ingredient.name %></td>
-      <td><%=h product.ingredient_ammount %></td>
-    </tr>
-  <% end %>
-</table>
-<hr>
+</p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
