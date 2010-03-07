@@ -7,7 +7,6 @@ class Order < ActiveRecord::Base
 
   has_many :product_presentations, :through => :order_product_presentations
   has_many :order_product_presentations, :dependent => :destroy
-  after_initialize :create_registration_date
 
   cattr_accessor :STATUSES
 
@@ -19,6 +18,8 @@ class Order < ActiveRecord::Base
     if(self.new_record?)
       maximum_order_number = Order.maximum(:order_number)
       self.order_number = maximum_order_number ? maximum_order_number + 1 : 1
+      #also lets add a registration date
+      self.registration_date = Time.now
     end
   end
 
@@ -62,13 +63,6 @@ class Order < ActiveRecord::Base
   def save_products
     order_product_presentations.each do |product|
       product.save(false)
-    end
-  end
-
-  #Initializes the registration date to be the actual date and time.
-  def create_registration_date
-    if new_record?
-      self.registration_date = Time.now
     end
   end
 
