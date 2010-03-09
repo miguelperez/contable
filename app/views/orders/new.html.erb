@@ -1,7 +1,7 @@
 <%content_for :title, "New Order ##{@order.order_number}" %>
 
 <% form_for(@order, :html => {:id => 'styled-form'}) do |f| %>
-  <%= f.error_messages %>
+  <%= error_messages_for 'order', :header_message => "Please Try Again!", :message => "We had some problems trying to save the order:" %>
 
   <%= render :partial => 'orders/client_form', :locals =>  { :client => @order.client }%>
 

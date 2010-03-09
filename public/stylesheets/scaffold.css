@@ -1,10 +1,9 @@
 
 #errorExplanation {
-  width: 400px;
+  width: 90%;
   border: 2px solid red;
   padding: 7px;
-  padding-bottom: 12px;
-  margin-bottom: 20px;
+  margin: auto;
   background-color: #f0f0f0;
 }
 
@@ -28,4 +27,3 @@
   font-size: 12px;
   list-style: square;
 }
-
