@@ -84,8 +84,12 @@ table.listing td{
   width:463px;
 }
 
-.fieldWithErrors {
+.fieldWithErrors label {
   background: transparent url(/images/icons/error.png) no-repeat scroll 98% 50%;
+}
+
+.fieldWithErrors input {
+  background: #ffdbe3;
 }
 /* end of styles for inline forms. Objects should be between a ul*/
 

@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_filter :fetch_product_presentations, :only => [:edit, :new]
+  before_filter :fetch_product_presentations, :only => [:edit, :new, :create]
   # GET /orders
   # GET /orders.xml
   def index

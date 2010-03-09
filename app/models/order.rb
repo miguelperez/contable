@@ -11,7 +11,7 @@ class Order < ActiveRecord::Base
   cattr_accessor :STATUSES
 
   #creates the client association for and order.
-  validates_associated :order_product_presentations, :client
+  validates_associated :client
 
   #When invoking Order.new we like to get its order_number set.
   def after_initialize()
@@ -26,7 +26,11 @@ class Order < ActiveRecord::Base
   #Builds the new client information.
   def new_client_attributes=(client_attributes)
     client_attributes.each do |key, attr|
-      client.attributes = attr
+      if client
+        client.attributes = attr
+      else
+        build_client
+      end
     end
   end
 
@@ -40,16 +44,16 @@ class Order < ActiveRecord::Base
   end
 
   #Creates the products associated with this order
-  def new_order_product_presentations_attributes=(task_attributes)
-    task_attributes.each do |attributes|
+  def new_order_product_presentations_attributes=(product_presentation_attributes)
+    product_presentation_attributes.each do |attributes|
       order_product_presentations.build(attributes)
     end
   end
 
   after_update :save_products
-  def existing_order_product_presentations_attributes=(task_attributes)
+  def existing_order_product_presentations_attributes=(product_presentation_attributes)
     order_product_presentations.reject(&:new_record?).each do |product|
-      attributes = task_attributes[product.id.to_s]
+      attributes = product_presentation_attributes[product.id.to_s]
       if attributes
         product.attributes = attributes
       else
@@ -57,8 +61,6 @@ class Order < ActiveRecord::Base
       end
     end
   end
-
-  validates_associated :order_product_presentations
 
   def save_products
     order_product_presentations.each do |product|
