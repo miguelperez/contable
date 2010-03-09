@@ -12,6 +12,16 @@ class Order < ActiveRecord::Base
 
   #creates the client association for and order.
   validates_associated :client
+  after_create :set_expiration_date
+
+  #After creating an order we have to set the expiration date of it.
+  def set_expiration_date
+    if self.status.eql?('Active') || self.status.eql?('Paid')
+      self.update_attribute('expiration_date', self.registration_date)
+    else
+      self.update_attribute('expiration_date', self.registration_date + 30.days)
+    end
+  end
 
   #When invoking Order.new we like to get its order_number set.
   def after_initialize()

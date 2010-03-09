@@ -1,71 +1,113 @@
-<h1>Order #<%=h @order.order_number %></h1>
-<hr>
-<p>
-  <b>Status:</b>
-  <%=h @order.status %>
-</p>
+<%content_for :title, "Order ##{@order.order_number}" %>
+<div class="order-show">
 
-<p>
-  <b>Registration date:</b>
-  <%=h @order.registration_date %>
-</p>
+  <table class="order-header">
+    <tbody>
+      <tr>
+        <td>
+          <table class="listing">
+            <tbody>
+              <tr>
+                <td colspan="2">Client information</td>
+              </tr>
+              <tr>
+                <th>Identification Number</th>
+                <td><%=h @order.client.id_number %></td>
+              </tr>
+              <tr>
+                <th>Name</th>
+                <td><%=h @order.client.name %></td>
+              </tr>
+              <tr>
+                <th>Last Name</th>
+                <td><%=h @order.client.last_name %></td>
+              </tr>
+              <tr>
+                <th>Address</th>
+                <td><%=h @order.client.address %></td>
+              </tr>
+              <tr>
+                <th>Email</th>
+                <td><%=h @order.client.email %></td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+        <td>
+          <table class="listing">
+            <tbody>
+              <tr>
+                <td colspan="2">Order information</td>
+              </tr>
+              <tr>
+                <th>Status</th>
+                <td><%=h @order.status %></td>
+              </tr>
+              <tr>
+                <th>Creation date</th>
+                <td><%=h @order.registration_date.strftime("%m/%d/%Y") %></td>
+              </tr>
+              <tr>
+                <th>Expiration date</th>
+                <td><%=h @order.expiration_date.strftime("%m/%d/%Y") %></td>
+              </tr>
+              <tr>
+                <th>.</th>
+                <td>.</td>
+              </tr>
+              <tr>
+                <th>.</th>
+                <td>.</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
-<hr>
+  <table class="listing">
+    <tbody>
+      <tr>
+        <th>Quantity</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Unit Price</th>
+        <th>Total</th>
+      </tr>
+      <% @order.order_product_presentations.each do |product| %>
+        <tr>
+          <td><%=h product.quantity %></td>
+          <td><%=h product.product_name %></td>
+          <td><%=h product.product_description %></td>
+          <td><%=h product.unit_sold_price %></td>
+          <td><%=h product.total_sold %></td>
+        </tr>
+      <% end %>
+      <tr>
+        <td colspan="4">SUB TOTAL</td>
+        <td><%=h @order.ammount %></td>
+      </tr>
+      <tr>
+        <td colspan="4">Discount</td>
+        <td><%= "Aun no esta hecho"  %></td>
+      </tr>
+      <tr>
+        <td colspan="4">Taxes</td>
+        <td><%= "Aun no esta hecho"  %></td>
+      </tr>
+      <tr>
+        <td colspan="4">TOTAL</td>
+        <td><%=h @order.ammount %></td>
+      </tr>
+      <tr>
+        <td>Value</td>
+        <td colspan="4"><%= @order.ammount.to_words%> </td>
+      </tr>
+    </tbody>
+  </table>
 
-<h2>Client Information</h2>
-
-<p>
-  <b>Identification Number</b>
-  <%=h @order.client.id_number %>
-</p>
-
-<p>
-  <b>Name</b>
-  <%=h @order.client.name %>
-</p>
-
-<p>
-  <b>Last Name</b>
-  <%=h @order.client.last_name %>
-</p>
-
-<p>
-  <b>Address</b>
-  <%=h @order.client.address %>
-</p>
-
-<p>
-  <b>Email</b>
-  <%=h @order.client.email %>
-</p>
-
-<hr>
-
-<h2>Order products</h2>
-<table>
-  <tr>
-    <th>Quantity</th>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Unit Price</th>
-    <th>Total</th>
-  </tr>
-  <% @order.order_product_presentations.each do |product| %>
-    <tr>
-      <td><%=h product.quantity %></td>
-      <td><%=h product.product_name %></td>
-      <td><%=h product.product_description %></td>
-      <td><%=h product.unit_sold_price %></td>
-      <td><%=h product.total_sold %></td>
-    </tr>
-  <% end %>
-</table>
-<hr>
-
-<p>
-  <b>Order Total</b>
-  <%=h @order.ammount %>
-</p>
+</div>
 
 
 <%= link_to 'Edit', edit_order_path(@order) %> |
