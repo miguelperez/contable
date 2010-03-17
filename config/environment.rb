@@ -19,23 +19,23 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on.
   config.gem 'RedCloth',
-             :lib => 'redcloth',
-             :version => '>= 4.2.2'
+    :lib => 'redcloth',
+    :version => '>= 4.2.2'
   config.gem 'will_paginate',
-             :version => '~> 2.3.12'
+    :version => '~> 2.3.12'
   config.gem 'clearance',
-             :version => '>= 0.8.4'
+    :version => '>= 0.8.4'
   config.gem 'formtastic',
-             :version => '>= 0.9.7'
+    :version => '>= 0.9.7'
   config.gem 'paperclip',
-             :version => '>= 2.3.1.1'
+    :version => '>= 2.3.1.1'
   config.gem 'rack',
-             :version => '>= 1.0.1'
+    :version => '>= 1.0.1'
   config.gem 'hoptoad_notifier'
 
   config.gem 'annotate',
-             :version => '>= 2.4.0',
-             :source  => 'http://gemcutter.org'
+    :version => '>= 2.4.0',
+    :source  => 'http://gemcutter.org'
   config.gem 'vestal_versions'
 
   #Creates easy menus for navigation
@@ -70,4 +70,8 @@ Rails::Initializer.run do |config|
   DO_NOT_REPLY = "donotreply@example.com"
 end
 
+#easy menus for navigation
 require 'simple_navigation'
+
+#Enables the pagination of results
+require "will_paginate"
