@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
   def index
-    @orders = Order.all
+    @orders = Order.all(:conditions => ["status = 'Active'"], :order => :expiration_date)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -84,6 +84,17 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(orders_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  # GET /orders
+  # GET /orders.xml
+  def paid_orders
+    @orders = Order.all(:conditions => ["status = 'Paid'"])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @orders }
     end
   end
 

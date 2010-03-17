@@ -5,7 +5,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :ingredients
 
-  map.resources :orders
+  map.resources :orders, :collection => {:paid_orders => :get}
 
   map.resources :clients
   
