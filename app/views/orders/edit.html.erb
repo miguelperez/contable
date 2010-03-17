@@ -1,45 +1,48 @@
 <%content_for :title, "Editing Order" %>
 
 <% form_for(@order, :html => {:id => 'styled-form'}) do |f| %>
-  <%= f.error_messages %>
-
-  <div id="header">
-    <%= f.label :status %>
-    <%= f.text_field :status %>
-    <%= f.label :registration_date %>
-    <%= f.calendar_date_select :registration_date, :popup => :force%>
-    Order Number: <span><%= "#{@order.order_number}" %></span>
-  </div>
-
+  <%= error_messages_for 'order', :header_message => "Please Try Again!", :message => "We had some problems trying to save the order:" %>
 
   <%= render :partial => 'orders/client_form', :locals =>  { :client => @order.client }%>
 
   <div id="content-wrapper">
-    <div id="products">
-      <ul class="inline-form">
-        <li class="item"><div>Quantity</div></li>
-        <li class="item"><div>Name</div></li>
-        <li class="item"><div>Description</div></li>
-        <li class="item"><div>Unit Price</div></li>
-        <li class="item"><div class="clear"></div></li>
-      </ul>
+
+    <div id="header">
+      <span class="flow-left">
+        <%= f.label :status %>
+        <%= f.select :status, Order.STATUSES.map {|status| [status, status] } %>
+      </span>
+      <span class="flow-rigth">
+        <%= f.label :registration_date %>
+        <%= f.text_field :registration_date, :value => @order.registration_date.strftime("%m/%d/%Y") %>
+      </span>
       <div class="clear"></div>
-      <%= render :partial => 'orders/product_presentation_form' %>
     </div>
 
-    <span class="flow-rigth">
-      <%= add_product_link "Add another product" %>
-    </span>
-
-    <div class="clear"></div>
-
-    <span>
-      <ul class="inline-form">
-        <li class="item"><div><%= f.label :ammount, "Order Total" %></div></li>
-        <li class="item three-item"><%= text_field "ammount", "in_words", :id => 'grant-total-words', :class => 'big-input', :value => @order.ammount.to_words %></li>
-        <li class="item"><%= f.text_field :ammount, :class => 'grant-total li-input'%></li>
-      </ul>
-    </span>
+    <div>
+      <span class="flow-rigth">
+        <%= round_button('add', "add another product",{:onclick => "addRowToProductsTable(\"products\", \"total_row\")"}) %>
+      </span>
+      <div class="clear"></div>
+      <table id="products" class="default-table">
+        <tbody>
+          <tr>
+            <th>Quantity</th>
+            <th>Product Name</th>
+            <th>Description</th>
+            <th>Unit Price</th>
+            <th>Total</th>
+            <th></th>
+          </tr>
+          <%= render :partial => 'orders/product_presentation_form' %>
+          <tr id="total_row">
+            <td class="item"><div><%= f.label :ammount, "Order Total" %></div></td>
+            <td colspan="3" class="item three-item"><%= text_field "ammount", "in_words", :id => 'grant-total-words', :class => 'big-input'%></td>
+            <td colspan="2" class="item"><%= f.text_field :ammount, :class => 'grant-total li-input'%></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
     <div id="footer">
       <%= f.submit 'Update', :class => 'big-button' %>
@@ -49,15 +52,18 @@
 <% end %>
 
 
-<% content_for :javascript, javascript_include_tag("clients") -%>
-
 <script type="text/javascript">
-  js = <%= @product_presentations.inject({}) { |sum, pp| sum[pp.id] = {:description => pp.description, :unit_price => pp.unit_price} ; sum}.to_json  %>;
-  document.observe("dom:loaded", function() {
-    // initially hide all containers for tab content
-    $$('div.tabcontent').invoke('hide');
+  js = <%= @product_presentations.inject({}) { |sum, pp| sum[pp.id] = {:description => pp.description, :unit_price => pp.unit_price, :name => pp.name, :id => pp.id} ; sum}.to_json  %>;
+  _(function() {
+    _("#order_registration_date").datepicker({
+      changeMonth: true,
+      changeYear: true
+    });
+    _("#ui-datepicker-div").hide();
   });
 </script>
 
+<% content_for :javascript, javascript_include_tag("clients") -%>
 <% content_for :javascript, javascript_include_tag("orders") -%>
-<% content_for :javascript, javascript_include_tag("forms") -%>
+<% content_for :javascript, javascript_include_tag("jquery-ui-1.8rc3.custom.min") -%>
+<% content_for :head, stylesheet_link_tag('jquery-ui-1.8rc3.custom') %>

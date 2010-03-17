@@ -9,10 +9,11 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :'separator', '', "", :class => 'separator'
 
-    primary.item :order, 'Orders', orders_path  do |secondary|
+    primary.item :order, 'Orders', new_order_path  do |secondary|
       secondary.dom_class = 'secondary-menu'
+      secondary.item :new_order, 'All Active orders', orders_path
       secondary.item :new_order, 'Create order', new_order_path
-      secondary.item :paid_orders, 'Paid orders', paid_orders_orders_path
+      secondary.item :paid_orders, 'Paid orders', paid_orders_path
     end
 
     primary.item :'separator', '', "", :class => 'separator'

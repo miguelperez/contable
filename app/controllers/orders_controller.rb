@@ -89,7 +89,7 @@ class OrdersController < ApplicationController
 
   # GET /orders
   # GET /orders.xml
-  def paid_orders
+  def paid
     @orders = Order.all(:conditions => ["status = 'Paid'"])
 
     respond_to do |format|
