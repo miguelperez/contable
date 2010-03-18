@@ -98,14 +98,13 @@ table.listing td{
   width: 49%;
   vertical-align: top;
   overflow: auto;
+  height: 200px;
 }
 #ingredients_form{
-  float: left;
-  height: 200px;
+  float: left;  
 }
 #ingredients_list{
   float: right;
-  height: 200px;
 }
 
 /*Styles for the show page of orders*/
