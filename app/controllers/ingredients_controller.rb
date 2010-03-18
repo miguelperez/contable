@@ -2,7 +2,7 @@ class IngredientsController < ApplicationController
   # GET /ingredients
   # GET /ingredients.xml
   def index
-    @ingredients = Ingredient.all
+    @ingredients = Ingredient.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

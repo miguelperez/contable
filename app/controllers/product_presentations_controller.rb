@@ -2,7 +2,7 @@ class ProductPresentationsController < ApplicationController
   # GET /product_presentations
   # GET /product_presentations.xml
   def index
-    @product_presentations = ProductPresentation.all
+    @product_presentations = ProductPresentation.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

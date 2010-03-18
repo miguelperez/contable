@@ -3,7 +3,7 @@ class ClientsController < ApplicationController
   # GET /clients.xml
   def index
     if(params[:search].blank?)
-      @clients = Client.all
+      @clients = Client.paginate(:page => params[:page])
     else
       @clients = Client.find(:all, :conditions => ['name like ?', "%#{params[:search]}%"])
     end
