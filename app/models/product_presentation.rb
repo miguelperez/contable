@@ -13,6 +13,46 @@ class ProductPresentation < ActiveRecord::Base
 
   has_many :orders, :through => :order_product_presentations
   has_many :order_product_presentations, :dependent => :destroy
+
+  has_many :formulas, :as => :formulable
+  has_many :ingredients, :through => :formulas
+
+  #--
+  #Adding the methods for handling the upload of model formula trought product_presentations form
+  #++
+
+  #Creates the formula objects that will be associated with a product.
+  def new_formula_attributes=(formula_attributes)
+    formula_attributes.each do |attributes|
+      formulas.build(attributes)
+    end
+  end
+
+  #Updates or deletes the existing formula attributes associated with this product.
+  def existing_formula_attributes=(formula_attributes)
+    formulas.reject(&:new_record?).each do |formula|
+      attributes = formula_attributes[formula.id.to_s]
+      if attributes
+        formula.attributes = attributes
+      else
+        formulas.delete(formula)
+      end
+    end
+  end
+
+  #Saves the edited formula.
+  def save_formula
+    formulas.each do |formula|
+      #the false param, bypasses validation.
+      formula.save(false)
+    end
+  end
+
+  #This is for ensuring at the end of the transaction that all the product
+  #formulas gets validated, because on the +save_formula+
+  #method we bypassed the validations.
+  validates_associated :formulas
+
 end
 
 

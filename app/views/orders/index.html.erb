@@ -5,12 +5,14 @@
     <tr>
       <th>Status</th>
       <th>Registration date</th>
+      <th>Expiration date</th>
       <th>Ammount</th>
     </tr>
     <% @orders.each do |order| %>
       <tr class="<%= cycle('odd','even') %>">
         <td><%=h order.status %></td>
         <td><%=h order.registration_date %></td>
+        <td><%=h order.expiration_date %></td>
         <td><%= number_to_currency(h(order.ammount), :precision => 0) %></td>
         <td><%= link_to 'Show', order %></td>
         <td><%= link_to 'Edit', edit_order_path(order) %></td>

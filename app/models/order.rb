@@ -16,10 +16,8 @@ class Order < ActiveRecord::Base
 
   #After creating an order we have to set the expiration date of it.
   def set_expiration_date
-    if self.status.eql?('Active') || self.status.eql?('Paid')
-      self.update_attribute('expiration_date', self.registration_date)
-    else
-      self.update_attribute('expiration_date', self.registration_date + 30.days)
+    if !self.status.eql?('Paid')
+      self.update_attribute('expiration_date', self.registration_date + 1.month)
     end
   end
 
@@ -29,7 +27,7 @@ class Order < ActiveRecord::Base
       maximum_order_number = Order.maximum(:order_number)
       self.order_number = maximum_order_number ? maximum_order_number + 1 : 1
       #also lets add a registration date
-      self.registration_date = Time.now
+      self.registration_date = self.expiration_date = Time.now
     end
   end
 

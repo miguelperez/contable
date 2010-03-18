@@ -20,9 +20,11 @@
     <% content = render :partial => 'products/ingredients' %>
     <%= render :partial => 'shared/slide_in_panel', :locals => {:button_text => "Product Ingredients", :panel_content => content} %>
 
+    <h2>Product Presentations</h2>
+
     <div id="products">
       <span class="flow-rigth">
-        <%= round_button('add', "add another product",{:onclick => "TableHelper.addRowToProductsTable(\"product-presentations\", \"header_row\")"}) %>
+        <%= round_button('add', "add another product presentation",{:onclick => "TableHelper.addRowToProductsTable(\"product-presentations\", \"header_row\")"}) %>
       </span>
       
       <div class="clear"></div>

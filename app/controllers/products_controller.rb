@@ -28,6 +28,7 @@ class ProductsController < ApplicationController
     @product = Product.new
     @product.product_presentations.build
     @product.formulas.build
+    @product.product_presentations.first.formulas.build
     @ingredients = Ingredient.all - @product.ingredients
 
     respond_to do |format|

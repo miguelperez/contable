@@ -6,7 +6,7 @@
       <td class="item"><%= f.text_field :name %></td>
       <td class="item"><%= f.text_field :description %></td>
       <td class="item"><%= f.text_field :unit_price %></td>
-      <td><%= round_button "delete" ,"", {:onclick => "$(this).up(\".product-presentation\").remove()"} %></td>
+      <td><%= link_to("Add ingredients", "#")  %> <%= round_button "delete" ,"", {:onclick => "$(this).up(\".product-presentation\").remove()"} %></td>
 
   <% end -%>
 </tr>

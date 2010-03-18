@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.xml
   def index
-    @orders = Order.paginate(:page => params[:page], :conditions => ["status = 'Active'"], :order => :expiration_date)
+    @orders = Order.paginate(:page => params[:page], :conditions => ["status in ('Active', 'Debt')"], :order => 'status desc, expiration_date asc')
 
     respond_to do |format|
       format.html # index.html.erb
