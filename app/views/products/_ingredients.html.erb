@@ -1,12 +1,12 @@
 <div id="ingredients">
 
   <div id="ingredients_wrapper">
-
+    <p>Click the ingredients on the rigth to add --></p>
+    <div class="clear"></div>
+    
     <div id="ingredients_form">
       <% if @product.formulas.first && !@product.formulas.first.new_record? %>
         <%= render :partial => 'products/formula', :collection => @product.formulas %>
-      <% else %>
-        <p>Click in some of the products on the rigth to add --></p>
       <% end %>
     </div>
 

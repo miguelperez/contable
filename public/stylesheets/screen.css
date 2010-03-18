@@ -60,31 +60,7 @@ table.listing td{
 }
 /*End styles for listing table*/
 
-/*Styles for inline forms. Objects should be between a ul*/
-/*
-.inline-form{
-  list-style-type: none;
-}
 
-.inline-form li.item{
-  display: inline;
-  margin-left: 3px;
-  float: left;
-}
-
-.inline-form li.item div{
-  width: 154px;
-}
-
-.inline-form li.item input, .inline-form li.item select, .li-input{
-  width: 150px;
-}
-
-.inline-form li.three-item input, .inline-form li.three-item select, .li-input{
-  margin-left:5px;
-  width:463px;
-}
-*/
 .fieldWithErrors label {
   background: transparent url(/images/icons/error.png) no-repeat scroll 98% 50%;
 }
@@ -92,7 +68,6 @@ table.listing td{
 .fieldWithErrors input {
   background: #ffdbe3;
 }
-/* end of styles for inline forms. Objects should be between a ul*/
 
 .big-input{
   width: 150px;
@@ -122,12 +97,15 @@ table.listing td{
 #ingredients_form, #ingredients_list{
   width: 49%;
   vertical-align: top;
+  overflow: auto;
 }
 #ingredients_form{
   float: left;
+  height: 200px;
 }
 #ingredients_list{
   float: right;
+  height: 200px;
 }
 
 /*Styles for the show page of orders*/
