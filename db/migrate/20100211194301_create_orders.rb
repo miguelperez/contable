@@ -3,10 +3,10 @@ class CreateOrders < ActiveRecord::Migration
     create_table :orders do |t|
       t.integer  :order_number, :default => 0
       t.string   :status
-      t.datetime :registration_date
+      t.date :registration_date
       #the expiration date is suppoused to be date this order expires. Which means
       #the associated client must pay the order.
-      t.datetime :expiration_date
+      t.date :expiration_date
       t.integer  :ammount
 
 

@@ -11,7 +11,7 @@
     <% @orders.each do |order| %>
       <tr class="<%= cycle('odd','even') %>">
         <td><%=h order.status %></td>
-        <td><%=h order.registration_date %></td>
+        <td><%=l order.registration_date, :format => :default %></td>
         <td><%=h order.expiration_date %></td>
         <td><%= number_to_currency(order.ammount) %></td>
         <td><%= link_to 'Show', order %></td>
