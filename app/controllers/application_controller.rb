@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  #sets the locale for the application. If the users is signed in it will get the user language
+  #Sets the locale for the application. If the users is signed in it will get the user language
   #and saves it to a cookie, this way next time it will check for the cookies value instead
   #of querying the database again.
   def set_locale

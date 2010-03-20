@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resource :session, :controller => 'sessions'
+
   map.resources :product_presentations
 
   map.resources :products
@@ -9,7 +11,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :clients
 
-  map.resources :pages, :collection => { :dashboard => :get, :index => :get }
+  map.with_options :controller => 'pages' do |page|
+    page.dashboard 'dashboard', :action => 'dashboard'
+  end
   
-  map.root :controller => "pages", :action => :dashboard
+  map.root :controller => "sites", :action => :index
 end

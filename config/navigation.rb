@@ -2,7 +2,7 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.dom_class = 'main-menu'
 
-    primary.item :dashboard, 'Dashboard', dashboard_pages_path, :class => 'first'
+    primary.item :dashboard, 'Dashboard', dashboard_path, :class => 'first'
 
     primary.item :'separator', '', "", :class => 'separator'
     
@@ -11,7 +11,7 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :new_client, 'Add client', new_client_path
     end
 
-    primary.item :'separator', '', "", :class => 'separator'
+    primary.item :'separator1', '', "", :class => 'separator'
 
     primary.item :order, 'Orders', new_order_path  do |secondary|
       secondary.dom_class = 'secondary-menu'
@@ -20,21 +20,21 @@ SimpleNavigation::Configuration.run do |navigation|
       secondary.item :paid_orders, 'Paid orders', paid_orders_path
     end
 
-    primary.item :'separator', '', "", :class => 'separator'
+    primary.item :'separator2', '', "", :class => 'separator'
 
     primary.item :ingredient, 'Ingredients', ingredients_path  do |secondary|
       secondary.dom_class = 'secondary-menu'
       secondary.item :new_ingredient, 'Add ingredient', new_ingredient_path
     end
 
-    primary.item :'separator', '', "", :class => 'separator'
+    primary.item :'separator3', '', "", :class => 'separator'
 
     primary.item :product, 'Products', products_path  do |secondary|
       secondary.dom_class = 'secondary-menu'
       secondary.item :new_product, 'Add product', new_product_path
     end
 
-    primary.item :'separator', '', "", :class => 'separator'
+    primary.item :'separator4', '', "", :class => 'separator'
 
     primary.item :product_presentation, 'Products Presentations', product_presentations_path, :class => 'last'
   end
