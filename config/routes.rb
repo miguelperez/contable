@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :clients
 
-  map.resources :pages, :collection => { :dashboard => :get }
+  map.resources :pages, :collection => { :dashboard => :get, :index => :get }
   
   map.root :controller => "pages", :action => :dashboard
 end
