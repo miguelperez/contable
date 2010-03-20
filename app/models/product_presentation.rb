@@ -17,6 +17,10 @@ class ProductPresentation < ActiveRecord::Base
   has_many :formulas, :as => :formulable
   has_many :ingredients, :through => :formulas
 
+  validates_presence_of :name
+  validates_presence_of :description
+  validates_presence_of :unit_price
+
   #--
   #Adding the methods for handling the upload of model formula trought product_presentations form
   #++

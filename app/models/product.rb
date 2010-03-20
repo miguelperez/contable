@@ -11,6 +11,9 @@ class Product < ActiveRecord::Base
 
   after_update :save_product_presentations
 
+  validates_presence_of :name
+  validates_presence_of :description
+
   #Creates the products presentations objects that will be associated with a
   #product.
   def new_product_presentation_attributes=(product_presentation_attributes)

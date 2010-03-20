@@ -55,6 +55,7 @@ class ProductsController < ApplicationController
         format.html { redirect_to(@product) }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
+        flash[:error] = 'There where errors trying to save. Fields with errors are highlighted in red'
         format.html { render :action => "new" }
         format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
       end

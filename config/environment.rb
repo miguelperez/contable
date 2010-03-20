@@ -39,7 +39,8 @@ Rails::Initializer.run do |config|
   config.gem 'vestal_versions'
 
   #Creates easy menus for navigation
-  config.gem "simple-navigation"
+  config.gem "simple-navigation",
+    :version => '>= 2.4.1'
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.

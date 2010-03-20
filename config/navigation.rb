@@ -1,8 +1,12 @@
 SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.dom_class = 'main-menu'
+
+    primary.item :dashboard, 'Dashboard', dashboard_pages_path, :class => 'first'
+
+    primary.item :'separator', '', "", :class => 'separator'
     
-    primary.item :client, 'Clients', clients_path, :class => 'first' do |secondary|
+    primary.item :client, 'Clients', clients_path do |secondary|
       secondary.dom_class = 'secondary-menu'
       secondary.item :new_client, 'Add client', new_client_path
     end
