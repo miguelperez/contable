@@ -15,7 +15,7 @@ es-CO:
     confirmation: "¿Estás seguro?"
   #this are the labels for the navigation menus of the application
   navigation:
-    add: "Agregar Cliente"
+    add: "Agregar"
     create: "Crear"
     paid_orders: "Facturas pagadas"
     active_orders: "Facturas sin pagar"

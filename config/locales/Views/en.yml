@@ -1,0 +1,44 @@
+# Localization file for messages displayed in the views
+
+en:
+  forms:
+    update: "Update"
+    create: "Create"
+    delete: "Delete"
+    edit: "Edit"
+    cancel: "Cancel"
+    show: "Show"
+    back: "Back"
+    select_a: "Select a {{model}}"
+  #messages that are shown on the views
+  messages:
+    confirmation: "Are you sure?"
+  #this are the labels for the navigation menus of the application
+  navigation:
+    add: "add"
+    create: "Create"
+    paid_orders: "Paid orders"
+    active_orders: "Active orders"
+    dashboard: "Dashboard"
+    clients: "Clients"
+    orders: "Orders"
+    ingredients: "Ingredients"
+    products: "Products"
+    product_presentations: "Product presentations"
+  #Translation for the different models
+  titles:
+    new: "Create {{model}}"
+    list: "{{model}}s"
+    details: "{{model}} Details"
+    editing: "Editing {{model}}"
+    showing: "Viewing {{model}}"
+    order_number: "{{model}} # {{value}}"
+    order_information: "Order Information"
+    product_presentations: "Presentations"
+    product_presentation: "Presentation"
+    total: "Total"
+    sub_total: "Subtotal"
+    discounts: "Discount"
+    taxes: "Taxes"
+    login: "Login"
+    logout: "Logout"
