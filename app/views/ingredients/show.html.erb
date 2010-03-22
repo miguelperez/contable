@@ -1,20 +1,20 @@
-<%content_for :title, "View Ingredient" %>
+<%content_for :title, t('titles.showing', :model => Ingredient.human_name) %>
 
 <p>
-  <b>Name:</b>
+  <b><%= Ingredient.human_attribute_name(:name) %></b>
   <%=h @ingredient.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b><%= Ingredient.human_attribute_name(:description) %></b>
   <%=h @ingredient.description %>
 </p>
 
 <p>
-  <b>Unit:</b>
+  <b><%= Ingredient.human_attribute_name(:unit) %></b>
   <%=h @ingredient.unit %>
 </p>
 
 
-<%= link_to 'Edit', edit_ingredient_path(@ingredient) %> |
-<%= link_to 'Back', ingredients_path %>
+<%= link_to t('forms.edit'), edit_ingredient_path(@ingredient) %> |
+<%= link_to t('forms.back'), ingredients_path %>

@@ -16,9 +16,9 @@ es-CO:
   navigation:
     add_client: "Agregar Cliente"
   #Translation for the different models
-  client:
-    new: "Crear Cliente"
-    list: "Clientes"
-    details: "Detalles del Cliente"
-    editing: "Editando Cliente"
-    showing: "Datos del Cliente"
+  titles:
+    new: "Crear {{model}}"
+    list: "{{model}}s"
+    details: "Detalles del {{model}}"
+    editing: "Editando {{model}}"
+    showing: "Datos del {{model}}"

@@ -18,7 +18,7 @@
 */
 #styled-form #field-set{  
   float: left;
-  width: 271px;
+  /*width: 271px;*/
   border: 1px solid #e8e8e8;
   padding: 5px;
   background-color: #fff;
@@ -41,6 +41,7 @@
 #styled-form #field-set h3 span{
   display: block;
   padding-left:5px;
+  padding-right:5px;
   padding-top:5px;
 }
 

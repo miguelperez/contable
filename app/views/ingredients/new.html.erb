@@ -1,23 +1,23 @@
-<%content_for :title, "New Ingredient" %>
+<%content_for :title, t('titles.new', :model => Ingredient.human_name) %>
 
 <% form_for(@ingredient, :html => {:id => 'styled-form'}) do |f| %>
   <div id="field-set" class="client">
-    <h3><span>Ingredient details</span></h3>
+    <h3><span><%= t('titles.details', :model => Ingredient.human_name) %></span></h3>
 
     <%= f.error_messages %>
 
     <p id="label">
-      <%= f.label :name %>
+      <%= f.label Ingredient.human_attribute_name(:name) %>
       <%= f.text_field :name %>
     </p>
 
     <p id="description">
-      <%= f.label :description %>
+      <%= f.label Ingredient.human_attribute_name(:description) %>
       <%= f.text_field :description %>
     </p>
 
     <p id="unit">
-      <%= f.label :unit %>
+      <%= f.label Ingredient.human_attribute_name(:unit) %>
       <%= f.text_field :unit %>
     </p>
   </div>
@@ -25,10 +25,10 @@
   <div class="clear"></div>
 
   <p id="submit">
-    <%= f.submit 'Create', :class => 'big-button' %>
-    <%= link_to 'Cancel', ingredients_path %>
+    <%= f.submit t('forms.create'), :class => 'big-button' %>
+    <%= link_to t('forms.cancel'), ingredients_path %>
   </p>
 
 <% end %>
 
-<%= link_to 'Back', ingredients_path %>
+<%= link_to t('forms.back'), ingredients_path %>

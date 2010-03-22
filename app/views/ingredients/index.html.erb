@@ -1,11 +1,11 @@
-<% content_for :title, "Ingredients" %>
+<% content_for :title, t('titles.list', :model => Ingredient.human_name) %>
 
 <table class="listing">
   <tbody>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Unit</th>
+      <th><%= Ingredient.human_attribute_name(:name) %></th>
+      <th><%= Ingredient.human_attribute_name(:description) %></th>
+      <th><%= Ingredient.human_attribute_name(:unit) %></th>
     </tr>
 
     <% @ingredients.each do |ingredient| %>
@@ -13,9 +13,9 @@
         <td><%=h ingredient.name %></td>
         <td><%=h ingredient.description %></td>
         <td><%=h ingredient.unit %></td>
-        <td><%= link_to 'Show', ingredient %></td>
-        <td><%= link_to 'Edit', edit_ingredient_path(ingredient) %></td>
-        <td><%= link_to 'Destroy', ingredient, :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= link_to t('forms.show'), ingredient %></td>
+        <td><%= link_to t('forms.edit'), edit_ingredient_path(ingredient) %></td>
+        <td><%= link_to t('forms.delete'), ingredient, :confirm => t('messages.confirmation'), :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>
