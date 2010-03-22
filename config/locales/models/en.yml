@@ -1,0 +1,46 @@
+# Localization file for the models names and attributes.
+
+en:
+  activerecord:
+    models:
+      client: "Client"
+      formula: "Formula"
+      ingredient: "Ingredient"
+      order: "Order"
+      product: "Product"
+      product_presentation: "Product Presentation"
+      user: "User"
+    attributes:
+      client:
+        id_number: "Id Number"
+        name: "Name"
+        last_name: "Last Name"
+        address: "Address"
+        email: "Email"
+      formula:
+        ingredient_ammount: "Ammount"
+      ingredient:
+        name: "Name"
+        description: "Description"
+        unit: "Unit"
+      order:
+        order_number: "Order Number"
+        status: "Status"
+        registration_date: "Date"
+        expiration_date: "Expiration Date"
+        ammount: "Ammount"
+      order_product_presentation:
+        quantity: "Quantity"
+        unit_sold_price: "Unit price"
+      product:
+        name: "Name"
+        description: "Description"
+      product_presentation:
+        name: "Name"
+        description: "Description"
+        unit_price: "Unit Price"
+      user:
+        email: "Email"
+        password: "Password"
+        language: "Language"
+        name: "Name"

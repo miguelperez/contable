@@ -1,33 +1,33 @@
-<%content_for :title, "Add Client" %>
+<%content_for :title, t('client.new') %>
 
 <% form_for(@client, :html => {:id => 'styled-form'}) do |f| %>
   <div id="field-set" class="client">
-    <h3><span>Client details</span></h3>
+    <h3><span><%=  Client.human_name %> details</span></h3>
     
     <%= f.error_messages %>
 
     <p>
-      <%= f.label :id_number %>
+      <%= f.label Client.human_attribute_name(:id_number) %>
       <%= f.text_field :id_number %>
     </p>
 
     <p>
-      <%= f.label :name %>
+      <%= f.label Client.human_attribute_name(:name) %>
       <%= f.text_field :name %>
     </p>
 
     <p>
-      <%= f.label :last_name %>
+      <%= f.label Client.human_attribute_name(:last_name) %>
       <%= f.text_field :last_name %>
     </p>
 
     <p>
-      <%= f.label :address %>
+      <%= f.label Client.human_attribute_name(:address) %>
       <%= f.text_field :address %>
     </p>
     
     <p>
-      <%= f.label :email %>
+      <%= f.label Client.human_attribute_name(:email) %>
       <%= f.text_field :email %>
     </p>
 
@@ -36,10 +36,10 @@
   <div class="clear"></div>
 
   <p id="submit">
-    <%= f.submit 'Create', :class => 'big-button' %>
-    <%= link_to 'Cancel', clients_path %>
+    <%= f.submit t('forms.create'), :class => 'big-button' %>
+    <%= link_to t('forms.cancel'), clients_path %>
   </p>
 
 <% end %>
 
-<%= link_to 'Back', clients_path %>
+<%= link_to t('forms.back'), clients_path %>

@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :orders, :dependent => :destroy
 end
 
+
 # == Schema Information
 #
 # Table name: users
@@ -23,5 +24,7 @@ end
 #  email_confirmed    :boolean(1)      default(FALSE), not null
 #  created_at         :datetime
 #  updated_at         :datetime
+#  language           :string(255)     default("en")
+#  name               :string(255)
 #
 

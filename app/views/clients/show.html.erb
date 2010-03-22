@@ -1,30 +1,30 @@
-<%content_for :title, "View Client" %>
+<%content_for :title, t('client.showing') %>
 
 <p>
-  <b>Id number:</b>
+  <b><%= Client.human_attribute_name(:id_number) %></b>
   <%=h @client.id_number %>
 </p>
 
 <p>
-  <b>Name:</b>
+  <b><%= Client.human_attribute_name(:name) %></b>
   <%=h @client.name %>
 </p>
 
 <p>
-  <b>Last name:</b>
+  <b><%= Client.human_attribute_name(:last_name) %></b>
   <%=h @client.last_name %>
 </p>
 
 <p>
-  <b>Address:</b>
+  <b><%= Client.human_attribute_name(:address) %></b>
   <%=h @client.address %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <b><%= Client.human_attribute_name(:email) %></b>
   <%=h @client.email %>
 </p>
 
 
-<%= link_to 'Edit', edit_client_path(@client) %> |
-<%= link_to 'Back', clients_path %>
+<%= link_to t('forms.edit'), edit_client_path(@client) %> |
+<%= link_to t('forms.back'), clients_path %>

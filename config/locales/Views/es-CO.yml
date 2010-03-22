@@ -1,0 +1,19 @@
+# Localization file for messages displayed in the views
+
+es-CO:
+  forms:
+    update: "Actualizar"
+    create: "Crear"
+    delete: "Eliminar"
+    edit: "Editar"
+    cancel: "Cancelar"
+    show: "Ver"
+    back: "Volver"
+  messages:
+    confirmation: "¿Estás seguro?"
+  client:
+    new: "Crear Cliente"
+    list: "Clientes"
+    details: "Detalles del Cliente"
+    editing: "Editando Cliente"
+    showing: "Datos del Cliente"

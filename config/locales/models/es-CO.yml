@@ -1,0 +1,47 @@
+# Localization file for the models names and attributes.
+
+es-CO:
+  activerecord:
+    models:
+      client: "Cliente"
+      formula: "Formula"
+      ingredient: "Ingrediente"
+      order: "Factura"
+      order_product_presentation: "Relación producto y factura"
+      product: "Producto"
+      product_presentation: "Presentación de Producto"
+      user: "Usuario"
+    attributes:
+      client:
+        id_number: "Cédula"
+        name: "Nombre"
+        last_name: "Apellido"
+        address: "Dirección"
+        email: "Email"
+      formula:
+        ingredient_ammount: "Cantidad"
+      ingredient:
+        name: "Nombre"
+        description: "Descripción"
+        unit: "Unidad"
+      order:
+        order_number: "Número"
+        status: "Estado"
+        registration_date: "Fecha de Registro"
+        expiration_date: "Fecha de Vencimiento"
+        ammount: "Total"
+      order_product_presentation:
+        quantity: "Cantidad"
+        unit_sold_price: "Precio de Venta por Unidad"
+      product:
+        name: "Nombre"
+        description: "Descripción"
+      product_presentation:
+        name: "Nombre"
+        description: "Descripción"
+        unit_price: "Precio Unitario"
+      user:
+        email: "Email"
+        password: "Contraseña"
+        language: "Idioma"
+        name: "Nombre"
