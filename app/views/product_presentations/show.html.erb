@@ -1,25 +1,25 @@
-<%content_for :title, "Product presentation" %>
+<%content_for :title, t('titles.showing', :model => ProductPresentation.human_name) %>
 <p>
-  <b>Product type:</b>
+  <b>Product parent:</b>
   <%=h @product_presentation.product_id %>
 </p>
 
 <p>
-  <b>Name:</b>
+  <b><%= ProductPresentation.human_attribute_name(:name) %></b>
   <%=h @product_presentation.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b><%= ProductPresentation.human_attribute_name(:description) %></b>
   <%=h @product_presentation.description %>
 </p>
 
 <p>
-  <b>Price per Unit:</b>
-  <%=h @product_presentation.unit_price %>
+  <b><%= ProductPresentation.human_attribute_name(:unit_price) %></b>
+  <%= number_to_currency(@product_presentation.unit_price) %>
 </p>
 
 
 
-<%= link_to 'Edit', edit_product_presentation_path(@product_presentation) %> |
-<%= link_to 'Back', product_presentations_path %>
+<%= link_to t('forms.edit'), edit_product_presentation_path(@product_presentation) %> |
+<%= link_to t('forms.back'), product_presentations_path %>

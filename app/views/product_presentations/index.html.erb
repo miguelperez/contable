@@ -1,12 +1,12 @@
-<% content_for :title, "Product Presentations" %>
+<% content_for :title, t('titles.list', :model => ProductPresentation.human_name) %>
 
 <table class="listing">
   <tbody>
     <tr>
       <th>Product</th>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price per Unit</th>
+      <th><%= ProductPresentation.human_attribute_name(:name) %></th>
+      <th><%= ProductPresentation.human_attribute_name(:description) %></th>
+      <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
     </tr>
 
     <% @product_presentations.each do |product_presentation| %>
@@ -14,9 +14,9 @@
         <td><%=h product_presentation.product_id %></td>
         <td><%=h product_presentation.name %></td>
         <td><%=h product_presentation.description %></td>
-        <td><%=h product_presentation.unit_price %></td>
-        <td><%= link_to 'Show', product_presentation %></td>
-        <td><%= link_to 'Destroy', product_presentation, :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%=h number_to_currency(product_presentation.unit_price) %></td>
+        <td><%= link_to t('forms.show'), product_presentation %></td>
+        <td><%= link_to t('forms.delete'), product_presentation, :confirm => t('messages.confirmation'), :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>
