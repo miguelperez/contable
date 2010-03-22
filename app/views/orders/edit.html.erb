@@ -1,4 +1,4 @@
-<%content_for :title, "Editing Order" %>
+<%content_for :title, t('titles.editing', :model => Order.human_name) %>
 
 <% form_for(@order, :html => {:id => 'styled-form'}) do |f| %>
   <%= error_messages_for 'order', :header_message => "Please Try Again!", :message => "We had some problems trying to save the order:" %>
@@ -9,11 +9,11 @@
 
     <div id="header">
       <span class="flow-left">
-        <%= f.label :status %>
+        <%= f.label Order.human_attribute_name(:status) %>
         <%= f.select :status, Order.STATUSES.map {|status| [status, status] } %>
       </span>
       <span class="flow-rigth">
-        <%= f.label :registration_date %>
+        <%= f.label Order.human_attribute_name(:registration_date) %>
         <%= f.text_field :registration_date, :value => @order.registration_date.strftime("%m/%d/%Y") %>
       </span>
       <div class="clear"></div>
@@ -27,16 +27,16 @@
       <table id="products" class="default-table">
         <tbody>
           <tr>
-            <th>Quantity</th>
-            <th>Product Name</th>
-            <th>Description</th>
-            <th>Unit Price</th>
-            <th>Total</th>
+            <th><%= OrderProductPresentation.human_attribute_name(:quantity) %></th>
+            <th><%= ProductPresentation.human_attribute_name(:name) %></th>
+            <th><%= ProductPresentation.human_attribute_name(:description) %></th>
+            <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
+            <th><%= Order.human_attribute_name(:ammount) %></th>
             <th></th>
           </tr>
           <%= render :partial => 'orders/product_presentation_form' %>
           <tr id="total_row">
-            <td class="item"><div><%= f.label :ammount, "Order Total" %></div></td>
+            <td class="item"><div><%= f.label Order.human_attribute_name(:ammount), "Order Total" %></div></td>
             <td colspan="3" class="item three-item"><%= text_field "ammount", "in_words", :id => 'grant-total-words', :class => 'big-input'%></td>
             <td colspan="2" class="item"><%= f.text_field :ammount, :class => 'grant-total li-input'%></td>
           </tr>
@@ -45,8 +45,8 @@
     </div>
 
     <div id="footer">
-      <%= f.submit 'Update', :class => 'big-button' %>
-      <%= link_to 'Cancel', orders_path %>
+      <%= f.submit t('forms.update'), :class => 'big-button' %>
+      <%= link_to t('forms.cancel'), orders_path %>
     </div>
   </div>
 <% end %>

@@ -32,7 +32,7 @@ es-CO:
         ammount: "Total"
       order_product_presentation:
         quantity: "Cantidad"
-        unit_sold_price: "Precio de Venta por Unidad"
+        unit_sold_price: "Total vendido"
       product:
         name: "Nombre"
         description: "Descripción"

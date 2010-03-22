@@ -1,4 +1,4 @@
-<% content_for :title, "Order ##{@order.order_number}" -%>
+<% content_for :title, t('titles.order_number', :model => Order.human_name, :value => @order.order_number.to_s) -%>
 <div class="order-show">
 
   <table class="order-header">
@@ -8,26 +8,26 @@
           <table class="listing">
             <tbody>
               <tr>
-                <td colspan="2">Client information</td>
+                <td colspan="2"><%= t('titles.details', :model => Client.human_name) %></td>
               </tr>
               <tr>
-                <th>Identification Number</th>
+                <th><%= Client.human_attribute_name(:id_number) %></th>
                 <td><%=h @order.client.id_number %></td>
               </tr>
               <tr>
-                <th>Name</th>
+                <th><%= Client.human_attribute_name(:name) %></th>
                 <td><%=h @order.client.name %></td>
               </tr>
               <tr>
-                <th>Last Name</th>
+                <th><%= Client.human_attribute_name(:last_name) %></th>
                 <td><%=h @order.client.last_name %></td>
               </tr>
               <tr>
-                <th>Address</th>
+                <th><%= Client.human_attribute_name(:address) %></th>
                 <td><%=h @order.client.address %></td>
               </tr>
               <tr>
-                <th>Email</th>
+                <th><%= Client.human_attribute_name(:email) %></th>
                 <td><%=h @order.client.email %></td>
               </tr>
             </tbody>
@@ -37,18 +37,18 @@
           <table class="listing">
             <tbody>
               <tr>
-                <td colspan="2">Order information</td>
+                <td colspan="2"><%= t('titles.order_information') %></td>
               </tr>
               <tr>
-                <th>Status</th>
+                <th><%= Order.human_attribute_name(:status) %></th>
                 <td><%=h @order.status %></td>
               </tr>
               <tr>
-                <th>Creation date</th>
+                <th><%= Order.human_attribute_name(:registration_date) %></th>
                 <td><%=h @order.registration_date.strftime("%m/%d/%Y") %></td>
               </tr>
               <tr>
-                <th>Expiration date</th>
+                <th><%= Order.human_attribute_name(:expiration_date) %></th>
                 <td><%=h @order.expiration_date.strftime("%m/%d/%Y") %></td>
               </tr>
               <tr>
@@ -69,11 +69,11 @@
   <table class="listing">
     <tbody>
       <tr>
-        <th>Quantity</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Unit Price</th>
-        <th>Total</th>
+        <th><%= OrderProductPresentation.human_attribute_name(:quantity) %></th>
+        <th><%= ProductPresentation.human_attribute_name(:name) %></th>
+        <th><%= ProductPresentation.human_attribute_name(:description) %></th>
+        <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
+        <th><%= Order.human_attribute_name(:ammount) %></th>
       </tr>
       <% @order.order_product_presentations.each do |product| %>
         <tr>
@@ -85,23 +85,23 @@
         </tr>
       <% end %>
       <tr>
-        <td colspan="4">SUB TOTAL</td>
+        <td colspan="4"><%= t('titles.sub_total') %></td>
         <td><%=h @order.ammount %></td>
       </tr>
       <tr>
-        <td colspan="4">Discount</td>
+        <td colspan="4"><%= t('titles.discount') %></td>
         <td><%= "Aun no esta hecho"  %></td>
       </tr>
       <tr>
-        <td colspan="4">Taxes</td>
+        <td colspan="4"><%= t('titles.taxes') %></td>
         <td><%= "Aun no esta hecho"  %></td>
       </tr>
       <tr>
-        <td colspan="4">TOTAL</td>
+        <td colspan="4"><%= t('titles.total') %></td>
         <td><%=h @order.ammount %></td>
       </tr>
       <tr>
-        <td>Value</td>
+        <td><%= Order.human_attribute_name(:ammount) %></td>
         <td colspan="4"><%= @order.ammount.to_words%> </td>
       </tr>
     </tbody>
@@ -110,5 +110,5 @@
 </div>
 
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<%= link_to t('forms.edit'), edit_order_path(@order) %> |
+<%= link_to t('forms.back'), orders_path %>

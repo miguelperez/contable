@@ -9,6 +9,7 @@ es-CO:
     cancel: "Cancelar"
     show: "Ver"
     back: "Volver"
+    select_a: "Seleccione un {{model}}"
   #messages that are shown on the views
   messages:
     confirmation: "¿Estás seguro?"
@@ -22,3 +23,9 @@ es-CO:
     details: "Detalles del {{model}}"
     editing: "Editando {{model}}"
     showing: "Datos del {{model}}"
+    order_number: "{{model}} # {{value}}"
+    order_information: "Información de la factura"
+    total: "Total"
+    sub_total: "Subtotal"
+    discounts: "Descuento"
+    taxes: "Impuestos"

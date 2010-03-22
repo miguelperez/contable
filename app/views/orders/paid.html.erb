@@ -1,20 +1,22 @@
-<%content_for :title, "Orders" %>
+<%content_for :title, t('titles.list', :model => Order.human_name) %>
 
 <table class="listing">
   <tbody>
     <tr>
-      <th>Status</th>
-      <th>Registration date</th>
-      <th>Ammount</th>
+      <th><%= Order.human_attribute_name(:status) %></th>
+      <th><%= Order.human_attribute_name(:registration_date) %></th>
+      <th><%= Order.human_attribute_name(:expiration_date) %></th>
+      <th><%= Order.human_attribute_name(:ammount) %></th>
     </tr>
     <% @orders.each do |order| %>
       <tr class="<%= cycle('odd','even') %>">
         <td><%=h order.status %></td>
-        <td><%=h order.registration_date %></td>
-        <td><%= number_to_currency(h(order.ammount), :precision => 0) %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%=l order.registration_date, :format => :default %></td>
+        <td><%=l order.expiration_date, :format => :default  %></td>
+        <td><%= number_to_currency(order.ammount) %></td>
+        <td><%= link_to t('forms.show'), order %></td>
+        <td><%= link_to t('forms.edit'), edit_order_path(order) %></td>
+        <td><%= link_to t('forms.delete'), order, :confirm => t('messages.confirmation'), :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>
