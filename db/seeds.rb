@@ -11,6 +11,7 @@ admin.password = "password"
 admin.password_confirmation = "password"
 admin.email_confirmed = true
 admin.name = 'Admin'
+admin.languaje = 'es-CO'
 admin.save!
 puts "\t - Done!"
 

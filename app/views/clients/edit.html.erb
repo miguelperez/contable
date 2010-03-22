@@ -2,7 +2,7 @@
 
 <% form_for(@client, :html => {:id => 'styled-form'}) do |f| %>
   <div id="field-set" class="client">
-    <h3><span>Client details</span></h3>
+    <h3><span><%= t('client.details') %></span></h3>
 
     <%= f.error_messages %>
 

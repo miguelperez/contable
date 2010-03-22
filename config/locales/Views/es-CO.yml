@@ -9,8 +9,13 @@ es-CO:
     cancel: "Cancelar"
     show: "Ver"
     back: "Volver"
+  #messages that are shown on the views
   messages:
     confirmation: "¿Estás seguro?"
+  #this are the labels for the navigation menus of the application
+  navigation:
+    add_client: "Agregar Cliente"
+  #Translation for the different models
   client:
     new: "Crear Cliente"
     list: "Clientes"
