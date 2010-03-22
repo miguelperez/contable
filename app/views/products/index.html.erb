@@ -1,20 +1,20 @@
-<% content_for :title, "Products" %>
+<% content_for :title, t('titles.list', :model => Product.human_name) %>
 
 <table class="listing">
   <tbody>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3">Actions</th>
+      <th><%= Product.human_attribute_name(:name) %></th>
+      <th><%= Product.human_attribute_name(:Description) %></th>
+      <th colspan="3"></th>
     </tr>
 
     <% @products.each do |product| %>
       <tr class="<%= cycle('odd','even') %>">
         <td><%=h product.name %></td>
         <td><%=h product.description %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= link_to t('forms.show'), product %></td>
+        <td><%= link_to t('forms.edit'), edit_product_path(product) %></td>
+        <td><%= link_to t('forms.delete'), product, :confirm => t('messages.confirmation'), :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,20 +1,20 @@
-<%content_for :title, "View Product" %>
+<%content_for :title, t('titles.showing', :model => Product.human_name) %>
 <p>
-  <b>Name:</b>
+  <b><%= Ingredient.human_attribute_name(:name) %></b>
   <%=h @product.name %>
 </p>
 
 <p>
-  <b>Description:</b>
+  <b><%= Ingredient.human_attribute_name(:description) %></b>
   <%=h @product.description %>
 </p>
 
 <p>
-<h2>Ingredients</h2>
+<h2><%= Ingredient.human_name %></h2>
 <table>
   <tr>
-    <th>Ingredient Name</th>
-    <th>Ingredient ammount</th>
+    <th><%= Ingredient.human_attribute_name(:name) %></th>
+    <th><%= Formula.human_attribute_name(:ingredient_ammount) %></th>
   </tr>
   <% @product.formulas.each do |formula| %>
     <tr>
@@ -28,12 +28,12 @@
 
 <hr>
 <p>
-<h2>Presentations</h2>
+<h2><%= t('titles.product_presentations') %></h2>
 <table>
   <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Unit Price</th>
+    <th><%= ProductPresentation.human_attribute_name(:name) %></th>
+    <th><%= ProductPresentation.human_attribute_name(:description) %></th>
+    <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
   </tr>
   <% @product.product_presentations.each do |product| %>
     <tr>
@@ -46,5 +46,5 @@
 <hr>
 </p>
 
-<%= link_to 'Edit', edit_product_path(@product) %> |
-<%= link_to 'Back', products_path %>
+<%= link_to t('forms.edit'), edit_product_path(@product) %> |
+<%= link_to t('forms.back'), products_path %>

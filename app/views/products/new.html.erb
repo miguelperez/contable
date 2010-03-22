@@ -1,15 +1,15 @@
-<% content_for :title, "Add Product" %>
+<% content_for :title, t('titles.new', :model => Product.human_name) %>
 
 <% form_for(@product, :html => {:id => 'styled-form'}) do |f| %>
 
   <div id="field-set">
-    <h3><span>Product details</span></h3>
+    <h3><span><%= t('titles.new', :model => Product.human_name)%></span></h3>
     <p>
-      <%= f.label :name %><br />
+      <%= f.label Product.human_attribute_name(:name) %><br />
       <%= f.text_field :name %>
     </p>
     <p>
-      <%= f.label :description %><br />
+      <%= f.label Product.human_attribute_name(:description) %><br />
       <%= f.text_field :description %>
     </p>
   </div>
@@ -19,7 +19,7 @@
     <% content = render :partial => 'products/ingredients' %>
     <%= render :partial => 'shared/slide_in_panel', :locals => {:button_text => "Product Ingredients", :panel_content => content} %>
 
-    <h2>Product Presentations</h2>
+    <h2><%= t('titles.product_presentations') %></h2>
 
     <div id="products">
       <span class="flow-rigth">
@@ -31,9 +31,9 @@
       <table id="product-presentations" class="default-table">
         <tbody>
           <tr id="header_row">
-            <th>Name</th>
-            <th>Description</th>
-            <th>Unit Price</th>
+            <th><%= ProductPresentation.human_attribute_name(:name) %></th>
+            <th><%= ProductPresentation.human_attribute_name(:description) %></th>
+            <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
             <th></th>
           </tr>
           <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>
@@ -43,8 +43,8 @@
     </div>
 
     <div id="footer">
-      <%= f.submit 'Create', :class => 'big-button' %>
-      <%= link_to 'Cancel', products_path %>
+      <%= f.submit t('forms.create'), :class => 'big-button' %>
+      <%= link_to t('forms.cancel'), products_path %>
     </div>
 
   </div>

@@ -15,7 +15,16 @@ es-CO:
     confirmation: "¿Estás seguro?"
   #this are the labels for the navigation menus of the application
   navigation:
-    add_client: "Agregar Cliente"
+    add: "Agregar Cliente"
+    create: "Crear"
+    paid_orders: "Facturas pagadas"
+    active_orders: "Facturas sin pagar"
+    dashboard: "Inicio"
+    clients: "Clientes"
+    orders: "Facturas"
+    ingredients: "Ingredientes"
+    products: "Productos"
+    product_presentations: "Presentaciones de Productos"
   #Translation for the different models
   titles:
     new: "Crear {{model}}"
@@ -25,7 +34,11 @@ es-CO:
     showing: "Datos del {{model}}"
     order_number: "{{model}} # {{value}}"
     order_information: "Información de la factura"
+    product_presentations: "Presentaciones"
+    product_presentation: "Presentación"
     total: "Total"
     sub_total: "Subtotal"
     discounts: "Descuento"
     taxes: "Impuestos"
+    login: "Iniciar sesión"
+    logout: "Cerrar sesión"

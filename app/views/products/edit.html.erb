@@ -1,4 +1,4 @@
-<% content_for :title, "Edit Product" %>
+<% content_for :title, t('titles.editing', :model => Product.human_name) %>
 
 <% form_for(@product, :html => {:id => 'styled-form'}) do |f| %>
   <%= f.error_messages %>
@@ -7,11 +7,11 @@
     <h3><span>Product details</span></h3>
 
     <p>
-      <%= f.label :name %><br />
+      <%= f.label Product.human_attribute_name(:name) %><br />
       <%= f.text_field :name %>
     </p>
     <p>
-      <%= f.label :description %><br />
+      <%= f.label Product.human_attribute_name(:description) %><br />
       <%= f.text_field :description %>
     </p>
   </div>
@@ -31,9 +31,9 @@
       <table id="product-presentations" class="default-table">
         <tbody>
           <tr id="header_row">
-            <th>Name</th>
-            <th>Description</th>
-            <th>Unit Price</th>
+            <th><%= ProductPresentation.human_attribute_name(:name) %></th>
+            <th><%= ProductPresentation.human_attribute_name(:description) %></th>
+            <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
             <th></th>
           </tr>
           <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>

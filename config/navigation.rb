@@ -2,41 +2,41 @@ SimpleNavigation::Configuration.run do |navigation|
   navigation.items do |primary|
     primary.dom_class = 'main-menu'
 
-    primary.item :dashboard, 'Dashboard', dashboard_path, :class => 'first'
+    primary.item :dashboard, t('navigation.dashboard'), dashboard_path, :class => 'first'
 
     primary.item :'separator', '', "", :class => 'separator'
     
-    primary.item :client, 'Clients', clients_path do |secondary|
+    primary.item :client, t('navigation.clients'), clients_path do |secondary|
       secondary.dom_class = 'secondary-menu'
-      secondary.item :new_client, 'Add client', new_client_path
+      secondary.item :new_client, t('navigation.add'), new_client_path
     end
 
     primary.item :'separator1', '', "", :class => 'separator'
 
-    primary.item :order, 'Orders', new_order_path  do |secondary|
+    primary.item :order, t('navigation.orders'), new_order_path  do |secondary|
       secondary.dom_class = 'secondary-menu'
-      secondary.item :new_order, 'All Active orders', orders_path
-      secondary.item :new_order, 'Create order', new_order_path
-      secondary.item :paid_orders, 'Paid orders', paid_orders_path
+      secondary.item :new_order, t('navigation.active_orders'), orders_path
+      secondary.item :new_order, t('navigation.create'), new_order_path
+      secondary.item :paid_orders, t('navigation.paid_orders'), paid_orders_path
     end
 
     primary.item :'separator2', '', "", :class => 'separator'
 
-    primary.item :ingredient, 'Ingredients', ingredients_path  do |secondary|
+    primary.item :ingredient, t('navigation.ingredients'), ingredients_path  do |secondary|
       secondary.dom_class = 'secondary-menu'
-      secondary.item :new_ingredient, 'Add ingredient', new_ingredient_path
+      secondary.item :new_ingredient, t('navigation.add'), new_ingredient_path
     end
 
     primary.item :'separator3', '', "", :class => 'separator'
 
-    primary.item :product, 'Products', products_path  do |secondary|
+    primary.item :product, t('navigation.products'), products_path  do |secondary|
       secondary.dom_class = 'secondary-menu'
-      secondary.item :new_product, 'Add product', new_product_path
+      secondary.item :new_product, t('navigation.add'), new_product_path
     end
 
     primary.item :'separator4', '', "", :class => 'separator'
 
-    primary.item :product_presentation, 'Products Presentations', product_presentations_path, :class => 'last'
+    primary.item :product_presentation, t('navigation.product_presentations'), product_presentations_path, :class => 'last'
   end
 end
 ## Configures your navigation
