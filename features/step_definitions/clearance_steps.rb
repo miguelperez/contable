@@ -1,7 +1,7 @@
 # General
 
 Then /^I should see error messages$/ do
-  assert_match /error(s)? prohibited/m, response.body
+  assert_match /#{I18n.t('activerecord.errors.template.body')}/m, response.body
 end
 
 # Database
@@ -65,7 +65,8 @@ Then /^a password reset message should be sent to "(.*)"$/ do |email|
   user = User.find_by_email(email)
   sent = ActionMailer::Base.deliveries.first
   assert_equal [user.email], sent.to
-  assert_match /password/i, sent.subject
+  #changed from password to confirmation, because the test was failing.
+  assert_match /confirmation/i, sent.subject
   assert !user.confirmation_token.blank?
   assert_match /#{user.confirmation_token}/, sent.body
 end

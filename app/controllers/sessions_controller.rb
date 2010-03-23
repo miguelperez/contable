@@ -16,7 +16,6 @@ class SessionsController < Clearance::SessionsController
   def url_after_destroy
     cookies[:locale] = nil
     cookies[:color] = nil
-    p "asd"*100
     root_url
   end
 end
