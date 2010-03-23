@@ -13,6 +13,21 @@ class Order < ActiveRecord::Base
   #creates the client association for and order.
   validates_associated :client
   after_create :set_expiration_date
+  
+  #verify the total ammount of this order after creating or updating it
+  after_create :verify_ammount_value
+  after_update :verify_ammount_value
+
+  #After creating an Order it checks that the total ammount of this order is
+  #equal to the sum of the product_quantity times the unit_sold_price
+  def verify_ammount_value
+    total = 0
+    total_ammount = order_product_presentations.inject(total) { |total, n| p total; p n; total += (n.quantity * n.unit_sold_price); total  }
+    if self.ammount != total_ammount
+      self.ammount = total_ammount
+      save
+    end
+  end
 
   #After creating an order we have to set the expiration date of it.
   def set_expiration_date
