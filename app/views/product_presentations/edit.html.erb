@@ -1,7 +1,6 @@
 <% content_for :title, t('titles.editing', :model => ProductPresentation.human_name) %>
 
 <% form_for(@product_presentation) do |f| %>
-  <%= f.error_messages %>
 
   <p>
     <label>Product Parent</label>
@@ -11,15 +10,15 @@
     </select>
   </p>
   <p>
-    <%= f.label ProductPresentation.human_attribute_name(:name) %><br />
+    <%= f.label :name, ProductPresentation.human_attribute_name(:name) %><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.label ProductPresentation.human_attribute_name(:description) %><br />
+    <%= f.label :description, ProductPresentation.human_attribute_name(:description) %><br />
     <%= f.text_field :description %>
   </p>
   <p>
-    <%= f.label ProductPresentation.human_attribute_name(:unit_price) %><br />
+    <%= f.label :unit_price, ProductPresentation.human_attribute_name(:unit_price) %><br />
     <%= f.text_field :unit_price %>
   </p>
   <p>

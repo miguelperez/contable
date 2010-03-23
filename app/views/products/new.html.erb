@@ -5,11 +5,11 @@
   <div id="field-set">
     <h3><span><%= t('titles.new', :model => Product.human_name)%></span></h3>
     <p>
-      <%= f.label Product.human_attribute_name(:name) %><br />
+      <%= f.label :name, Product.human_attribute_name(:name) %><br />
       <%= f.text_field :name %>
     </p>
     <p>
-      <%= f.label Product.human_attribute_name(:description) %><br />
+      <%= f.label :description, Product.human_attribute_name(:description) %><br />
       <%= f.text_field :description %>
     </p>
   </div>

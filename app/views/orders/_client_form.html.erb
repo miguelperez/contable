@@ -5,12 +5,12 @@
 
   <% fields_for prefix, client do |client_form| -%>
     <p id="id_number">
-      <%= client_form.label Client.human_attribute_name(:id_number) %>
+      <%= client_form.label :id_number, Client.human_attribute_name(:id_number) %>
       <%= client_form.text_field :id_number %>
     </p>
 
     <p id="name">
-      <%= client_form.label Client.human_attribute_name(:name) -%>
+      <%= client_form.label :name, Client.human_attribute_name(:name) -%>
       <%= text_field_with_auto_complete :order,
         :client_name,
         {:size => 30, :onload => "Updater.getNameValue()", :onkeyup => "Updater.updateNameAttribute(this)", :onchange => "Updater.updateNameAttribute(this)", :onblur => "Updater.updateNameAttribute(this)"},
@@ -24,17 +24,17 @@
     </p>
 
     <p id="last_name">
-      <%= client_form.label Client.human_attribute_name(:last_name) %>
+      <%= client_form.label :last_name, Client.human_attribute_name(:last_name) %>
       <%= client_form.text_field :last_name %>
     </p>
 
     <p id="address">
-      <%= client_form.label Client.human_attribute_name(:address) %>
+      <%= client_form.label :address, Client.human_attribute_name(:address) %>
       <%= client_form.text_field :address %>
     </p>
 
     <p id="email">
-      <%= client_form.label Client.human_attribute_name(:email) %>
+      <%= client_form.label :email, Client.human_attribute_name(:email) %>
       <%= client_form.text_field :email %>
     </p>
 
