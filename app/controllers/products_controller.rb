@@ -51,11 +51,11 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        flash[:notice] = 'Product was successfully created.'
+        notice('created', Product.human_name)
         format.html { redirect_to(@product) }
         format.xml  { render :xml => @product, :status => :created, :location => @product }
       else
-        flash[:error] = 'There where errors trying to save. Fields with errors are highlighted in red'
+        error('no_create')
         format.html { render :action => "new" }
         format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
       end
@@ -69,10 +69,11 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.update_attributes(params[:product])
-        flash[:notice] = 'Product was successfully updated.'
+        notice('updated', Product.human_name)
         format.html { redirect_to(@product) }
         format.xml  { head :ok }
       else
+        error('no_update')
         format.html { render :action => "edit" }
         format.xml  { render :xml => @product.errors, :status => :unprocessable_entity }
       end

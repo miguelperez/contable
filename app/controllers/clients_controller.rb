@@ -49,10 +49,11 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.save
-        flash[:notice] = 'Client was successfully created.'
+        notice('created', Client.human_name)
         format.html { redirect_to(@client) }
         format.xml  { render :xml => @client, :status => :created, :location => @client }
       else
+        error('no_create')
         format.html { render :action => "new" }
         format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
       end
@@ -66,10 +67,11 @@ class ClientsController < ApplicationController
 
     respond_to do |format|
       if @client.update_attributes(params[:client])
-        flash[:notice] = 'Client was successfully updated.'
+        notice('updated', Client.human_name)
         format.html { redirect_to(@client) }
         format.xml  { head :ok }
       else
+        error('no_update')
         format.html { render :action => "edit" }
         format.xml  { render :xml => @client.errors, :status => :unprocessable_entity }
       end

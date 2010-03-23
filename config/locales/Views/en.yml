@@ -13,6 +13,13 @@ en:
   #messages that are shown on the views
   messages:
     confirmation: "Are you sure?"
+    no_update_confirmation: "There where errors trying to update."
+    no_create_confirmation: "There where errors trying to save."
+    check_again: "Please check the information"
+    try_again: "Try again."
+    error: "{{confirmation}} {{check_again}} and {{try_again}}"
+    successful_update: "{{model}} was successfully updated."
+    successful_create: "{{model}} was successfully created."
   #this are the labels for the navigation menus of the application
   navigation:
     add: "add"

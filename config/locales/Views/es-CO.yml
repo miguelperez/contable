@@ -13,6 +13,13 @@ es-CO:
   #messages that are shown on the views
   messages:
     confirmation: "¿Estás seguro?"
+    no_update_confirmation: "Hubo errores tratando de actualizar."
+    no_create_confirmation: "Hubo errores tratando de salvar."
+    check_again: "Por favor revise la información"
+    try_again: "Intente de nuevo."
+    error: "{{confirmation}} {{check_again}} e {{try_again}}"
+    successful_update: "{{model}} fue actualizado satisfactoriamente."
+    successful_create: "{{model}} fue creado satisfactoriamente."
   #this are the labels for the navigation menus of the application
   navigation:
     add: "Agregar"

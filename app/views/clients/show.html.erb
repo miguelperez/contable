@@ -1,4 +1,4 @@
-<%content_for :title, t('titles.showing') %>
+<%content_for :title, t('titles.showing', :model => Client.human_name) %>
 
 <p>
   <b><%= Client.human_attribute_name(:id_number) %></b>

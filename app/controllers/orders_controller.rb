@@ -47,10 +47,11 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        flash[:notice] = 'Order was successfully created.'
+        notice('created', Order.human_name)
         format.html { redirect_to(@order) }
         format.xml  { render :xml => @order, :status => :created, :location => @order }
       else
+        error('no_create')
         format.html { render :action => "new" }
         format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
       end
@@ -65,10 +66,11 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.update_attributes(params[:order])
-        flash[:notice] = 'Order was successfully updated.'
+        notice('updated', Order.human_name)
         format.html { redirect_to(@order) }
         format.xml  { head :ok }
       else
+        error('no_update')
         format.html { render :action => "edit" }
         format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
       end

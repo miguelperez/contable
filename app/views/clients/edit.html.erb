@@ -1,33 +1,31 @@
-<%content_for :title, t('titles.editing') %>
+<%content_for :title, t('titles.editing', :model => Client.human_name) %>
 
 <% form_for(@client, :html => {:id => 'styled-form'}) do |f| %>
   <div id="field-set" class="client">
-    <h3><span><%= t('client.details') %></span></h3>
-
-    <%= f.error_messages %>
+    <h3><span><%= t('titles.details', :model => Client.human_name) %></span></h3>
 
     <p>
-      <%= f.label Client.human_attribute_name(:id_number) %>
+      <%= f.label :id_number, Client.human_attribute_name(:id_number) %>
       <%= f.text_field :id_number %>
     </p>
 
     <p>
-      <%= f.label Client.human_attribute_name(:name) %>
+      <%= f.label :name, Client.human_attribute_name(:name) %>
       <%= f.text_field :name %>
     </p>
 
     <p>
-      <%= f.label Client.human_attribute_name(:last_name) %>
+      <%= f.label :last_name, Client.human_attribute_name(:last_name) %>
       <%= f.text_field :last_name %>
     </p>
 
     <p>
-      <%= f.label Client.human_attribute_name(:address) %>
+      <%= f.label :address, Client.human_attribute_name(:address) %>
       <%= f.text_field :address %>
     </p>
 
     <p>
-      <%= f.label Client.human_attribute_name(:email) %>
+      <%= f.label :email, Client.human_attribute_name(:email) %>
       <%= f.text_field :email %>
     </p>
 

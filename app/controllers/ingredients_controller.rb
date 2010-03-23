@@ -44,10 +44,11 @@ class IngredientsController < ApplicationController
 
     respond_to do |format|
       if @ingredient.save
-        flash[:notice] = 'Ingredient was successfully created.'
+        notice('created', Ingredient.human_name)
         format.html { redirect_to(@ingredient) }
         format.xml  { render :xml => @ingredient, :status => :created, :location => @ingredient }
       else
+        error('no_create')
         format.html { render :action => "new" }
         format.xml  { render :xml => @ingredient.errors, :status => :unprocessable_entity }
       end
@@ -61,10 +62,11 @@ class IngredientsController < ApplicationController
 
     respond_to do |format|
       if @ingredient.update_attributes(params[:ingredient])
-        flash[:notice] = 'Ingredient was successfully updated.'
+        notice('updated', Ingredient.human_name)
         format.html { redirect_to(@ingredient) }
         format.xml  { head :ok }
       else
+        error('no_update')
         format.html { render :action => "edit" }
         format.xml  { render :xml => @ingredient.errors, :status => :unprocessable_entity }
       end
