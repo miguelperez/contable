@@ -10,6 +10,7 @@ en:
     show: "Show"
     back: "Back"
     select_a: "Select a {{model}}"
+    add_ingredient: "Add ingredient"
   #messages that are shown on the views
   messages:
     confirmation: "Are you sure?"

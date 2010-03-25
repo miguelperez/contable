@@ -10,6 +10,7 @@ es-CO:
     show: "Ver"
     back: "Volver"
     select_a: "Seleccione un {{model}}"
+    add_ingredient: "Agregar ingrediente"
   #messages that are shown on the views
   messages:
     confirmation: "¿Estás seguro?"
