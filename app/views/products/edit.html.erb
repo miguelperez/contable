@@ -1,7 +1,7 @@
 <% content_for :title, t('titles.editing', :model => Product.human_name) %>
 
 <% form_for(@product, :html => {:id => 'styled-form'}) do |f| %>
-  
+
   <div id="field-set">
     <h3><span>Product details</span></h3>
 
@@ -17,30 +17,21 @@
 
   <div id="content-wrapper">
 
-    <% content = render :partial => 'products/ingredients' %>
-    <%= render :partial => 'shared/slide_in_panel', :locals => {:button_text => "Product Ingredients", :panel_content => content} %>
+    <% content_for :tab_link, tab_link("Product Presentations")-%>
+    <% content_for :tab_body do %>
+      <% tabbed_body 'Product Presentations' do %>
+        <%= render :partial => 'products/products_table', :locals => {:product_presentations => @product.product_presentations} %>
+      <% end -%>
+    <% end -%>
 
-    <div id="products">
-      <span class="flow-rigth">
-        <%= round_button('add', "add another product",{:onclick => "TableHelper.addRowToProductsTable(\"product-presentations\", \"header_row\")"}) %>
-      </span>
+    <% content_for :tab_link, tab_link("Ingredients")-%>
+    <% content_for :tab_body do %>
+      <% tabbed_body 'ingredients', false do %>
+        <%= render(:partial => 'ingredients/add_ingredients', :locals => {:object_with_formulas => @product, :ingredients => @ingredients}) %>
+      <% end -%>
+    <% end -%>
 
-      <div class="clear"></div>
-
-      <table id="product-presentations" class="default-table">
-        <tbody>
-          <tr id="header_row">
-            <th><%= ProductPresentation.human_attribute_name(:name) %></th>
-            <th><%= ProductPresentation.human_attribute_name(:description) %></th>
-            <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
-            <th></th>
-          </tr>
-          <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>
-        </tbody>
-      </table>
-
-    </div>
-
+    <%= render :partial => 'shared/tabbed_panel' -%>
 
     <div id="footer">
       <%= f.submit 'Update', :class => 'big-button' %>
@@ -51,4 +42,23 @@
 
 <% end %>
 
-<% content_for :javascript, javascript_include_tag("products") -%>
+<% content_for :javascript do -%>
+  <%= javascript_include_tag "products" %>
+
+  <script type="text/javascript" language="javascript" charset="utf-8">
+    //<![CDATA[
+    _(function () {
+      var tabContainers = _('div.tabs > div.tab');
+
+      _('div.tabs ul.tabNavigation a').click(function () {
+        tabContainers.hide().filter(this.hash).show();
+
+        _('div.tabs ul.tabNavigation a').removeClass('selected');
+        _(this).addClass('selected');
+
+        return false;
+      }).filter(':first').click();
+    });
+    //]]>
+  </script>
+<% end -%>
