@@ -1,12 +1,14 @@
 <div id="ingredients">
 
   <div id="ingredients_wrapper">
-    <p>Click the ingredients on the rigth to add --></p>
+    <p><%= t('messages.click_ingredients_on_the_rigth_to_add')%> </p>
     <div class="clear"></div>
+
+    <% hash_name = object_with_formulas.class.to_s.tableize.singularize %>
 
     <div id="ingredients_form">
       <% if object_with_formulas.formulas.first && !object_with_formulas.formulas.first.new_record? %>
-        <%= render :partial => 'ingredients/formula', :collection => object_with_formulas.formulas %>
+        <%= render :partial => 'ingredients/formula', :collection => object_with_formulas.formulas, :locals => {:hash_name =>hash_name} %>
       <% end %>
     </div>
 
@@ -16,11 +18,11 @@
         <ul class="clean-ul">
           <% ingredients.each do |ingredient| %>
             <% json = ingredient.to_json(:only => [:id, :name]) %>
-            <li><%= a_as_tag(ingredient.name, {:onclick => "\'IngredientsHelper.createIngredientForm(#{json}, $(\"ingredients_form\"), this.up(), \"#{label_title}\")\'"})  %> </li>
+            <li><%= a_as_tag(ingredient.name, {:onclick => "\'IngredientsHelper.createIngredientForm(#{json}, $(\"ingredients_form\"), this.up(), \"#{label_title}\", \"#{hash_name}\")\'"})  %> </li>
           <% end %>
         </ul>
       <% else %>
-        <p>Fill in some ingredients <%= link_to 'here', new_ingredient_path %> first</p>
+        <p><%= t('messages.fill_in_some_ingredients') %> <%= link_to t('messages.here'), new_ingredient_path %> first</p>
       <% end %>
     </div>
 

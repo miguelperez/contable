@@ -24,6 +24,9 @@ en:
     please_wait: "Please wait..."
     forgot_password: "Forgot Password"
     sign_up: "Sign up"
+    click_ingredients_on_the_rigth_to_add: "Click the ingredients on the rigth to add."
+    fill_in_some_ingredients: "Fill in some ingredients"
+    here: "here"
   #this are the labels for the navigation menus of the application
   navigation:
     add: "add"
@@ -36,6 +39,8 @@ en:
     ingredients: "Ingredients"
     products: "Products"
     product_presentations: "Product presentations"
+    product_information: "Product Information"
+    product_presentation_information: "Product Presentation Information"
   #Translation for the different models
   titles:
     new: "Create {{model}}"

@@ -1,6 +1,6 @@
 <div class="formula">
   <% new_or_existing = formula.new_record? ? 'new' : 'existing' %>
-  <% prefix = "product[#{new_or_existing}_formula_attributes][]" %>
+  <% prefix = "#{hash_name}[#{new_or_existing}_formula_attributes][]" %>
   <% fields_for prefix, formula do |f| -%>
 
     <div class="ingredient">

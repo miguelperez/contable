@@ -1,0 +1,16 @@
+<p>
+  <label>Product Parent</label>
+  <%= product_presentation.product.name %>
+</p>
+<p>
+  <%= form.label :name, ProductPresentation.human_attribute_name(:name) %><br />
+  <%= form.text_field :name %>
+</p>
+<p>
+  <%= form.label :description, ProductPresentation.human_attribute_name(:description) %><br />
+  <%= form.text_field :description %>
+</p>
+<p>
+  <%= form.label :unit_price, ProductPresentation.human_attribute_name(:unit_price) %><br />
+  <%= form.text_field :unit_price %>
+</p>

@@ -2,29 +2,52 @@
 
 <% form_for(@product_presentation) do |f| %>
 
-  <p>
-    <label>Product Parent</label>
-    <select>
-      <option value="">Select Product</option>
-      <%= options_for_select(Product.all.map {|p| [truncate(p.name, 20), p.id]}) %>
-    </select>
-  </p>
-  <p>
-    <%= f.label :name, ProductPresentation.human_attribute_name(:name) %><br />
-    <%= f.text_field :name %>
-  </p>
-  <p>
-    <%= f.label :description, ProductPresentation.human_attribute_name(:description) %><br />
-    <%= f.text_field :description %>
-  </p>
-  <p>
-    <%= f.label :unit_price, ProductPresentation.human_attribute_name(:unit_price) %><br />
-    <%= f.text_field :unit_price %>
-  </p>
-  <p>
-    <%= f.submit t('forms.update') %>
-  </p>
+  <div id="content-wrapper">
+
+    <% content_for :tab_link, tab_link(t('navigation.product_presentation_information'))-%>
+    <% content_for :tab_body do %>
+      <% tabbed_body t('navigation.product_presentation_information') do %>
+        <%= render :partial => 'product_presentations/product_presentation', :locals => {:form => f, :product_presentation => @product_presentation} %>
+      <% end -%>
+    <% end -%>
+
+    <% content_for :tab_link, tab_link(t('navigation.ingredients'))-%>
+    <% content_for :tab_body do %>
+      <% tabbed_body t('navigation.ingredients'), false do %>
+        <%= render(:partial => 'ingredients/add_ingredients', :locals => {:object_with_formulas => @product_presentation, :ingredients => @ingredients}) %>
+      <% end -%>
+    <% end -%>
+
+    <%= render :partial => 'shared/tabbed_panel' -%>
+
+  </div>
+
+  <div id="footer">
+    <p>
+      <%= f.submit t('forms.update') %>
+    </p>
+  </div>
+
 <% end %>
 
 <%= link_to t('forms.show'), @product_presentation %> |
 <%= link_to t('forms.back'), product_presentations_path %>
+
+<% content_for :javascript do -%>
+  <script type="text/javascript" language="javascript" charset="utf-8">
+    //<![CDATA[
+    _(function () {
+      var tabContainers = _('div.tabs > div.tab');
+
+      _('div.tabs ul.tabNavigation a').click(function () {
+        tabContainers.hide().filter(this.hash).show();
+
+        _('div.tabs ul.tabNavigation a').removeClass('selected');
+        _(this).addClass('selected');
+
+        return false;
+      }).filter(':first').click();
+    });
+    //]]>
+  </script>
+<% end -%>

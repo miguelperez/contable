@@ -15,6 +15,7 @@
         <td><%=h product_presentation.name %></td>
         <td><%=h product_presentation.description %></td>
         <td><%=h number_to_currency(product_presentation.unit_price) %></td>
+        <td><%= link_to t('forms.edit'), edit_product_presentation_path(product_presentation) %></td>
         <td><%= link_to t('forms.show'), product_presentation %></td>
         <td><%= link_to t('forms.delete'), product_presentation, :confirm => t('messages.confirmation'), :method => :delete %></td>
         <td><%= link_to t('forms.add_ingredient'), product_presentation %></td>

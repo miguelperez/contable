@@ -34,7 +34,8 @@ class ProductPresentationsController < ApplicationController
 
   # GET /product_presentations/1/edit
   def edit
-    @product_presentation = ProductPresentation.find(params[:id])
+    @product_presentation = ProductPresentation.find(params[:id], :include => :product)
+    @ingredients = Ingredient.all - @product_presentation.ingredients
   end
 
   # POST /product_presentations

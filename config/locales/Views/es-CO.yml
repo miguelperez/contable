@@ -24,6 +24,9 @@ es-CO:
     please_wait: "Por favor espere..."
     forgot_password: "Olvido su contraseña"
     sign_up: "Registrarse"
+    click_ingredients_on_the_rigth_to_add: "Seleccione ingredientes de la lista para agregar."
+    fill_in_some_ingredients: "Ingrese ingredientes"
+    here: "aqui"
   #this are the labels for the navigation menus of the application
   navigation:
     add: "Agregar"
@@ -36,6 +39,8 @@ es-CO:
     ingredients: "Ingredientes"
     products: "Productos"
     product_presentations: "Presentaciones de Productos"
+    product_information: "Información del producto"
+    product_presentation_information: "Información presentación de producto"
   #Translation for the different models
   titles:
     new: "Crear {{model}}"

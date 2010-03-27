@@ -16,16 +16,16 @@
 
   <div id="content-wrapper">
 
-    <% content_for :tab_link, tab_link("Product Presentations")-%>
+    <% content_for :tab_link, tab_link(t('navigation.product_information'))-%>
     <% content_for :tab_body do %>
-      <% tabbed_body 'Product Presentations' do %>
+      <% tabbed_body t('navigation.product_information') do %>
         <%= render :partial => 'products/products_table', :locals => {:product_presentations => @product.product_presentations} %>
       <% end -%>
     <% end -%>
 
-    <% content_for :tab_link, tab_link("Ingredients")-%>
+    <% content_for :tab_link, tab_link(t('navigation.ingredients'))-%>
     <% content_for :tab_body do %>
-      <% tabbed_body 'ingredients', false do %>
+      <% tabbed_body t('navigation.ingredients'), false do %>
         <%= render(:partial => 'ingredients/add_ingredients', :locals => {:object_with_formulas => @product, :ingredients => @ingredients}) %>
       <% end -%>
     <% end -%>

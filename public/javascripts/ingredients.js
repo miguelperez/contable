@@ -4,7 +4,9 @@ var IngredientsHelper = (function(){
   };
 
   //creates the add ingredients fields.
-  var createIngredientForm = function(ingredientObject, parentDiv, childElem, label_title){
+  //label_title is the title that will be added to the ingredient field.
+  //hash_name will be the name used for generating the id and name of the created input text.
+  var createIngredientForm = function(ingredientObject, parentDiv, childElem, label_title, hash_name){
     //lets assing an id to the containing li, if it does not have id set.
     childElem.identify();
     
@@ -14,15 +16,15 @@ var IngredientsHelper = (function(){
     }).insert(label_title);
     var hidden = new Element('input', {
       'type':'hidden',
-      'id':'product_new_formula_attributes__ingredient_id',
-      'name':'product[new_formula_attributes][][ingredient_id]',
+      'id': hash_name + '_new_formula_attributes__ingredient_id',
+      'name': hash_name + '[new_formula_attributes][][ingredient_id]',
       'value':ingredientObject.ingredient.id
     });
     var input = new Element('input', {
       'type':'text',
       'class':'styled-input',
-      'id':'product_new_formula_attributes__ingredient_ammount',
-      'name':'product[new_formula_attributes][][ingredient_ammount]'
+      'id': hash_name + '_new_formula_attributes__ingredient_ammount',
+      'name': hash_name + '[new_formula_attributes][][ingredient_ammount]'
     });
     var roundButton = new Element('div', {
       'class':'round-button delete',
