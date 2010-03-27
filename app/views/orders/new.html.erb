@@ -35,7 +35,7 @@
           </tr>
           <%= render :partial => 'orders/product_presentation_form' %>
           <tr id="total_row">
-            <td class="item"><div><%= f.label :ammount, Order.human_attribute_name(:ammount), "Order Total" %></div></td>
+            <td class="item"><div><%= f.label :ammount, Order.human_attribute_name(:ammount) %></div></td>
             <td colspan="3" class="item three-item"><%= text_field "ammount", "in_words", :id => 'grant-total-words', :class => 'big-input'%></td>
             <td colspan="2" class="item"><%= f.text_field :ammount, :class => 'grant-total li-input'%></td>
           </tr>

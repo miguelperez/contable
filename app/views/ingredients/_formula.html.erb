@@ -5,7 +5,7 @@
 
     <div class="ingredient">
       <h4><%= h formula.ingredient.name if formula.ingredient%></h4>
-      <label class="styled-label">Ammount</label>
+      <label class="styled-label"><%= Formula.human_attribute_name(:ingredient_ammount) %></label>
       <%= f.hidden_field :ingredient_id%>
       <%= f.text_field :ingredient_ammount, :class => 'styled-input' %>
       <% json = formula.ingredient.to_json(:only => [:id, :name]) %>

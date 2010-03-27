@@ -200,35 +200,35 @@ body{
 /*tabbed panel styles*/
 ul.tabNavigation {
   list-style: none;
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
-
 ul.tabNavigation li {
-  display: inline;
+  float: left;
+  margin-right: -1px;
 }
-
 ul.tabNavigation li a {
-  padding: 3px 5px;
-  background-color: #ccc;
-  color: #000;
+  display: block;
+  color: #2a2a2a;
   text-decoration: none;
+  height: 22px;
+  padding-left: 13px;
+  padding-right: 13px;
+  padding-top: 2px;
+  border: 1px solid;
+  border-color: #ffe #aaab9c #ccc #fff;
 }
-
 ul.tabNavigation li a.selected,
 ul.tabNavigation li a:hover {
-  background-color: #333;
-  color: #fff;
-  padding-top: 7px;
+  border-color: #aaab9c;
+  background-color: #cacaca;
 }
-
 ul.tabNavigation li a:focus {
   outline: 0;
 }
-
-div.tabs > div {
+div.tabs > div.tab {
   padding: 5px;
-  margin-top: 3px;
-  border: 5px solid #333;
+  margin-top: -1px;
+  border: 1px solid #aaab9c;
 }
 /*end tabbed panel styles*/

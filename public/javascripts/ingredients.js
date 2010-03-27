@@ -4,14 +4,14 @@ var IngredientsHelper = (function(){
   };
 
   //creates the add ingredients fields.
-  var createIngredientForm = function(ingredientObject, parentDiv, childElem){
+  var createIngredientForm = function(ingredientObject, parentDiv, childElem, label_title){
     //lets assing an id to the containing li, if it does not have id set.
     childElem.identify();
     
     var h4 = new Element('h4').insert(ingredientObject.ingredient.name);
     var label = new Element('label', {
       'class':'styled-label'
-    }).insert('Ammount');
+    }).insert(label_title);
     var hidden = new Element('input', {
       'type':'hidden',
       'id':'product_new_formula_attributes__ingredient_id',
@@ -26,7 +26,7 @@ var IngredientsHelper = (function(){
     });
     var roundButton = new Element('div', {
       'class':'round-button delete',
-      'onclick': '$(this).up(".ingredient").remove(); $("'+childElem.identify()+'").appear();'
+      'onclick': '$(this).up(".ingredient").remove(); $("'+childElem.identify()+'").show();'
     });
     //create the container div and insert the products objects
     var containerDiv = new Element('div', {
@@ -35,8 +35,8 @@ var IngredientsHelper = (function(){
     //adding to parent
     containerDiv.hide();
     parentDiv.insert(containerDiv);
-    containerDiv.appear();
-    childElem.fade();
+    containerDiv.show();
+    childElem.hide();
   }
 
   //creates the tag

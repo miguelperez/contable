@@ -26,8 +26,7 @@
     <% content_for :tab_link, tab_link("Ingredients")-%>
     <% content_for :tab_body do %>
       <% tabbed_body 'ingredients', false do %>
-        <% content = render(:partial => 'ingredients/add_ingredients', :locals => {:object_with_formulas => @product, :ingredients => @ingredients}) %>
-        <%= render :partial => 'shared/slide_in_panel', :locals => {:button_text => "Product Ingredients", :panel_content => content} %>
+        <%= render(:partial => 'ingredients/add_ingredients', :locals => {:object_with_formulas => @product, :ingredients => @ingredients}) %>
       <% end -%>
     <% end -%>
 
@@ -49,7 +48,7 @@
   <script type="text/javascript" language="javascript" charset="utf-8">
     //<![CDATA[
     _(function () {
-      var tabContainers = _('div.tabs > div');
+      var tabContainers = _('div.tabs > div.tab');
 
       _('div.tabs ul.tabNavigation a').click(function () {
         tabContainers.hide().filter(this.hash).show();

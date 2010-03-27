@@ -9,7 +9,7 @@ module SharedHelper
   #Returns a div which will have a tab body. This receives a block with html that
   #will be appended into the div.
   def tabbed_body(tab_name, display = true, &block)
-    class_name = !display ? "class = \"display-none\"" : ""
+    class_name = !display ? "class = \"display-none tab\"" : "class = \"tab\""
     concat("<div #{class_name} id=\"#{tab_name.downcase.squeeze(" ").strip.gsub(/ /, '_')}\">")
     yield
     concat("</div>")
