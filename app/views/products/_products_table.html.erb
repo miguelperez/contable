@@ -1,0 +1,21 @@
+<h2><%= t('titles.product_presentations') %></h2>
+
+<div id="products">
+  <span class="flow-rigth">
+    <%= round_button('add', "add another product presentation",{:onclick => "TableHelper.addRowToProductsTable(\"product-presentations\", \"header_row\")"}) %>
+  </span>
+
+  <div class="clear"></div>
+
+  <table id="product-presentations" class="default-table">
+    <tbody>
+      <tr id="header_row">
+        <th><%= ProductPresentation.human_attribute_name(:name) %></th>
+        <th><%= ProductPresentation.human_attribute_name(:description) %></th>
+        <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
+        <th></th>
+      </tr>
+      <%= render :partial => 'products/product_presentation', :collection => product_presentations %>
+    </tbody>
+  </table>
+</div>

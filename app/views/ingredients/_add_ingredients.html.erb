@@ -1,0 +1,32 @@
+<div id="ingredients">
+
+  <div id="ingredients_wrapper">
+    <p>Click the ingredients on the rigth to add --></p>
+    <div class="clear"></div>
+    
+    <div id="ingredients_form">
+      <% if object_with_formulas.formulas.first && !object_with_formulas.formulas.first.new_record? %>
+        <%= render :partial => 'ingredients/formula', :collection => object_with_formulas.formulas %>
+      <% end %>
+    </div>
+
+    <div id="ingredients_list">
+      <% if ingredients %>
+        <ul class="clean-ul">
+          <% ingredients.each do |ingredient| %>
+            <% json = ingredient.to_json(:only => [:id, :name]) %>
+            <li><%= a_as_tag(ingredient.name, {:onclick => "\'IngredientsHelper.createIngredientForm(#{json}, $(\"ingredients_form\"), this.up())\'"})  %> </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <p>Fill in some ingredients <%= link_to 'here', new_ingredient_path %> first</p>
+      <% end %>
+    </div>
+
+    <div class="clear"></div>
+
+  </div>
+
+</div>
+
+<% content_for :javascript, javascript_include_tag('ingredients') %>

@@ -14,7 +14,9 @@ body{
   margin: auto;
   background-color: #e0e0e0;
 }
-
+.display-none{
+  display: none;
+}
 /*Main Application header.*/
 .header{
   background: repeat-x url('/images/layout/header_bg.jpg');

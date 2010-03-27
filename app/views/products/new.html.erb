@@ -19,37 +19,18 @@
     <% content_for :tab_link, tab_link("Product Presentations")-%>
     <% content_for :tab_body do %>
       <% tabbed_body 'Product Presentations' do %>
-        <h2><%= t('titles.product_presentations') %></h2>
-
-        <div id="products">
-          <span class="flow-rigth">
-            <%= round_button('add', "add another product presentation",{:onclick => "TableHelper.addRowToProductsTable(\"product-presentations\", \"header_row\")"}) %>
-          </span>
-
-          <div class="clear"></div>
-
-          <table id="product-presentations" class="default-table">
-            <tbody>
-              <tr id="header_row">
-                <th><%= ProductPresentation.human_attribute_name(:name) %></th>
-                <th><%= ProductPresentation.human_attribute_name(:description) %></th>
-                <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
-                <th></th>
-              </tr>
-              <%= render :partial => 'products/product_presentation', :collection => @product.product_presentations %>
-            </tbody>
-          </table>
-        </div>
+        <%= render :partial => 'products/products_table', :locals => {:product_presentations => @product.product_presentations} %>
       <% end -%>
     <% end -%>
 
     <% content_for :tab_link, tab_link("Ingredients")-%>
     <% content_for :tab_body do %>
-      <% tabbed_body 'ingredients' do %>
-        <% content = render :partial => 'products/ingredients' %>
+      <% tabbed_body 'ingredients', false do %>
+        <% content = render(:partial => 'ingredients/add_ingredients', :locals => {:object_with_formulas => @product, :ingredients => @ingredients}) %>
         <%= render :partial => 'shared/slide_in_panel', :locals => {:button_text => "Product Ingredients", :panel_content => content} %>
       <% end -%>
     <% end -%>
+
     <%= render :partial => 'shared/tabbed_panel' -%>
 
     <div id="footer">
@@ -61,10 +42,9 @@
 
 <% end %>
 
-<% content_for :javascript, javascript_include_tag("products") -%>
-
 <% content_for :javascript do -%>
   <%= javascript_include_tag "courses" %>
+  <%= javascript_include_tag "products" %>
 
   <script type="text/javascript" language="javascript" charset="utf-8">
     //<![CDATA[
