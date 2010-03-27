@@ -1,0 +1,30 @@
+<% content_for :title, t('titles.new', :model => ProductPresentation.human_name) %>
+
+<% form_for(@product_presentation) do |f| %>
+  
+  <p>
+    <label>Product Parent</label>
+    <select>
+      <option value="">Select Parent</option>
+      <%= options_for_select(Product.all.map {|p| [truncate(p.name, 20), p.id]}) %>
+    </select>
+  </p>
+  <p>
+    <%= f.label :name, ProductPresentation.human_attribute_name(:name) %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description, ProductPresentation.human_attribute_name(:description) %><br />
+    <%= f.text_field :description %>
+  </p>
+  <p>
+    <%= f.label :unit_price, ProductPresentation.human_attribute_name(:unit_price) %><br />
+    <%= f.text_field :unit_price %>
+  </p>
+
+  <p>
+    <%= f.submit t('forms.create') %>
+  </p>
+<% end %>
+
+<%= link_to t('forms.back'), product_presentations_path %>

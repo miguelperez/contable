@@ -1,24 +1,8 @@
 <%content_for :title, t('titles.editing', :model => Ingredient.human_name) %>
 
 <% form_for(@ingredient, :html => {:id => 'styled-form'}) do |f| %>
-  <div id="field-set" class="client">
-    <h3><span><%= t('titles.details', :model => Ingredient.human_name) %></span></h3>
 
-    <p id="label">
-      <%= f.label :name, Ingredient.human_attribute_name(:name) %>
-      <%= f.text_field :name %>
-    </p>
-
-    <p id="description">
-      <%= f.label :description, Ingredient.human_attribute_name(:description) %>
-      <%= f.text_field :description %>
-    </p>
-
-    <p id="unit">
-      <%= f.label :unit, Ingredient.human_attribute_name(:unit) %>
-      <%= f.text_field :unit %>
-    </p>
-  </div>
+  <%= render :partial => 'ingredients/form', :locals => {:form => f} %>
 
   <div class="clear"></div>
 

@@ -1,0 +1,29 @@
+<div id="field-set" class="client">
+  <h3><span><%= t('titles.details', :model => Client.human_name) %></span></h3>
+
+  <p>
+    <%= form.label :id_number, Client.human_attribute_name(:id_number) %>
+    <%= form.text_field :id_number %>
+  </p>
+
+  <p>
+    <%= form.label :name, Client.human_attribute_name(:name) %>
+    <%= form.text_field :name %>
+  </p>
+
+  <p>
+    <%= form.label :last_name, Client.human_attribute_name(:last_name) %>
+    <%= form.text_field :last_name %>
+  </p>
+
+  <p>
+    <%= form.label :address, Client.human_attribute_name(:address) %>
+    <%= form.text_field :address %>
+  </p>
+
+  <p>
+    <%= form.label :email, Client.human_attribute_name(:email) %>
+    <%= form.text_field :email %>
+  </p>
+
+</div>

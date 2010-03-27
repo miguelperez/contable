@@ -1,0 +1,18 @@
+<div id="field-set" class="ingredient">
+  <h3><span><%= t('titles.details', :model => Ingredient.human_name) %></span></h3>
+
+  <p id="label">
+    <%= form.label :name, Ingredient.human_attribute_name(:name) %>
+    <%= form.text_field :name %>
+  </p>
+
+  <p id="description">
+    <%= form.label :description, Ingredient.human_attribute_name(:description) %>
+    <%= form.text_field :description %>
+  </p>
+
+  <p id="unit">
+    <%= form.label :unit, Ingredient.human_attribute_name(:unit) %>
+    <%= form.text_field :unit %>
+  </p>
+</div>

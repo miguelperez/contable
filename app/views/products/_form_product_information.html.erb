@@ -1,0 +1,11 @@
+  <div id="field-set">
+    <h3><span><%= t('titles.new', :model => Product.human_name)%></span></h3>
+    <p>
+      <%= form.label :name, Product.human_attribute_name(:name) %><br />
+      <%= form.text_field :name %>
+    </p>
+    <p>
+      <%= form.label :description, Product.human_attribute_name(:description) %><br />
+      <%= form.text_field :description %>
+    </p>
+  </div>
