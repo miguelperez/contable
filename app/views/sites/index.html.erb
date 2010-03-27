@@ -1,1 +1,13 @@
-El index del sitio de contable como tal! :D
+<%= render :partial => 'sites/sign_in_form' %>
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    //<![CDATA[
+    _(document).ready(function (){
+      _('#login_button').click(function(){
+        _('.sign-in-form').toggle();
+      });
+    });
+    //]]>
+  </script>
+<% end %>

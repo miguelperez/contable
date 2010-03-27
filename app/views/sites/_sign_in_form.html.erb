@@ -1,0 +1,27 @@
+<div class="sign-in">
+  <h2 id="login_button"><%= t('titles.login') %></h2>
+  <div class="sign-in-form">
+    <% form_for :session, :url => session_path do |form| %>
+      <div class="text_field">
+        <%= form.label :email, t('activerecord.attributes.user.email') %>
+        <%= form.text_field :email %>
+      </div>
+      <div class="text_field">
+        <%= form.label :password, t('activerecord.attributes.user.password') %>
+        <%= form.password_field :password %>
+      </div>
+      <div class="submit_field">
+        <%= form.submit t('titles.login'), :disable_with => t('messages.please_wait') %>
+      </div>
+    <% end %>
+
+    <ul>
+      <li>
+        <%= link_to t('messages.sign_up'), new_user_path %>
+      </li>
+      <li>
+        <%= link_to t('messages.forgot_password'), new_password_path %>
+      </li>
+    </ul>
+  </div>
+</div>

@@ -21,6 +21,9 @@ en:
     error: "{{confirmation}} {{check_again}} and {{try_again}}"
     successful_update: "{{model}} was successfully updated."
     successful_create: "{{model}} was successfully created."
+    please_wait: "Please wait..."
+    forgot_password: "Forgot Password"
+    sign_up: "Sign up"
   #this are the labels for the navigation menus of the application
   navigation:
     add: "add"

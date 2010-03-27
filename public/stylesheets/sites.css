@@ -1,0 +1,62 @@
+/* 
+    Document   : sites.css
+    Created on : Mar 26, 2010, 9:25:21 PM
+    Author     : miguel
+    Description: This are the styles used for the application that users that are
+                 not logged in see.
+*/
+
+/*styles for the sign in form*/
+html{
+  height: 100%;
+}
+body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: verdana,arial,helvetica,sans-serif;
+  font-size: 13px;
+}
+.sign-in{
+  position: absolute;
+  top: 3px;
+  right: 6px;
+}
+.sign-in h2{
+  text-align: center;
+  cursor: pointer;
+  width: 300px;
+  background-color: gray;
+  border: 1px solid;
+  margin: 0px;
+  padding: 0px;
+}
+.sign-in h2:hover{
+  background-color: blue;
+}
+.sign-in-form{
+  display: none;
+  width: 300px;
+  z-index: 1;
+}
+
+.sign-in-form input{
+  
+}
+
+.sign-in-form ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.sign-in-form ul li{
+  padding-bottom: 3px;
+  padding-top: 3px;
+}
+.sign-in-form ul li a{
+  text-decoration: none;
+}
+.sign-in-form ul li a:hover{
+  text-decoration: underline;
+}
+/*end styles for the sign in form*/
