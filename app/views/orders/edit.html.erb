@@ -1,47 +1,12 @@
 <%content_for :title, t('titles.editing', :model => Order.human_name) %>
 
 <% form_for(@order, :html => {:id => 'styled-form'}) do |f| %>
-  
+
   <%= render :partial => 'orders/client_form', :locals =>  { :client => @order.client }%>
 
   <div id="content-wrapper">
 
-    <div id="header">
-      <span class="flow-left">
-        <%= f.label :status, Order.human_attribute_name(:status) %>
-        <%= f.select :status, Order.STATUSES.map {|status| [status, status] } %>
-      </span>
-      <span class="flow-rigth">
-        <%= f.label :registration_date, Order.human_attribute_name(:registration_date) %>
-        <%= f.text_field :registration_date, :value => @order.registration_date.strftime("%m/%d/%Y") %>
-      </span>
-      <div class="clear"></div>
-    </div>
-
-    <div>
-      <span class="flow-rigth">
-        <%= round_button('add', "add another product",{:onclick => "addRowToProductsTable(\"products\", \"total_row\")"}) %>
-      </span>
-      <div class="clear"></div>
-      <table id="products" class="default-table">
-        <tbody>
-          <tr>
-            <th><%= OrderProductPresentation.human_attribute_name(:quantity) %></th>
-            <th><%= ProductPresentation.human_attribute_name(:name) %></th>
-            <th><%= ProductPresentation.human_attribute_name(:description) %></th>
-            <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
-            <th><%= Order.human_attribute_name(:ammount) %></th>
-            <th></th>
-          </tr>
-          <%= render :partial => 'orders/product_presentation_form' %>
-          <tr id="total_row">
-            <td class="item"><div><%= f.label :ammount, Order.human_attribute_name(:ammount), "Order Total" %></div></td>
-            <td colspan="3" class="item three-item"><%= text_field "ammount", "in_words", :id => 'grant-total-words', :class => 'big-input'%></td>
-            <td colspan="2" class="item"><%= f.text_field :ammount, :class => 'grant-total li-input'%></td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <%= render :partial => 'orders/form', :locals =>  { :form => f }%>
 
     <div id="footer">
       <%= f.submit t('forms.update'), :class => 'big-button' %>

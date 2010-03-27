@@ -1,0 +1,36 @@
+<div id="header">
+  <span class="flow-left">
+    <%= form.label :status, Order.human_attribute_name(:status) %>
+    <%= form.select :status, Order.STATUSES.map {|status| [status, status] } %>
+  </span>
+  <span class="flow-rigth">
+    <%= form.label :registration_date, Order.human_attribute_name(:registration_date) %>
+    <%= form.text_field :registration_date, :value => @order.registration_date.strftime("%m/%d/%Y") %>
+  </span>
+  <div class="clear"></div>
+</div>
+
+<div>
+  <span class="flow-rigth">
+    <%= round_button('add', "add another product",{:onclick => "addRowToProductsTable(\"products\", \"total_row\")"}) %>
+  </span>
+  <div class="clear"></div>
+  <table id="products" class="default-table">
+    <tbody>
+      <tr>
+        <th><%= OrderProductPresentation.human_attribute_name(:quantity) %></th>
+        <th><%= ProductPresentation.human_attribute_name(:name) %></th>
+        <th><%= ProductPresentation.human_attribute_name(:description) %></th>
+        <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
+        <th><%= Order.human_attribute_name(:ammount) %></th>
+        <th></th>
+      </tr>
+      <%= render :partial => 'orders/product_presentation_form' %>
+      <tr id="total_row">
+        <td class="item"><div><%= form.label :ammount, Order.human_attribute_name(:ammount) %></div></td>
+        <td colspan="3" class="item three-item"><%= text_field "ammount", "in_words", :id => 'grant-total-words', :class => 'big-input'%></td>
+        <td colspan="2" class="item"><%= form.text_field :ammount, :class => 'grant-total li-input'%></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

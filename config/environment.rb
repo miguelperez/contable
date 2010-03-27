@@ -73,6 +73,10 @@ Rails::Initializer.run do |config|
   #Tell rails to look for locales in nested directories in the locales directory.
   #This is for having the locales files organized inside the confing/locales direcotry.
   config.i18n.load_path += Dir[File.join(RAILS_ROOT, 'config', 'locales', '**', '*.{rb,yml}')]
+
+  #Tell rails to stop surrounding the form fields with fielWithErrors when validation errors
+  #occur
+  config.action_view.field_error_proc = proc {|html, instance| html }
 end
 
 #easy menus for navigation
