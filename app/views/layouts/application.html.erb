@@ -9,7 +9,7 @@
     <%= stylesheet_link_tag 'forms' %>
     <%= stylesheet_link_tag 'screen', :media => 'all', :cache => true %>
 
-    <style>
+    <style id="generated_styles">
       .color-select{
         background-color: <%= 'blue' %>;
       }
@@ -54,5 +54,8 @@
 
     </div>
     <%= render :partial => 'shared/javascript' %>
+    <script type="text/javascript">
+      Application.initialize();
+    </script>
   </body>
 </html>

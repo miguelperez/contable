@@ -232,3 +232,20 @@ div.tabs > div.tab {
   border: 1px solid #aaab9c;
 }
 /*end tabbed panel styles*/
+
+/*styles for changing the layout color
+this are only the name of the classes
+body > .whole-wrapper{  }
+
+.whole-wrapper > .table.default-table,
+.whole-wrapper > table.default-table td,
+.whole-wrapper > table.listing,
+.whole-wrapper > table.listing tr.even,
+.whole-wrapper > table.listing td,
+.whole-wrapper > #styled-form #field-set,
+.whole-wrapper > #styled-form #field-set h3,
+.whole-wrapper > #styled-form #content-wrapper,
+.whole-wrapper > .big-button
+{border: 1px solid #e8e8e8;}
+
+styles for changing the layout color*/

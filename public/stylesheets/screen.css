@@ -36,7 +36,7 @@ table.default-table td input, table.default-table td select{
 table.listing{
   border: 1px solid #e8e8e8;
   border-collapse: collapse;
-  width: 50%;
+  width: 100%;
   margin-top: 5px;
 }
 table.listing tr.odd{
@@ -45,7 +45,7 @@ table.listing tr.odd{
 table.listing tr.even{
   background-color: #e8e8e8;
 }
-table.listing tr:hover{
+table.listing tr:hover, table.listing tr.even:hover, table.listing tr.odd:hover{
   background-color: #fffbd2;
 }
 table.listing th{
