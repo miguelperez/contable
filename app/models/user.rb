@@ -8,7 +8,9 @@
 class User < ActiveRecord::Base
   include Clearance::User
   has_many :orders, :dependent => :destroy
+  serialize :color
 end
+
 
 
 # == Schema Information
@@ -26,5 +28,6 @@ end
 #  updated_at         :datetime
 #  language           :string(255)     default("en")
 #  name               :string(255)
+#  color              :string(255)
 #
 

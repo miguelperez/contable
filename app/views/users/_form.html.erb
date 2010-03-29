@@ -1,0 +1,21 @@
+<div id="field-set" class="user">
+  <h3><span><%= t('titles.details', :model => User.human_name) %></span></h3>
+
+  <p>
+    <%= form.label :email, User.human_attribute_name(:email) %>
+    <%= form.text_field :email %>
+  </p>
+
+  <p>
+    <%= form.label :language, User.human_attribute_name(:language) %>
+    <select>
+      <%= options_for_select([["Español (Colombia)", "es-CO"], ["English", "en"]]) %>
+    </select>
+  </p>
+
+  <p>
+    <%= form.label :color, User.human_attribute_name(:color) %>
+    <%= form.text_field :color %>
+  </p>
+
+</div>

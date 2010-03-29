@@ -1,0 +1,15 @@
+<%content_for :title, t('titles.showing', :model => User.human_name) %>
+
+<% form_for(@user, :html => {:id => 'styled-form'}) do |f| %>
+
+  <%= render :partial => 'users/form', :locals => {:form => f} %>
+
+  <div class="clear"></div>
+
+  <p id="submit">
+    <%= f.submit t('forms.update'), :class => 'big-button' %>
+    <%= link_to t('forms.cancel'), dashboard_path %>
+  </p>
+
+<% end %>
+<%= link_to t('forms.back'), dashboard_path %>

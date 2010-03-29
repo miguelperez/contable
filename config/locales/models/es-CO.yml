@@ -45,3 +45,4 @@ es-CO:
         password: "Contraseña"
         language: "Idioma"
         name: "Nombre"
+        color: "Color"
