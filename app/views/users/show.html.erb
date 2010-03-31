@@ -2,7 +2,7 @@
 
 <% form_for(@user, :html => {:id => 'styled-form'}) do |f| %>
 
-  <%= render :partial => 'users/form', :locals => {:form => f} %>
+  <%= render :partial => 'users/form', :locals => {:form => f, :user => @user} %>
 
   <div class="clear"></div>
 

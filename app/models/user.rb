@@ -9,6 +9,28 @@ class User < ActiveRecord::Base
   include Clearance::User
   has_many :orders, :dependent => :destroy
   serialize :color
+  
+  attr_accessor :red, :green, :blue
+  
+  #TODO: use metaprogramming for things like this.
+  #returns the ammount for green
+  def green
+    return self.color['green'] if self.color
+    return 0
+  end
+  
+  #returns the ammount for red
+  def red
+    return self.color['red'] if self.color
+    return 0
+  end
+  
+  #returns the ammount for blue
+  def blue
+    return self.color['blue'] if self.color
+    return 0
+  end
+  
 end
 
 

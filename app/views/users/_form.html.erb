@@ -2,20 +2,20 @@
   <h3><span><%= t('titles.details', :model => User.human_name) %></span></h3>
 
   <p>
-    <%= form.label :email, User.human_attribute_name(:email) %>
-    <%= form.text_field :email %>
+    <%= User.human_attribute_name(:email) %>
+    <%= user.email %>
   </p>
 
   <p>
     <%= form.label :language, User.human_attribute_name(:language) %>
-    <select>
-      <%= options_for_select([["Español (Colombia)", "es-CO"], ["English", "en"]]) %>
-    </select>
+    <%= select_tag 'user[language]', options_for_select([["Español (Colombia)", "es-CO"], ["English", "en"]], user.language)%>
   </p>
 
   <p>
     <%= form.label :color, User.human_attribute_name(:color) %>
-    <%= form.text_field :color %>
+    <%= form.text_field :red %>
+    <%= form.text_field :green %>
+    <%= form.text_field :blue %>
   </p>
 
 </div>
