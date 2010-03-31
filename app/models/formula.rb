@@ -7,6 +7,9 @@
 class Formula < ActiveRecord::Base
   belongs_to :formulable, :polymorphic => true
   belongs_to :ingredient
+  
+  has_many :formulas, :as => :formulable
+  has_many :ingredients, :through => :formulas
 
   validates_presence_of :ingredient_id
   validates_presence_of :ingredient_ammount
