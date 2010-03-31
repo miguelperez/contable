@@ -45,3 +45,6 @@ en:
         language: "Language"
         name: "Name"
         color: "Color"
+        red: "Red"
+        green: "Green"
+        blue: "Blue"

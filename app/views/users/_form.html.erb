@@ -13,8 +13,14 @@
 
   <p>
     <%= form.label :color, User.human_attribute_name(:color) %>
-    <%= form.text_field :red %>
-    <%= form.text_field :green %>
+
+	<%= form.label :red, User.human_attribute_name(:red) %>
+    <%= form.text_field :red %><br>
+    
+    <%= form.label :green, User.human_attribute_name(:green) %>
+    <%= form.text_field :green %><br>
+    
+    <%= form.label :blue, User.human_attribute_name(:blue) %>
     <%= form.text_field :blue %>
   </p>
 

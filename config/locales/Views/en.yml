@@ -13,6 +13,7 @@ en:
     add_ingredient: "Add ingredient"
   #messages that are shown on the views
   messages:
+    welcome: "Welcome"
     confirmation: "Are you sure?"
     no_update_confirmation: "There where errors trying to update."
     no_create_confirmation: "There where errors trying to save."

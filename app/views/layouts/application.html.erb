@@ -33,7 +33,7 @@
             <div class="clear"></div>
           </div>
           <div class="user-bar">
-            Welcome <%= link_to(current_user.name, user_path(current_user)) %>, <%= link_to(t('titles.logout'), sign_out_path) %>
+            <%= t('messages.welcome')%> <%= link_to(current_user.name, user_path(current_user)) %>, <%= link_to(t('titles.logout'), sign_out_path) %>
           </div>
         <% end %>
       </div>

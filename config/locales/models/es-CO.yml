@@ -46,3 +46,6 @@ es-CO:
         language: "Idioma"
         name: "Nombre"
         color: "Color"
+        red: "Rojo"
+        green: "Verde"
+        blue: "Azul"
