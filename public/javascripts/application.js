@@ -5,6 +5,11 @@ var Application = (function(_){
   //initializes this object
   var initialize = function(){};
   
+  //shows the body content
+  var show = function(){
+  	$('body').show();
+  };
+  
   //Returns the Hex value of a color in RGB format.
   var rgbToHex = function(red, green, blue)
   {
@@ -95,8 +100,16 @@ var Application = (function(_){
     return name + "{" + attributes + "}";
   };
   
+  //executes an ajax request and changes the color of the layout
+  var changeColor = function(red, green, blue, button){
+  	changeColorSchema(red, green, blue);
+	$(button).toggle();
+  };
+  
   return{
     'initialize': initialize,
-    'changeColorSchema': changeColorSchema
+    'changeColorSchema': changeColorSchema,
+	'show': show,
+	'changeColor': changeColor
   }
 })(_);

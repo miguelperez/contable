@@ -137,6 +137,11 @@ body{
   margin-top:3px;
   width:17px;
 }
+#colors_holder{
+  float:right;
+  margin-left:9px;
+  margin-top:3px;
+}
 .user-bar{
   position: absolute;
   right: 7px;

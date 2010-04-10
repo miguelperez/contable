@@ -8,5 +8,5 @@ coverage/*
 *.swp
 rerun.txt
 doc/*
-
+.project
 !.keep
