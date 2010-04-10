@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = current_user
   end
-
+  
   def update
     @user = User.find(params[:id])
     @user.language = params[:user][:language]
@@ -17,6 +17,23 @@ class UsersController < ApplicationController
     end
     flash.keep
     redirect_to user_path(current_user.id)
+  end
+  
+  #Updates the color attribute of a user via ajax.
+  def update_color()
+    raise "Only ajax request." if !request.xhr?
+    begin
+      @user = User.find(params[:id])
+      @user.color = create_color(params)
+      if @user.save
+        head :ok
+      else
+        head :unprocessable_entity
+      end
+    rescue
+      head :unprocessable_entity
+    end
+    
   end
   
   private

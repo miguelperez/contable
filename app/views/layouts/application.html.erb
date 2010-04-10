@@ -30,10 +30,10 @@
               <%= render_navigation(:level => 1) %>
             </div>            
 			<div id="colors_holder" style="display:none;">
-				<div class="color-select" style="background-color:#cc0000;" onclick="Application.changeColor(204,0,0,'colors_holder');"></div>
-				<div class="color-select" style="background-color:#c58600;" onclick="Application.changeColor(197,134,0,'colors_holder');"></div>
-				<div class="color-select" style="background-color:#65c400;" onclick="Application.changeColor(101,196,0,'colors_holder');"></div>
-				<div class="color-select" style="background-color:#00005a;" onclick="Application.changeColor(0,0,90,'colors_holder');"></div>
+				<div class="color-select" style="background-color:#cc0000;" onclick="Application.changeColor(<%=current_user.id%>,204,0,0,'colors_holder');"></div>
+				<div class="color-select" style="background-color:#c58600;" onclick="Application.changeColor(<%=current_user.id%>,197,134,0,'colors_holder');"></div>
+				<div class="color-select" style="background-color:#65c400;" onclick="Application.changeColor(<%=current_user.id%>,101,196,0,'colors_holder');"></div>
+				<div class="color-select" style="background-color:#00005a;" onclick="Application.changeColor(<%=current_user.id%>,0,0,90,'colors_holder');"></div>
 			</div>			
 			<div class="color-select" onclick="$('colors_holder').toggle();"></div>
             <div class="clear"></div>

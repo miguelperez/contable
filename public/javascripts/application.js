@@ -101,9 +101,21 @@ var Application = (function(_){
   };
   
   //executes an ajax request and changes the color of the layout
-  var changeColor = function(red, green, blue, button){
-  	changeColorSchema(red, green, blue);
-	$(button).toggle();
+  var changeColor = function(user_id, red, green, blue, button){
+  	var url = "/users/" + user_id + "/update_color";
+	var params = "red=" + red + "&green=" + green + "&blue=" + blue;
+	
+	//Executes the ajax request using prototype
+	new Ajax.Request(url,{
+		method: 'post',
+		parameters: params,
+		asynchronous: true,
+		onSuccess: function(transport){
+			changeColorSchema(red, green, blue);
+			$(button).toggle();		
+		}
+	});
+	
   };
   
   return{

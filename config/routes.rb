@@ -1,7 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
   map.resource :session, :controller => 'sessions'
 
-  map.resources :users
+  map.resources :users, :member => {:update_color => :post}
 
   map.resources :product_presentations
 
