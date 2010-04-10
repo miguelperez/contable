@@ -9,7 +9,7 @@
       <th><%= Order.human_attribute_name(:ammount) %></th>
     </tr>
     <% @orders.each do |order| %>
-      <tr class="<%= cycle('odd','even') %>">
+      <tr class="<%= cycle('odd','even') %> <%= order_class(order) %>">
         <td><%=h order.status %></td>
         <td><%=l order.registration_date, :format => :default %></td>
         <td><%=l order.expiration_date, :format => :default  %></td>

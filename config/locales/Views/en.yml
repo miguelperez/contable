@@ -55,7 +55,7 @@ en:
     product_presentation: "Presentation"
     total: "Total"
     sub_total: "Subtotal"
-    discounts: "Discount"
+    discount: "Discount"
     taxes: "Taxes"
     login: "Login"
     logout: "Logout"

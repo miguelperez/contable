@@ -55,7 +55,7 @@ es-CO:
     product_presentation: "Presentación"
     total: "Total"
     sub_total: "Subtotal"
-    discounts: "Descuento"
+    discount: "Descuento"
     taxes: "Impuestos"
     login: "Iniciar sesión"
     logout: "Cerrar sesión"

@@ -42,7 +42,7 @@ class Order < ActiveRecord::Base
       maximum_order_number = Order.maximum(:order_number)
       self.order_number = maximum_order_number ? maximum_order_number + 1 : 1
       #also lets add a registration date
-      self.registration_date = self.expiration_date = Time.now
+      self.registration_date = self.expiration_date = Time.now unless self.registration_date
     end
   end
 

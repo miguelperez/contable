@@ -45,6 +45,9 @@ table.listing tr.odd{
 table.listing tr.even{
   background-color: #e8e8e8;
 }
+table.listing tr.expired{
+  background-color: red;
+}
 table.listing tr:hover, table.listing tr.even:hover, table.listing tr.odd:hover{
   background-color: #fffbd2;
 }
