@@ -7,9 +7,10 @@
       <th><%= Order.human_attribute_name(:registration_date) %></th>
       <th><%= Order.human_attribute_name(:expiration_date) %></th>
       <th><%= Order.human_attribute_name(:ammount) %></th>
+	  <th colspan="4"><%= t('titles.actions') %></th>
     </tr>
     <% @orders.each do |order| %>
-      <tr class="<%= cycle('odd','even') %> <%= order_class(order) %>">
+      <tr id="<%="tr_#{order.id}"%>" class="<%= cycle('odd','even') %> <%= order_class(order) %>">
         <td><%=h order.status %></td>
         <td><%=l order.registration_date, :format => :default %></td>
         <td><%=l order.expiration_date, :format => :default  %></td>
@@ -17,9 +18,11 @@
         <td><%= link_to t('forms.show'), order %></td>
         <td><%= link_to t('forms.edit'), edit_order_path(order) %></td>
         <td><%= link_to t('forms.delete'), order, :confirm => t('messages.confirmation'), :method => :delete %></td>
+		<td><%= link_to_function(t('forms.pay'), "payOrder(#{order.id},'#{form_authenticity_token}')") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <%= will_paginate @orders %>
+<% content_for :javascript, javascript_include_tag("orders") -%>

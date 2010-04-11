@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  protect_from_forgery :only => :pay
   before_filter :fetch_product_presentations, :only => [:edit, :new, :create]
   # GET /orders
   # GET /orders.xml
@@ -97,6 +98,21 @@ class OrdersController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @orders }
+    end
+  end
+  
+  def pay
+    raise "Only ajax request." if !request.xhr?
+    begin
+      @order = Order.find(params[:id])
+      @order.status = 'Paid'
+      if @order.save
+        head :ok
+      else
+        head :unprocessable_entity
+      end
+    rescue
+      head :unprocessable_entity
     end
   end
 

@@ -11,6 +11,7 @@ en:
     back: "Back"
     select_a: "Select a {{model}}"
     add_ingredient: "Add ingredient"
+    pay: "Paid"
   #messages that are shown on the views
   messages:
     welcome: "Welcome"
@@ -59,3 +60,4 @@ en:
     taxes: "Taxes"
     login: "Login"
     logout: "Logout"
+    actions: "Actions"

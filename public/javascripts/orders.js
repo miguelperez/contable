@@ -118,6 +118,23 @@ function addToGrantTotal(value){
   }
 }
 
+//Marks an order as payed.
+function payOrder(orderId, token){
+	var url = "/orders/" + orderId + "/pay";
+	var params = "id=" + orderId + "&authenticity_token=" + token;
+	
+	//Executes the ajax request using prototype
+	new Ajax.Request(url,{
+		method: 'post',
+		parameters: params,
+		asynchronous: true,
+		onSuccess: function(transport){
+			//remove the order from the list.
+			$('tr_'+orderId).remove();
+		}
+	});
+}
+
 //This object will allow me to convert a number to a string. Based on the
 //implementation given by Jose Felix Gomez in
 //http://github.com/jfgomez86/number-to-words

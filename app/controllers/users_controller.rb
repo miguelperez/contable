@@ -32,8 +32,7 @@ class UsersController < ApplicationController
       end
     rescue
       head :unprocessable_entity
-    end
-    
+    end    
   end
   
   private

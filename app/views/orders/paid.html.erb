@@ -7,6 +7,7 @@
       <th><%= Order.human_attribute_name(:registration_date) %></th>
       <th><%= Order.human_attribute_name(:expiration_date) %></th>
       <th><%= Order.human_attribute_name(:ammount) %></th>
+	  <th><%= t('titles.actions') %></th>
     </tr>
     <% @orders.each do |order| %>
       <tr class="<%= cycle('odd','even') %>">
@@ -15,8 +16,6 @@
         <td><%=l order.expiration_date, :format => :default  %></td>
         <td><%= number_to_currency(order.ammount) %></td>
         <td><%= link_to t('forms.show'), order %></td>
-        <td><%= link_to t('forms.edit'), edit_order_path(order) %></td>
-        <td><%= link_to t('forms.delete'), order, :confirm => t('messages.confirmation'), :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>

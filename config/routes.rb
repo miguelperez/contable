@@ -9,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :ingredients
 
-  map.resources :orders, :collection => {:paid => :get}
+  map.resources :orders, :collection => {:paid => :get}, :member => {:pay => :post}
 
   map.resources :clients
 

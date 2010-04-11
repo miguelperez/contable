@@ -11,6 +11,7 @@ es-CO:
     back: "Volver"
     select_a: "Seleccione un {{model}}"
     add_ingredient: "Agregar ingrediente"
+    pay: "Pagar"
   #messages that are shown on the views
   messages:
     welcome: "Bienvenido"
@@ -59,3 +60,4 @@ es-CO:
     taxes: "Impuestos"
     login: "Iniciar sesión"
     logout: "Cerrar sesión"
+    actions: "Acciones"
