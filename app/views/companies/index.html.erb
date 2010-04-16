@@ -1,0 +1,32 @@
+<% content_for :title, t('titles.list', :model => Company.human_name) %>
+
+<table class="listing">
+  <tbody>
+    <tr>
+      <th><%= Company.human_attribute_name(:name) %></th>
+      <th><%= Company.human_attribute_name(:id_number) %></th>
+      <th><%= Company.human_attribute_name(:city) %></th>
+			<th><%= Company.human_attribute_name(:address) %></th>
+			<th><%= Company.human_attribute_name(:phone) %></th>
+			<th><%= Company.human_attribute_name(:account_number) %></th>
+			<th><%= Company.human_attribute_name(:owner_name) %></th>
+			<th colspan="2"><%= t('titles.actions') %></th>
+    </tr>
+
+    <% @companies.each do |company| %>
+      <tr class="<%= cycle('odd','even') %>">
+        <td><%=h company.name %></td>
+        <td><%=h company.id_number %></td>
+				<td><%=h company.city %></td>
+				<td><%=h company.address %></td>
+				<td><%=h company.phone %></td>
+				<td><%=h company.account_number %></td>
+				<td><%=h company.owner_name %></td>
+        <td><%= link_to t('forms.edit'), edit_company_path(company) %></td>
+        <td><%= link_to t('forms.delete'), company, :confirm => t('messages.confirmation'), :method => :delete %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @companies %>

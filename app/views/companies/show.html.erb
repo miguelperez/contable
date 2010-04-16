@@ -1,0 +1,39 @@
+<%content_for :title, t('titles.showing', :model => Company.human_name) %></b>
+  
+  <p>
+    <b><%= Company.human_attribute_name(:name) %></b>
+    <%=h @company.name %>
+  </p>
+
+  <p>
+    <b><%= Company.human_attribute_name(:id_number) %></b>
+    <%=h @company.id_number %>
+  </p>
+
+  <p>
+    <b><%= Company.human_attribute_name(:city) %></b>
+    <%=h @company.city %>
+  </p>
+
+  <p>
+    <b><%= Company.human_attribute_name(:address) %></b>
+    <%=h @company.address %>
+  </p>
+
+  <p>
+    <b><%= Company.human_attribute_name(:phone) %></b>
+    <%=h @company.phone %>
+  </p>
+  
+  <p>
+    <b><%= Company.human_attribute_name(:account_number) %></b>
+    <%=h @company.account_number %>
+  </p>
+  
+  <p>
+    <b><%= Company.human_attribute_name(:owner_name) %></b>
+    <%=h @company.owner_name %>
+  </p>
+
+<%= link_to t('forms.edit'), edit_ingredient_path(@company) %></b> |
+<%= link_to t('forms.back'), companies_path %>

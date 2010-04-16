@@ -1,0 +1,14 @@
+<%content_for :title, t('titles.new', :model => Company.human_name) %>
+
+<% form_for(@company, :html => {:id => 'styled-form'}) do |f| %>
+
+  <%= render :partial => 'companies/form', :locals => {:form => f} %>
+
+  <div class="clear"></div>
+
+  <p id="submit">
+    <%= f.submit t('forms.create'), :class => 'big-button' %>
+    <%= link_to t('forms.cancel'), companies_path %>
+  </p>
+
+<% end %>
