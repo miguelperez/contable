@@ -73,6 +73,12 @@ class ProductPresentationsController < ApplicationController
       end
     end
   end
+  
+  #renders the page for adding ingredients to a product
+  def add_ingredients
+    @product_presentation = ProductPresentation.find(params[:id], :include => :product)
+    @ingredients = Ingredient.all - @product_presentation.ingredients
+  end
 
   # DELETE /product_presentations/1
   # DELETE /product_presentations/1.xml

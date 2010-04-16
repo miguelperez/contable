@@ -10,6 +10,7 @@ en:
       product: "Product"
       product_presentation: "Product Presentation"
       user: "User"
+      company: "Company"
     attributes:
       client:
         id_number: "Id Number"
@@ -48,3 +49,11 @@ en:
         red: "Red"
         green: "Green"
         blue: "Blue"
+      company:
+        name: "Name"
+        id_number: "Company registration number"
+        city: "City"
+        address: "Address"
+        phone: "Phone Number"
+        account_number: "Account Number"
+        owner_name: "Owner"

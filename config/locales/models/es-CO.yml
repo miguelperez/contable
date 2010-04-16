@@ -11,6 +11,7 @@ es-CO:
       product: "Producto"
       product_presentation: "Presentación de Producto"
       user: "Usuario"
+      company: "Empresa"
     attributes:
       client:
         id_number: "Cédula"
@@ -49,3 +50,11 @@ es-CO:
         red: "Rojo"
         green: "Verde"
         blue: "Azul"
+      company:
+        name: "Nombre"
+        id_number: "NIT/RUT"
+        city: "Ciudad"
+        address: "Dirección"
+        phone: "Teléfono"
+        account_number: "Número de cuenta"
+        owner_name: "Dueño"

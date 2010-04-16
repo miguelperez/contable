@@ -1,5 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -8,42 +7,43 @@
     <%= stylesheet_link_tag 'scaffold' %>
     <%= stylesheet_link_tag 'forms' %>
     <%= stylesheet_link_tag 'screen', :media => 'all', :cache => true %>
-
     <style id="generated_styles" type="text/css">
     </style>
-
     <%= javascript_include_tag 'jquery-1.4.2.min' %>
     <script type="text/javascript">
       var _ = jQuery.noConflict();
     </script>
-    <%= javascript_include_tag :defaults%>
+    <%= javascript_include_tag :defaults %>
     <%= yield :head %>
   </head>
   <body id="body" class="<%= body_class %>" style="display:none;">
-
     <div class="whole-wrapper">
-
       <div class="header">
         <% if signed_in? %>
-          <div id="btns">
-            <div class="menu">
-              <%= render_navigation(:level => 1) %>
-            </div>            
-			<div id="colors_holder" style="display:none;">
-				<div class="color-select" style="background-color:#cc0000;" onclick="Application.changeColor(<%=current_user.id%>,204,0,0,'colors_holder');"></div>
-				<div class="color-select" style="background-color:#c58600;" onclick="Application.changeColor(<%=current_user.id%>,197,134,0,'colors_holder');"></div>
-				<div class="color-select" style="background-color:#65c400;" onclick="Application.changeColor(<%=current_user.id%>,101,196,0,'colors_holder');"></div>
-				<div class="color-select" style="background-color:#00005a;" onclick="Application.changeColor(<%=current_user.id%>,0,0,90,'colors_holder');"></div>
-			</div>			
-			<div class="color-select" onclick="$('colors_holder').toggle();"></div>
-            <div class="clear"></div>
+        <div id="btns">
+          <div class="menu">
+            <%= render_navigation(:level => 1) %>
           </div>
-          <div class="user-bar">
-            <%= t('messages.welcome')%> <%= link_to(current_user.name, user_path(current_user)) %>, <%= link_to(t('titles.logout'), sign_out_path) %>
+          <div id="colors_holder" style="display:none;">
+            <div class="color-select" style="background-color:#cc0000;" onclick="Application.changeColor(<%=current_user.id%>,204,0,0,'colors_holder');">
+            </div>
+            <div class="color-select" style="background-color:#c58600;" onclick="Application.changeColor(<%=current_user.id%>,197,134,0,'colors_holder');">
+            </div>
+            <div class="color-select" style="background-color:#65c400;" onclick="Application.changeColor(<%=current_user.id%>,101,196,0,'colors_holder');">
+            </div>
+            <div class="color-select" style="background-color:#00005a;" onclick="Application.changeColor(<%=current_user.id%>,0,0,90,'colors_holder');">
+            </div>
           </div>
+          <div class="color-select" onclick="$('colors_holder').toggle();">
+          </div>
+          <div class="clear">
+          </div>
+        </div>
+        <div class="user-bar">
+          <%= t('messages.welcome') %><%= link_to(current_user.name, user_path(current_user)) %>, <%= link_to(t('titles.logout'), sign_out_path) %>
+        </div>
         <% end %>
       </div>
-
       <div class="content-wrapper">
         <%= render :partial => 'shared/flashes' -%>
         <div class="secondary-menu-container">
@@ -54,20 +54,19 @@
           <%= yield %>
         </div>
       </div>
-
     </div>
     <%= render :partial => 'shared/javascript' %>
-
     <script type="text/javascript">
-      Application.initialize();
-      <% if signed_in? %>
-        <% color = current_user.color %>
-        <% if color  %>
-            var red = <%= color['red']%>, green = <%= color['green']%>, blue = <%= color['blue']%>;
-            Application.changeColorSchema(red, green, blue);
-        <% end %>
-      <% end %>
-	  Application.show();
+            Application.initialize();
+            <% if signed_in? %>
+              <% color = current_user.color %>
+              <% if color  %>
+                  var red = <%= color['red']%>, green = <%= color['green']%>, blue = <%= color['blue']%>;
+                  Application.changeColorSchema(red, green, blue);
+              <% end %>
+            <% end %>
+      	  Application.show();
+          
     </script>
   </body>
 </html>

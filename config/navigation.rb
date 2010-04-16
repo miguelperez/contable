@@ -6,6 +6,10 @@ SimpleNavigation::Configuration.run do |navigation|
 
     primary.item :'separator', '', "", :class => 'separator'
     
+    primary.item :company, t('navigation.company'), companies_path
+
+    primary.item :'separator', '', "", :class => 'separator'
+    
     primary.item :client, t('navigation.clients'), clients_path do |secondary|
       secondary.dom_class = 'secondary-menu'
       secondary.item :new_client, t('navigation.add'), new_client_path

@@ -15,7 +15,7 @@
         <td><%= link_to t('forms.show'), product %></td>
         <td><%= link_to t('forms.edit'), edit_product_path(product) %></td>
         <td><%= link_to t('forms.delete'), product, :confirm => t('messages.confirmation'), :method => :delete %></td>
-        <td><%= link_to t('forms.add_ingredient'), product %></td>
+        <td><%= link_to t('forms.add_ingredient'), add_ingredients_product_path(product) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,9 +1,11 @@
-class UsersController < ApplicationController
+class UsersController < Clearance::UsersController
+  layout 'contable_site'
   after_filter :set_locale
   
   #renders the show page of an user.
   def show
     @user = current_user
+    render :layout => 'application'
   end
   
   def update
@@ -39,7 +41,7 @@ class UsersController < ApplicationController
   
   def set_locale
     #Setting the locale cookie.
-    I18n.locale = cookies[:locale] = current_user.language
+    I18n.locale = cookies[:locale] = current_user.language if signed_in?
   end
   
   #Returns a hash that contains the information of the users color.

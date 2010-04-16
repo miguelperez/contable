@@ -43,6 +43,7 @@ es-CO:
     product_presentations: "Presentaciones de Productos"
     product_information: "Información del producto"
     product_presentation_information: "Información presentación de producto"
+    company: "Empresa"
   #Translation for the different models
   titles:
     new: "Crear {{model}}"

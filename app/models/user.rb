@@ -8,8 +8,11 @@
 class User < ActiveRecord::Base
   include Clearance::User
   has_many :orders, :dependent => :destroy
+  has_many :companies
+  
   serialize :color
   
+  attr_accessible :name
   attr_accessor :red, :green, :blue
   
   #TODO: use metaprogramming for things like this.

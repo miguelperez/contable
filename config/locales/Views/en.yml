@@ -43,6 +43,7 @@ en:
     product_presentations: "Product presentations"
     product_information: "Product Information"
     product_presentation_information: "Product Presentation Information"
+    company: "Company"
   #Translation for the different models
   titles:
     new: "Create {{model}}"

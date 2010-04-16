@@ -100,6 +100,7 @@ end
 
 
 
+
 # == Schema Information
 #
 # Table name: orders
@@ -107,8 +108,8 @@ end
 #  id                :integer(4)      not null, primary key
 #  order_number      :integer(4)      default(0)
 #  status            :string(255)
-#  registration_date :datetime
-#  expiration_date   :datetime
+#  registration_date :date
+#  expiration_date   :date
 #  ammount           :integer(4)
 #  client_id         :integer(4)
 #  created_at        :datetime

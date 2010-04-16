@@ -91,6 +91,13 @@ class ProductsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  #renders the page for adding ingredients to a product
+  def add_ingredients
+    @product = Product.find(params[:id])
+    @product.formulas.build unless @product.formulas
+    @ingredients = Ingredient.all - @product.ingredients
+  end
 
   private
 

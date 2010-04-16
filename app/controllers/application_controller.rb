@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   #Checks that a user is authenticated for accessing any of the listed controllers
   def check_authentication
     case self.controller_name
-    when /^clients/i, /^ingredients/i, /^orders/i, /^pages/i, /^productpresentations/i, /^products/i
+    when /^clients/i, /^ingredients/i, /^orders/i, /^pages/i, /^productpresentations/i, /^products/i, /^company/i
       authenticate
     end
   end

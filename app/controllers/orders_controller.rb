@@ -101,6 +101,7 @@ class OrdersController < ApplicationController
     end
   end
   
+  #marks an order as payed.
   def pay
     raise "Only ajax request." if !request.xhr?
     begin
