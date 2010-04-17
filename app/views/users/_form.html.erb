@@ -20,13 +20,37 @@
     <%= form.label :color, User.human_attribute_name(:color) %>
 
 	<%= form.label :red, User.human_attribute_name(:red) %>
+	   <div id="red"></div>
     <%= form.text_field :red %><br>
     
     <%= form.label :green, User.human_attribute_name(:green) %>
+		<div id="green"></div>
     <%= form.text_field :green %><br>
     
     <%= form.label :blue, User.human_attribute_name(:blue) %>
+		<div id="blue"></div>
     <%= form.text_field :blue %>
   </p>
 
 </div>
+
+<% content_for :javascript, javascript_include_tag("jquery-ui-1.7.2.custom.min") -%>
+<% content_for :head, stylesheet_link_tag('jquery-ui-1.7.2.custom') %>
+
+<% content_for :javascript do%>
+<script type="text/javascript">
+	_(function() {
+    _("#red, #green, #blue").slider({
+      range: "max",
+      min: 0,
+      max: 255,
+      value: 2,
+      slide: function(event, ui) {
+				console.log('dd');
+        //$("#amount").val(ui.value);
+      }
+    });
+  });
+
+</script>
+<% end %>
