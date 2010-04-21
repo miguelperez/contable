@@ -77,6 +77,7 @@ class ProductPresentationsController < ApplicationController
   #renders the page for adding ingredients to a product
   def add_ingredients
     @product_presentation = ProductPresentation.find(params[:id], :include => :product)
+    @product_presentation.formulas.build unless @product_presentation.formulas
     @ingredients = Ingredient.all - @product_presentation.ingredients
   end
 

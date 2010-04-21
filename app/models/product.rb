@@ -10,6 +10,7 @@ class Product < ActiveRecord::Base
   has_many :ingredients, :through => :formulas
 
   after_update :save_product_presentations
+  after_update :save_formula
 
   validates_presence_of :name
   validates_presence_of :description

@@ -20,7 +20,8 @@ class ProductPresentation < ActiveRecord::Base
   validates_presence_of :name
   validates_presence_of :description
   validates_presence_of :unit_price
-
+  
+  after_update :save_formulas
   #--
   #Adding the methods for handling the upload of model formula trought product_presentations form
   #++
@@ -45,7 +46,7 @@ class ProductPresentation < ActiveRecord::Base
   end
 
   #Saves the edited formula.
-  def save_formula
+  def save_formulas
     formulas.each do |formula|
       #the false param, bypasses validation.
       formula.save(false)

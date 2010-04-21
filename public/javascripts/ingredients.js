@@ -33,7 +33,7 @@ var IngredientsHelper = (function(){
     var input = new Element('input', {
       'type':'text',
       'class':'styled-input',
-      'id': hash_name + '_new_formula_attributes__ingredient_ammount',
+      'id': 'new_formula_attributes__ingredient_ammount',
       'name': hash_name + '[new_formula_attributes][][ingredient_ammount]'
     });
     var roundButton = new Element('div', {
@@ -53,13 +53,15 @@ var IngredientsHelper = (function(){
   //creates the ingredient tag
   //ingredient_object is a json of the ingredient that will be added, it has the ingredient information.
   //parentContainer is the object which will hold the tag for adding the new ingredient.
-  var createIngredientTag = function(ingredientObject, parentContainer){
+	//label is the label we want to show next to the field
+	//hashName is the name of the model that will have the ingredients
+  var createIngredientTag = function(ingredientObject, parentContainer, label, hashName){
     var span = new Element('span').insert(ingredientObject.ingredient.name);
     var json = '{"ingredient":{"name":"'+ingredientObject.ingredient.name+'","id":'+ingredientObject.ingredient.id+'}}';
     var a = new Element('a', {
       'href':'#',
       'class':'tag',
-      'onclick':'IngredientsHelper.createIngredientForm('+ json +', $("ingredients_form"), this.up())'
+      'onclick':'IngredientsHelper.createIngredientForm('+ json +', $("ingredients_form"), this.up(), "' + label + '", "' + hashName + '")'
     }).insert(span);
     var li = new Element('li').insert(a);
 

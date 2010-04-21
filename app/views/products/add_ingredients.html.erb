@@ -1,0 +1,44 @@
+<% content_for :title, t('titles.editing', :model => Product.human_name) %>
+
+<% form_for(@product, :html => {:id => 'styled-form'}) do |f| %>
+
+  <div id="content-wrapper">
+
+    <% content_for :tab_link, tab_link(t('navigation.ingredients'))-%>
+		<% content_for :tab_body do %>
+		  <% tabbed_body t('navigation.ingredients'), false do %>
+		    <%= render(:partial => 'ingredients/add_ingredients', :locals => {:object_with_formulas => @product, :ingredients => @ingredients}) %>
+		  <% end -%>
+		<% end -%>
+
+    <%= render :partial => 'shared/tabbed_panel' -%>
+
+    <div id="footer">
+      <%= f.submit 'Update', :class => 'big-button' %>
+      <%= link_to 'Cancel', products_path %>
+    </div>
+
+  </div>
+
+<% end %>
+
+<% content_for :javascript do -%>
+  <%= javascript_include_tag "products" %>
+
+  <script type="text/javascript" language="javascript" charset="utf-8">
+    //<![CDATA[
+    _(function () {
+      var tabContainers = _('div.tabs > div.tab');
+
+      _('div.tabs ul.tabNavigation a').click(function () {
+        tabContainers.hide().filter(this.hash).show();
+
+        _('div.tabs ul.tabNavigation a').removeClass('selected');
+        _(this).addClass('selected');
+
+        return false;
+      }).filter(':first').click();
+    });
+    //]]>
+  </script>
+<% end -%>
