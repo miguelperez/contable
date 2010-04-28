@@ -43,7 +43,7 @@ class CompaniesController < ApplicationController
     @company = current_user.companies.find(params[:id])
     
     respond_to do |format|
-      if @company.save
+      if @company.update_attributes(params[:company])
         notice('updated', Company.human_name)
         format.html { redirect_to(@company) }
         format.xml  { render :xml => @company, :status => :created, :location => @company }
