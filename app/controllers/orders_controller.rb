@@ -16,7 +16,10 @@ class OrdersController < ApplicationController
   # GET /orders/1.xml
   def show
     @order = Order.find(params[:id])
-
+    #TODO comnpany se debe sacar de la informacion del order
+    
+    @company = current_user.companies ? current_user.companies.first : nil || Company.new
+    
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @order }

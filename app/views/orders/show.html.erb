@@ -1,77 +1,77 @@
 <% content_for :title, t('titles.order_number', :model => Order.human_name, :value => @order.order_number.to_s) -%>
 <div class="order-show">
-
-  <table class="order-header">
-    <tbody>
-      <tr>
-        <td>
-          <table class="listing">
-            <tbody>
-              <tr>
-                <td colspan="2"><%= t('titles.details', :model => Client.human_name) %></td>
-              </tr>
-              <tr>
-                <th><%= Client.human_attribute_name(:id_number) %></th>
-                <td><%=h @order.client.id_number %></td>
-              </tr>
-              <tr>
-                <th><%= Client.human_attribute_name(:name) %></th>
-                <td><%=h @order.client.name %></td>
-              </tr>
-              <tr>
-                <th><%= Client.human_attribute_name(:last_name) %></th>
-                <td><%=h @order.client.last_name %></td>
-              </tr>
-              <tr>
-                <th><%= Client.human_attribute_name(:address) %></th>
-                <td><%=h @order.client.address %></td>
-              </tr>
-              <tr>
-                <th><%= Client.human_attribute_name(:email) %></th>
-                <td><%=h @order.client.email %></td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-        <td>
-          <table class="listing">
-            <tbody>
-              <tr>
-                <td colspan="2"><%= t('titles.order_information') %></td>
-              </tr>
-              <tr>
-                <th><%= Order.human_attribute_name(:status) %></th>
-                <td><%=h @order.status %></td>
-              </tr>
-              <tr>
-                <th><%= Order.human_attribute_name(:registration_date) %></th>
-                <td><%=h @order.registration_date.strftime("%m/%d/%Y") %></td>
-              </tr>
-              <tr>
-                <th><%= Order.human_attribute_name(:expiration_date) %></th>
-                <td><%=h @order.expiration_date.strftime("%m/%d/%Y") %></td>
-              </tr>
-              <tr>
-                <th>.</th>
-                <td>.</td>
-              </tr>
-              <tr>
-                <th>.</th>
-                <td>.</td>
-              </tr>
-            </tbody>
-          </table>
-        </td>
-      </tr>
-    </tbody>
+	
+	<table class="order">
+    <tr>
+      <th colspan="3"><%= Order.human_attribute_name(:order_number) %></th>
+      <td><%=h @order.order_number %></td>
+    </tr>
+    <tr>
+      <th><%= Order.human_attribute_name(:registration_date) %></th>
+      <td><%=h @order.registration_date.strftime("%m/%d/%Y") %></td>
+      <th><%= Order.human_attribute_name(:expiration_date) %></th>
+      <td><%=h @order.expiration_date.strftime("%m/%d/%Y") %></td>
+    </tr>
   </table>
+  
+	<br />
+        
+	<table class="order">
+    <tr>
+      <th colspan="2"><%= t('titles.details', :model => Client.human_name) %></th>
+    </tr>
+    <tr>
+      <th><%= Client.human_attribute_name(:id_number) %></th>
+      <td><%=h @order.client.id_number %></td>
+    </tr>
+    <tr>
+      <th><%= Client.human_attribute_name(:name) %></th>
+      <td><%=h @order.client.full_name %></td>
+    </tr>
+    <tr>
+      <th><%= Client.human_attribute_name(:address) %></th>
+      <td><%=h @order.client.address %></td>
+    </tr>
+    <tr>
+      <th><%= Client.human_attribute_name(:email) %></th>
+      <td><%=h @order.client.email %></td>
+    </tr>
+  </table>
+	
+	<h1><%=h t('titles.owns_to') %></h1>
+	
+	<table class="order">
+    <tr>
+      <th><%= Company.human_attribute_name(:owner_name) %></th>
+      <td colspan="3"><%= h @company.owner_name %></td>
+    </tr>
+    <tr>
+      <th><%= Company.human_attribute_name(:account_number) %></th>
+      <td colspan="3"><%= h @company.account_number %></td>
+    </tr>
+    <tr>
+      <th><%= Company.human_attribute_name(:address) %></th>
+      <td><%= h @company.address %></td>
+      <th><%= Company.human_attribute_name(:phone) %></th>
+      <td><%= h @company.phone %></td>
+    </tr>
+    <tr>
+      <th><%= Company.human_attribute_name(:id_number) %></th>
+      <td><%= h @company.id_number %></td>
+    </tr>
+    <tr>
+      <th><%= Company.human_attribute_name(:city) %></th>
+      <td><%= h @company.city %></td>
+    </tr>
+  </table>
+	
+	<br>
 
-  <table class="listing">
+  <table class="order">
     <tbody>
       <tr>
         <th><%= OrderProductPresentation.human_attribute_name(:quantity) %></th>
         <th><%= ProductPresentation.human_attribute_name(:name) %></th>
-        <th><%= ProductPresentation.human_attribute_name(:description) %></th>
         <th><%= ProductPresentation.human_attribute_name(:unit_price) %></th>
         <th><%= Order.human_attribute_name(:ammount) %></th>
       </tr>
@@ -79,25 +79,24 @@
         <tr>
           <td><%=h product.quantity %></td>
           <td><%=h product.product_name %></td>
-          <td><%=h product.product_description %></td>
           <td><%=h product.unit_sold_price %></td>
           <td><%=h product.total_sold %></td>
         </tr>
       <% end %>
       <tr>
-        <td colspan="4"><%= t('titles.sub_total') %></td>
+        <td colspan="3"><%= t('titles.sub_total') %></td>
         <td><%=h @order.ammount %></td>
       </tr>
       <tr>
-        <td colspan="4"><%= t('titles.discount') %></td>
+        <td colspan="3"><%= t('titles.discount') %></td>
         <td><%= "Aun no esta hecho"  %></td>
       </tr>
       <tr>
-        <td colspan="4"><%= t('titles.taxes') %></td>
+        <td colspan="3"><%= t('titles.taxes') %></td>
         <td><%= "Aun no esta hecho"  %></td>
       </tr>
       <tr>
-        <td colspan="4"><%= t('titles.total') %></td>
+        <td colspan="3"><%= t('titles.total') %></td>
         <td><%=h @order.ammount %></td>
       </tr>
       <tr>

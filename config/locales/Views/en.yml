@@ -62,3 +62,4 @@ en:
     login: "Login"
     logout: "Logout"
     actions: "Actions"
+    owns_to: "Owns to"

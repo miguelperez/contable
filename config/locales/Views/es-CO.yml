@@ -62,3 +62,4 @@ es-CO:
     login: "Iniciar sesión"
     logout: "Cerrar sesión"
     actions: "Acciones"
+    owns_to: "Debe A"

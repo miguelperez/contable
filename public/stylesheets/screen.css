@@ -1,68 +1,78 @@
-.clear{
+.clear {
   height: 0px;
   clear: both;
 }
 
 /* Styles for forms table*/
-table.default-table{
+table.default-table {
   border: 1px solid #e8e8e8;
   border-collapse: collapse;
   width: 100%;
   margin-top: 5px;
 }
-table.default-table tr{
+
+table.default-table tr {
   background-color: #fff;
 }
-table.default-table th{
+
+table.default-table th {
   background-color: #f1f1f1;
   color: #333333;
   text-align: left;
   padding: 7px;
 }
-table.default-table td{
+
+table.default-table td {
   border: 1px solid #e8e8e8;
   padding: 5px;
 }
-table.default-table td input, table.default-table td select{
+
+table.default-table td input, table.default-table td select {
   border: 0;
   display: block;
   width: 100%;
   height: 100%;
   margin: 0px;
 }
-/*end styles for table*/
 
+/*end styles for table*/
 /*Styles for listing table*/
-table.listing{
+table.listing {
   border: 1px solid #e8e8e8;
   border-collapse: collapse;
   width: 100%;
   margin-top: 5px;
 }
-table.listing tr.odd{
+
+table.listing tr.odd {
   background-color: #fff;
 }
-table.listing tr.even{
+
+table.listing tr.even {
   background-color: #e8e8e8;
 }
-table.listing tr.expired{
+
+table.listing tr.expired {
   background-color: red;
 }
-table.listing tr:hover, table.listing tr.even:hover, table.listing tr.odd:hover{
+
+table.listing tr:hover, table.listing tr.even:hover, table.listing tr.odd:hover {
   background-color: #fffbd2;
 }
-table.listing th{
+
+table.listing th {
   background-color: #f1f1f1;
   color: #333333;
   text-align: left;
   padding: 7px;
 }
-table.listing td{
+
+table.listing td {
   border: 1px solid #e8e8e8;
   padding: 5px;
 }
-/*End styles for listing table*/
 
+/*End styles for listing table*/
 
 .fieldWithErrors label {
   background: transparent url(/images/icons/error.png) no-repeat scroll 98% 50%;
@@ -72,53 +82,73 @@ table.listing td{
   background: #ffdbe3;
 }
 
-.big-input{
+.big-input {
   width: 150px;
 }
 
-.total{
-  color :red;
+.total {
+  color: red;
 }
 
 .grant-total {
-  font-weight:bold;
+  font-weight: bold;
   color: #2ad100;
   margin-right: 46px;
 }
 
-.clean-ul{
+.clean-ul {
   list-style-type: none;
 }
 
-.clean-ul li{
+.clean-ul li {
   margin: 2px;
 }
 
-#ingredients_wrapper{
+#ingredients_wrapper {
   width: 100%;
 }
-#ingredients_form, #ingredients_list{
+
+#ingredients_form, #ingredients_list {
   width: 49%;
   vertical-align: top;
   overflow: auto;
   height: 290px;
 }
-#ingredients_form{
-  float: left;  
+
+#ingredients_form {
+  float: left;
 }
-#ingredients_list{
+
+#ingredients_list {
   float: right;
 }
 
 /*Styles for the show page of orders*/
-.order-show{
-  width: 90%;
+.order {
+  border: 1px solid black;
+  border-collapse: collapse;
+  width: 100%;
 }
-.order-show table{
+
+.order tr {
+  border: 1px solid black;
+}
+
+.order td, .order th {
+  text-align: left;
+  width: 25%;
+}
+
+.order th {
+  border: 1px solid black;
+}
+.order-show{
+  width:600px;
+  margin:5px;
+}
+
+.order-show table.order {
   margin-left: auto;
   margin-right: auto;
-}
-.order-header table{
-  width: 100%;
 }
 /*end Styles for the show page of orders*/
